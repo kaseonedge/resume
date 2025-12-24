@@ -34,7 +34,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Platform Engineer",
     profileImage: "",
-    summary: "Building the future of autonomous software development. I architect multi-agent AI systems that ship production code—from orchestrating 13 specialized agents through complex workflows to implementing self-healing infrastructure that fixes its own failures. 136K lines of Rust powering the next generation of AI engineering.",
+    summary: "Building the future of autonomous software development. I architect multi-agent AI systems that ship production code—from orchestrating 13 specialized agents through complex workflows to implementing self-healing infrastructure that fixes its own failures.",
     showProjects: true,
     experiences: [
       {
@@ -45,7 +45,7 @@ function App() {
         description: "Building the Cognitive Task Orchestrator (CTO) — an open-source platform where AI agents autonomously write, test, and ship production code. Think GitHub Copilot meets fully autonomous software teams.",
         titleColor: "text-job-founder",
         achievements: [
-          "Architected and built CTO platform from scratch: 136,000+ lines of Rust across 12 crates, implementing Kubernetes controllers, MCP servers, and self-healing infrastructure",
+          "Architected and built CTO platform from scratch using Rust across 12 crates, implementing Kubernetes controllers, MCP servers, and self-healing infrastructure",
           "Designed multi-agent orchestration system with 13 specialized AI agents (Rex, Blaze, Morgan, etc.) coordinating through Argo Workflows for end-to-end software delivery",
           "Built Model Context Protocol (MCP) server supporting Claude, Cursor, Codex, Factory, Gemini, and OpenCode CLIs with dynamic tool registration and 60+ pre-configured tools",
           "Implemented self-healing Healer service with 9 alert types (comment order, silent failures, stuck CodeRuns, pod failures) and automated remediation via AI agents",
@@ -266,7 +266,7 @@ function App() {
       {
         category: "Systems Programming",
         skills: [
-          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions", "Async Runtime", "136K+ Lines of Production Rust"
+          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions", "Async Runtime"
         ]
       },
       {

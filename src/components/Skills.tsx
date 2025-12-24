@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import anime from 'animejs/lib/anime.es.js';
 import { Badge } from './ui/badge';
 import { 
   Brain, 
@@ -72,14 +72,60 @@ const getSkillVariant = (skill: string, category: string): "default" | "rust" | 
 };
 
 const Skills: React.FC<SkillsProps> = ({ skills }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          const cards = containerRef.current?.querySelectorAll('.skill-card');
+          const badges = containerRef.current?.querySelectorAll('.skill-badge');
+          
+          // Animate cards with stagger from center
+          anime({
+            targets: cards,
+            translateY: [40, 0],
+            opacity: [0, 1],
+            scale: [0.95, 1],
+            delay: anime.stagger(100, { from: 'center' }),
+            duration: 800,
+            easing: 'easeOutExpo',
+          });
+
+          // Animate badges with wave effect
+          anime({
+            targets: badges,
+            scale: [0, 1],
+            opacity: [0, 1],
+            delay: anime.stagger(30, { from: 'first' }),
+            duration: 400,
+            easing: 'easeOutElastic(1, 0.5)',
+          });
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
   return (
-    <section style={{
-      position: 'sticky',
-      top: '1rem',
-      zIndex: 10,
-      width: '100%',
-      transition: 'all 0.3s ease'
-    }}>
+    <section 
+      ref={containerRef}
+      style={{
+        position: 'sticky',
+        top: '1rem',
+        zIndex: 10,
+        width: '100%',
+        transition: 'all 0.3s ease'
+      }}
+    >
       <div className="flex items-center gap-3 mb-6">
         <div className="p-2 rounded-lg bg-zinc-800 border border-zinc-700">
           <Cpu className="w-5 h-5 text-zinc-400" />
@@ -92,12 +138,10 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[1300px]">
           {skills.map((skill, index) => (
-            <motion.div 
+            <div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className={`bg-gradient-to-br ${getCategoryColor(skill.category)} p-5 rounded-xl border backdrop-blur-sm`}
+              className={`skill-card bg-gradient-to-br ${getCategoryColor(skill.category)} p-5 rounded-xl border backdrop-blur-sm`}
+              style={{ opacity: 0 }}
             >
               <div className="flex items-center gap-2 mb-4">
                 <div className={`p-1.5 rounded-md ${getCategoryIconColor(skill.category)}`}>
@@ -109,19 +153,18 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {skill.skills.map((item, i) => (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.05 + i * 0.02 }}
+                    className="skill-badge"
+                    style={{ opacity: 0 }}
                   >
                     <Badge variant={getSkillVariant(item, skill.category)}>
                       {item}
                     </Badge>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       )}

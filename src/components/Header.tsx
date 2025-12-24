@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Icons from '../utils/icons';
+import { DotGrid } from './ui/dot-grid';
 
 interface HeaderProps {
   name: string;
@@ -33,27 +34,15 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="p-5 pb-6 md:p-6 md:pb-8 pt-8 rounded-lg bg-gradient-to-br from-[#1c1c1c] via-[#1e1e1e] to-[#242424] border border-[#2a2a2a] relative animate-fadeIn">
-      {/* Background pattern */}
-      <div className="absolute inset-0 top-0 opacity-5 pointer-events-none" style={{ zIndex: 0 }}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" className="absolute inset-0 top-0 w-full h-full">
-          <rect width="100%" height="100%" fill="none" />
-          <g fill="none" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.3">
-            <circle cx="150" cy="30" r="25" />
-            <circle cx="550" cy="30" r="30" />
-            <circle cx="950" cy="30" r="25" />
-            <circle cx="150" cy="130" r="30" />
-            <circle cx="550" cy="130" r="10" />
-            <circle cx="950" cy="130" r="15" />
-          </g>
-          <g fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="4,4" strokeOpacity="0.2">
-            <line x1="0" y1="30" x2="1440" y2="30" />
-            <line x1="0" y1="130" x2="1440" y2="130" />
-            <line x1="150" y1="0" x2="150" y2="200" />
-            <line x1="550" y1="0" x2="550" y2="200" />
-            <line x1="950" y1="0" x2="950" y2="200" />
-          </g>
-        </svg>
-      </div>
+      {/* Interactive Dot Grid Background */}
+      <DotGrid 
+        rows={8} 
+        cols={25} 
+        dotSize={2} 
+        gap={28} 
+        color="#10b981" 
+        interactive={true}
+      />
 
       <div
         style={{

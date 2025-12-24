@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Icons from '../utils/icons';
-import { DotGrid } from './ui/dot-grid';
 
 interface HeaderProps {
   name: string;
@@ -34,15 +33,22 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="p-5 pb-6 md:p-6 md:pb-8 pt-8 rounded-lg bg-gradient-to-br from-[#1c1c1c] via-[#1e1e1e] to-[#242424] border border-[#2a2a2a] relative animate-fadeIn">
-      {/* Interactive Dot Grid Background */}
-      <DotGrid 
-        rows={8} 
-        cols={25} 
-        dotSize={2} 
-        gap={28} 
-        color="#10b981" 
-        interactive={true}
-      />
+      {/* Background pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #10b981 1px, transparent 0)`,
+            backgroundSize: '32px 32px',
+          }}
+        />
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 0%, #1c1c1c 70%)',
+          }}
+        />
+      </div>
 
       <div
         style={{
@@ -160,21 +166,33 @@ const Header: React.FC<HeaderProps> = ({
           <span
             className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderColor: 'rgba(16, 185, 129, 0.4)',
+              animationDelay: '0.1s',
+              boxShadow: '0 0 20px rgba(16, 185, 129, 0.2)'
+            }}
+          >
+            <span className="mr-2">🧠</span>
+            <span style={{ color: '#6ee7b7' }}>Multi-Agent AI</span>
+          </span>
+          <span
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
+            style={{
               backgroundColor: 'rgba(139, 92, 246, 0.2)',
               borderColor: 'rgba(139, 92, 246, 0.4)',
-              animationDelay: '0.1s',
+              animationDelay: '0.15s',
               boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
             }}
           >
-            <span className="mr-2">🤖</span>
-            <span style={{ color: '#c4b5fd' }}>AI Platforms</span>
+            <span className="mr-2">🔌</span>
+            <span style={{ color: '#c4b5fd' }}>MCP</span>
           </span>
           <span
             className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
               backgroundColor: 'rgba(249, 115, 22, 0.2)',
               borderColor: 'rgba(249, 115, 22, 0.4)',
-              animationDelay: '0.15s',
+              animationDelay: '0.2s',
               boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)'
             }}
           >
@@ -186,24 +204,12 @@ const Header: React.FC<HeaderProps> = ({
             style={{
               backgroundColor: 'rgba(59, 130, 246, 0.2)',
               borderColor: 'rgba(59, 130, 246, 0.4)',
-              animationDelay: '0.2s',
+              animationDelay: '0.25s',
               boxShadow: '0 0 20px rgba(59, 130, 246, 0.15)'
             }}
           >
             <span className="mr-2">☸️</span>
             <span style={{ color: '#93c5fd' }}>Kubernetes</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
-              borderColor: 'rgba(16, 185, 129, 0.4)',
-              animationDelay: '0.25s',
-              boxShadow: '0 0 20px rgba(16, 185, 129, 0.15)'
-            }}
-          >
-            <span className="mr-2">🔗</span>
-            <span style={{ color: '#6ee7b7' }}>Blockchain</span>
           </span>
         </div>
 

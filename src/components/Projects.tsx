@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import anime from 'animejs/lib/anime.es.js';
+import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { AgentVisualizer } from './ui/agent-visualizer';
@@ -34,50 +33,6 @@ const getTechVariant = (tech: string): "default" | "rust" | "ai" | "infra" | "se
 };
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    if (!containerRef.current || hasAnimated) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          
-          const cards = containerRef.current?.querySelectorAll('.project-card-item');
-          const badges = containerRef.current?.querySelectorAll('.project-badge');
-          
-          // Animate cards with dramatic reveal
-          anime({
-            targets: cards,
-            translateY: [60, 0],
-            opacity: [0, 1],
-            scale: [0.9, 1],
-            rotateX: [15, 0],
-            delay: anime.stagger(150),
-            duration: 1000,
-            easing: 'easeOutExpo',
-          });
-
-          // Animate badges with bounce
-          anime({
-            targets: badges,
-            scale: [0, 1],
-            opacity: [0, 1],
-            delay: anime.stagger(40, { start: 400 }),
-            duration: 500,
-            easing: 'easeOutElastic(1, 0.5)',
-          });
-        }
-      },
-      { threshold: 0.05 }
-    );
-
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
   if (!projects || projects.length === 0) {
     return null;
   }
@@ -85,7 +40,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const isCTOProject = (title: string) => title.includes('CTO') || title.includes('Cognitive');
 
   return (
-    <section ref={containerRef} className="project-card" style={{ perspective: '1000px' }}>
+    <section className="project-card">
       <div className="mb-6 flex items-center gap-3">
         <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
           <Workflow className="w-5 h-5 text-emerald-400" />
@@ -97,8 +52,8 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="project-card-item"
-            style={{ opacity: 0, transformStyle: 'preserve-3d' }}
+            className="project-card-item animate-fadeIn"
+            style={{ animationDelay: `${index * 0.15}s` }}
           >
             <Card className={isCTOProject(project.title) ? 'border-emerald-500/30 bg-gradient-to-br from-zinc-900/80 to-emerald-950/20' : ''}>
               <CardHeader className="pb-3">
@@ -142,7 +97,11 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
 
                 <div className="flex flex-wrap gap-1.5">
                   {project.technologies.map((tech, i) => (
-                    <div key={i} className="project-badge" style={{ opacity: 0 }}>
+                    <div 
+                      key={i} 
+                      className="project-badge animate-fadeIn"
+                      style={{ animationDelay: `${index * 0.15 + i * 0.03}s` }}
+                    >
                       <Badge variant={getTechVariant(tech)}>
                         {tech}
                       </Badge>

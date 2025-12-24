@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import anime from 'animejs/lib/anime.es.js'
+import React, { useState, useEffect } from 'react'
 
 interface Agent {
   id: string
@@ -19,135 +18,26 @@ const agents: Agent[] = [
 ]
 
 export const AgentVisualizer: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const svgRef = useRef<SVGSVGElement>(null)
   const [activeAgent, setActiveAgent] = useState(0)
-  const [mounted, setMounted] = useState(false)
-  const activeLineRef = useRef<SVGLineElement>(null)
 
   const radius = 55
   const centerX = 90
   const centerY = 70
 
+  // Rotate active agent
   useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Initial animation on mount
-  useEffect(() => {
-    if (!mounted || !containerRef.current) return
-
-    const agentNodes = containerRef.current.querySelectorAll('.agent-node')
-    const hub = containerRef.current.querySelector('.hub')
-
-    // Animate hub first
-    anime({
-      targets: hub,
-      scale: [0, 1],
-      opacity: [0, 1],
-      duration: 600,
-      easing: 'easeOutElastic(1, 0.5)',
-    })
-
-    // Then stagger in agent nodes from center
-    anime({
-      targets: agentNodes,
-      scale: [0, 1],
-      opacity: [0, 1],
-      delay: anime.stagger(100, { from: 'center' }),
-      duration: 800,
-      easing: 'easeOutElastic(1, 0.6)',
-    })
-  }, [mounted])
-
-  // Rotating active agent with pulse
-  useEffect(() => {
-    if (!mounted) return
-
     const interval = setInterval(() => {
       setActiveAgent((prev) => (prev + 1) % agents.length)
     }, 2000)
-
     return () => clearInterval(interval)
-  }, [mounted])
-
-  // Pulse animation for active agent
-  useEffect(() => {
-    if (!mounted || !containerRef.current) return
-
-    const activeNode = containerRef.current.querySelector(`.agent-node-${activeAgent}`)
-    if (!activeNode) return
-
-    anime({
-      targets: activeNode,
-      scale: [1, 1.15, 1],
-      duration: 600,
-      easing: 'easeInOutQuad',
-    })
-
-    // Animate connection line from hub to active agent
-    if (activeLineRef.current) {
-      const angle = (activeAgent * 60 - 90) * (Math.PI / 180)
-      const endX = centerX + radius * Math.cos(angle)
-      const endY = centerY + radius * Math.sin(angle)
-
-      anime({
-        targets: activeLineRef.current,
-        x2: endX,
-        y2: endY,
-        strokeDashoffset: [anime.setDashoffset, 0],
-        opacity: [0, 1, 1, 0],
-        duration: 1500,
-        easing: 'easeInOutSine',
-      })
-    }
-  }, [activeAgent, mounted])
-
-  // Hub breathing animation
-  useEffect(() => {
-    if (!mounted || !containerRef.current) return
-
-    const hub = containerRef.current.querySelector('.hub')
-    
-    anime({
-      targets: hub,
-      boxShadow: [
-        '0 0 0 0 rgba(16, 185, 129, 0)',
-        '0 0 30px 15px rgba(16, 185, 129, 0.4)',
-        '0 0 0 0 rgba(16, 185, 129, 0)',
-      ],
-      duration: 2000,
-      loop: true,
-      easing: 'easeInOutSine',
-    })
-  }, [mounted])
-
-  // Orbit ring pulse
-  useEffect(() => {
-    if (!mounted || !svgRef.current) return
-
-    const rings = svgRef.current.querySelectorAll('.orbit-ring')
-    
-    anime({
-      targets: rings,
-      opacity: [0.1, 0.3, 0.1],
-      strokeWidth: [1, 2, 1],
-      duration: 3000,
-      delay: anime.stagger(500),
-      loop: true,
-      easing: 'easeInOutSine',
-    })
-  }, [mounted])
-
-  if (!mounted) return <div className="w-[180px] h-[160px]" />
+  }, [])
 
   return (
-    <div ref={containerRef} className="relative w-[180px] h-[160px]">
-      {/* SVG for connection lines and orbit rings */}
-      <svg ref={svgRef} className="absolute inset-0 w-full h-full" style={{ overflow: 'visible' }}>
-        {/* Orbit rings */}
+    <div className="relative w-[180px] h-[160px]">
+      {/* SVG for orbit rings */}
+      <svg className="absolute inset-0 w-full h-full" style={{ overflow: 'visible' }}>
+        {/* Orbit rings with pulse animation */}
         <circle
-          className="orbit-ring"
           cx={centerX}
           cy={centerY}
           r={radius - 10}
@@ -155,9 +45,9 @@ export const AgentVisualizer: React.FC = () => {
           stroke="#10b981"
           strokeWidth="1"
           opacity="0.1"
+          className="animate-pulse"
         />
         <circle
-          className="orbit-ring"
           cx={centerX}
           cy={centerY}
           r={radius}
@@ -167,7 +57,6 @@ export const AgentVisualizer: React.FC = () => {
           opacity="0.2"
         />
         <circle
-          className="orbit-ring"
           cx={centerX}
           cy={centerY}
           r={radius + 10}
@@ -175,22 +64,39 @@ export const AgentVisualizer: React.FC = () => {
           stroke="#10b981"
           strokeWidth="1"
           opacity="0.1"
+          className="animate-pulse"
+          style={{ animationDelay: '0.5s' }}
         />
         
-        {/* Active connection line */}
-        <line
-          ref={activeLineRef}
-          x1={centerX}
-          y1={centerY}
-          x2={centerX}
-          y2={centerY}
-          stroke={agents[activeAgent].color}
-          strokeWidth="2"
-          strokeDasharray="5 5"
-          opacity="0"
-        />
+        {/* Connection line to active agent */}
+        {(() => {
+          const angle = (activeAgent * 60 - 90) * (Math.PI / 180)
+          const endX = centerX + radius * Math.cos(angle)
+          const endY = centerY + radius * Math.sin(angle)
+          return (
+            <line
+              x1={centerX}
+              y1={centerY}
+              x2={endX}
+              y2={endY}
+              stroke={agents[activeAgent].color}
+              strokeWidth="2"
+              strokeDasharray="5 5"
+              opacity="0.6"
+              className="transition-all duration-500"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="10"
+                to="0"
+                dur="1s"
+                repeatCount="indefinite"
+              />
+            </line>
+          )
+        })()}
 
-        {/* Data particles traveling on path */}
+        {/* Data particles */}
         {[0, 1, 2].map((i) => {
           const angle = (activeAgent * 60 - 90) * (Math.PI / 180)
           const endX = centerX + radius * Math.cos(angle)
@@ -199,12 +105,8 @@ export const AgentVisualizer: React.FC = () => {
           return (
             <circle
               key={i}
-              className={`data-particle-${activeAgent}-${i}`}
-              cx={centerX}
-              cy={centerY}
               r="2"
               fill={agents[activeAgent].color}
-              opacity="0"
             >
               <animate
                 attributeName="cx"
@@ -234,10 +136,9 @@ export const AgentVisualizer: React.FC = () => {
         })}
       </svg>
 
-      {/* Center hub */}
+      {/* Center hub with breathing animation */}
       <div
-        className="hub absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-700 flex items-center justify-center border-2 border-emerald-300/30"
-        style={{ opacity: 0 }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-700 flex items-center justify-center border-2 border-emerald-300/30 animate-pulse"
       >
         <span className="text-xs font-bold text-white drop-shadow-lg">CTO</span>
       </div>
@@ -252,12 +153,11 @@ export const AgentVisualizer: React.FC = () => {
         return (
           <div
             key={agent.id}
-            className={`agent-node agent-node-${i} absolute`}
+            className="absolute transition-all duration-300"
             style={{
               left: `${x}px`,
               top: `${y}px`,
-              transform: 'translate(-50%, -50%)',
-              opacity: 0,
+              transform: `translate(-50%, -50%) scale(${isActive ? 1.15 : 1})`,
             }}
           >
             <div className="relative flex flex-col items-center gap-1">
@@ -301,4 +201,3 @@ export const AgentVisualizer: React.FC = () => {
 }
 
 export default AgentVisualizer
-

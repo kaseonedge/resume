@@ -32,17 +32,17 @@ function App() {
 
   const [resumeData] = useState({
     name: "Jonathon Fritz",
-    title: "Technologist & Leader",
+    title: "AI Platform Engineer",
     profileImage: "",
-    summary: "Founder building autonomous AI engineering platforms on bare-metal Kubernetes. Deep expertise in infrastructure automation, from blockchain nodes to multi-agent orchestration systems. I fuse hands-on Rust/Go systems programming with proven technical leadership.",
+    summary: "Building the future of autonomous software development. I architect multi-agent AI systems that ship production code—from orchestrating 13 specialized agents through complex workflows to implementing self-healing infrastructure that fixes its own failures. 136K lines of Rust powering the next generation of AI engineering.",
     showProjects: true,
     experiences: [
       {
         company: "5D Labs",
-        position: "Founder",
+        position: "Founder & AI Platform Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building the Cognitive Task Orchestrator (CTO) — an open-source AI engineering platform that deploys autonomous agent teams on self-hosted infrastructure.",
+        description: "Building the Cognitive Task Orchestrator (CTO) — an open-source platform where AI agents autonomously write, test, and ship production code. Think GitHub Copilot meets fully autonomous software teams.",
         titleColor: "text-job-founder",
         achievements: [
           "Architected and built CTO platform from scratch: 136,000+ lines of Rust across 12 crates, implementing Kubernetes controllers, MCP servers, and self-healing infrastructure",
@@ -246,63 +246,63 @@ function App() {
     ],
     skills: [
       {
-        category: "AI & Agent Platforms",
+        category: "AI Engineering",
         skills: [
-          "Model Context Protocol (MCP)", "Claude", "GPT", "Gemini", "Multi-Agent Orchestration", "Argo Workflows", "AI CLI Integration", "Autonomous Agents", "Self-Healing Systems", "Linear Agent API"
+          "Multi-Agent Systems", "Agent Orchestration", "Autonomous Coding Agents", "Self-Healing AI", "AI Workflow Design", "Prompt Engineering", "Tool Use & Function Calling", "Context Management"
+        ]
+      },
+      {
+        category: "LLM Integration",
+        skills: [
+          "Model Context Protocol (MCP)", "Claude API", "GPT-4 API", "Gemini API", "AI CLI Tools (Cursor, Codex, Factory)", "Tool Registration", "Streaming Responses", "Context Windows"
+        ]
+      },
+      {
+        category: "AI Infrastructure",
+        skills: [
+          "Argo Workflows", "Event-Driven AI Pipelines", "Agent State Management", "Kubernetes CRDs for AI", "Real-time Activity Streaming", "Linear Integration", "GitHub Apps for AI"
         ]
       },
       {
         category: "Systems Programming",
         skills: [
-          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions (CRDs)", "Async Runtime", "Performance Optimization"
+          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions", "Async Runtime", "136K+ Lines of Production Rust"
         ]
       },
       {
-        category: "Infrastructure & DevOps",
+        category: "Platform Engineering",
         skills: [
-          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal", "Cloudflare Tunnels", "WireGuard", "Infrastructure as Code", "Argo Workflows"
+          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal Provisioning", "Cloudflare Tunnels", "WireGuard VPN", "Zero-Trust Networking"
         ]
       },
       {
-        category: "Observability & Security",
+        category: "Observability",
         skills: [
-          "Prometheus", "Grafana", "Loki", "OpenTelemetry", "Fluent-bit", "OpenBao (Vault)", "External Secrets Operator", "Zero-Trust Networking", "Incident Response"
-        ]
-      },
-      {
-        category: "Blockchain & Web3",
-        skills: [
-          "Ethereum", "Arbitrum", "Optimism", "Reth", "Geth", "EVM", "Layer 2/3", "RPC Infrastructure", "Blockscout", "Gas Estimation", "Transaction Monitoring"
-        ]
-      },
-      {
-        category: "Leadership & Open Source",
-        skills: [
-          "Technical Leadership", "Open Source Maintainer", "Platform Architecture", "Cost Optimization", "Developer Experience", "Documentation", "Community Building"
+          "Prometheus", "Grafana", "Loki", "OpenTelemetry", "Fluent-bit", "AI-Powered Alerting", "Self-Healing Triggers", "Incident Auto-Remediation"
         ]
       }
     ],
     projects: [
       {
         title: "Cognitive Task Orchestrator (CTO)",
-        description: "Open-source AI engineering platform deploying 13 autonomous agents on self-hosted Kubernetes. Features MCP server, self-healing infrastructure, and bare-metal provisioning across 7+ providers.",
-        technologies: ["Rust", "Tokio", "Axum", "Kubernetes", "Argo Workflows", "MCP", "ArgoCD", "Helm"],
+        description: "AI engineering platform where autonomous agents write, test, and ship production code. 13 specialized agents collaborate through complex workflows—from initial design to deployed features—without human intervention.",
+        technologies: ["Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Argo Workflows", "Claude/GPT"],
         link: "https://github.com/5dlabs/cto"
       },
       {
-        title: "Multi-Agent Orchestration System",
-        description: "Event-driven workflow system coordinating specialized AI agents (Rex, Blaze, Morgan, etc.) through implementation, QA, security, and deployment phases.",
-        technologies: ["Rust", "Kubernetes CRDs", "Argo Workflows", "Linear API", "GitHub Apps"]
+        title: "AI Agent Orchestration Engine",
+        description: "Event-driven system coordinating Rex (Orchestrator), Blaze (Implementer), Morgan (Architect), Sentinel (Security), Pixel (Frontend), and Echo (QA) through end-to-end software delivery pipelines.",
+        technologies: ["Agent Coordination", "Rust", "Kubernetes CRDs", "Linear API", "Real-time Streaming"]
       },
       {
-        title: "Healer Self-Healing Service",
-        description: "Autonomous remediation service with 9 alert types detecting stuck workflows, pod failures, and silent errors, automatically spawning AI agents to diagnose and fix issues.",
-        technologies: ["Rust", "Prometheus", "Loki", "Kubernetes", "OpenTelemetry"]
+        title: "Self-Healing AI Service",
+        description: "Autonomous system that monitors for 9 failure types (stuck workflows, pod crashes, silent errors) and automatically spawns AI agents to diagnose root causes and implement fixes.",
+        technologies: ["AI Auto-Remediation", "Rust", "Prometheus", "Loki", "OpenTelemetry"]
       },
       {
-        title: "Bare-Metal Provisioning (cto-metal)",
-        description: "CLI tool for bootstrapping Talos Linux Kubernetes clusters on bare-metal providers with Cilium CNI, OpenBao secrets, and GitOps configuration.",
-        technologies: ["Rust", "Talos Linux", "Cilium", "OpenBao", "Cloudflare Tunnels"]
+        title: "MCP Server Platform",
+        description: "Model Context Protocol server supporting Claude, Cursor, Codex, Factory, Gemini CLI with dynamic tool registration, 60+ tools, and real-time context streaming for AI-powered development.",
+        technologies: ["MCP", "Rust", "Axum", "Claude API", "Tool Registration", "SSE"]
       }
     ],
     contact: {

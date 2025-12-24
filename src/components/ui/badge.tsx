@@ -8,15 +8,15 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-emerald-500/30 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 hover:border-emerald-500/50",
-        secondary:
           "border-zinc-700 bg-zinc-800/50 text-zinc-300 hover:bg-zinc-700/50",
+        secondary:
+          "border-zinc-600/50 bg-zinc-800/30 text-zinc-400 hover:bg-zinc-700/40",
         rust:
-          "border-orange-500/30 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 hover:border-orange-500/50",
+          "border-orange-500/40 bg-orange-500/15 text-orange-300 hover:bg-orange-500/25 hover:border-orange-400/60 shadow-sm shadow-orange-500/10",
         ai:
-          "border-purple-500/30 bg-purple-500/10 text-purple-400 hover:bg-purple-500/20 hover:border-purple-500/50",
+          "border-emerald-400/50 bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 hover:border-emerald-400/70 shadow-sm shadow-emerald-500/20",
         infra:
-          "border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-500/50",
+          "border-blue-500/40 bg-blue-500/15 text-blue-300 hover:bg-blue-500/25 hover:border-blue-400/60 shadow-sm shadow-blue-500/10",
         outline:
           "border-zinc-700 text-zinc-400 hover:bg-zinc-800/50",
       },

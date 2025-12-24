@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import anime from 'animejs/lib/anime.es.js'
+import { animate, stagger } from 'animejs'
 
 interface DotGridProps {
   rows?: number
@@ -20,7 +20,7 @@ export const DotGrid: React.FC<DotGridProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
-  const animationRef = useRef<anime.AnimeInstance | null>(null)
+  const animationRef = useRef<ReturnType<typeof animate> | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -32,31 +32,22 @@ export const DotGrid: React.FC<DotGridProps> = ({
     const dots = containerRef.current.querySelectorAll('.dot')
     
     // Initial staggered fade in from center
-    anime({
-      targets: dots,
+    animate(dots, {
       scale: [0, 1],
       opacity: [0, 0.3],
-      delay: anime.stagger(30, { grid: [cols, rows], from: 'center' }),
+      delay: stagger(30, { grid: [cols, rows], from: 'center' }),
       duration: 800,
-      easing: 'easeOutElastic(1, 0.5)',
+      ease: 'outElastic(1, 0.5)',
     })
 
     // Ambient pulse animation
-    animationRef.current = anime({
-      targets: dots,
-      scale: [
-        { value: 1, duration: 0 },
-        { value: 1.5, duration: 800 },
-        { value: 1, duration: 800 },
-      ],
-      opacity: [
-        { value: 0.3, duration: 0 },
-        { value: 0.6, duration: 800 },
-        { value: 0.3, duration: 800 },
-      ],
-      delay: anime.stagger(100, { grid: [cols, rows], from: 'center' }),
+    animationRef.current = animate(dots, {
+      scale: [1, 1.5, 1],
+      opacity: [0.3, 0.6, 0.3],
+      delay: stagger(100, { grid: [cols, rows], from: 'center' }),
       loop: true,
-      easing: 'easeInOutSine',
+      duration: 1600,
+      ease: 'inOutSine',
     })
 
     return () => {
@@ -72,30 +63,26 @@ export const DotGrid: React.FC<DotGridProps> = ({
     const rect = containerRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
     const y = e.clientY - rect.top
+    const maxDistance = 150
 
     const dots = containerRef.current.querySelectorAll('.dot')
     
-    anime({
-      targets: dots,
-      scale: (el: Element) => {
-        const dotRect = el.getBoundingClientRect()
-        const dotX = dotRect.left - rect.left + dotRect.width / 2
-        const dotY = dotRect.top - rect.top + dotRect.height / 2
-        const distance = Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2))
-        const maxDistance = 150
-        const scale = Math.max(1, 2 - distance / maxDistance)
-        return distance < maxDistance ? scale : 1
-      },
-      opacity: (el: Element) => {
-        const dotRect = el.getBoundingClientRect()
-        const dotX = dotRect.left - rect.left + dotRect.width / 2
-        const dotY = dotRect.top - rect.top + dotRect.height / 2
-        const distance = Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2))
-        const maxDistance = 150
-        return distance < maxDistance ? 0.8 : 0.3
-      },
-      duration: 300,
-      easing: 'easeOutQuad',
+    // Animate each dot based on distance from cursor
+    dots.forEach((dot) => {
+      const dotRect = dot.getBoundingClientRect()
+      const dotX = dotRect.left - rect.left + dotRect.width / 2
+      const dotY = dotRect.top - rect.top + dotRect.height / 2
+      const distance = Math.sqrt(Math.pow(x - dotX, 2) + Math.pow(y - dotY, 2))
+      
+      const scale = distance < maxDistance ? Math.max(1, 2 - distance / maxDistance) : 1
+      const opacity = distance < maxDistance ? 0.8 : 0.3
+      
+      animate(dot, {
+        scale,
+        opacity,
+        duration: 300,
+        ease: 'outQuad',
+      })
     })
   }
 
@@ -104,12 +91,11 @@ export const DotGrid: React.FC<DotGridProps> = ({
 
     const dots = containerRef.current.querySelectorAll('.dot')
     
-    anime({
-      targets: dots,
+    animate(dots, {
       scale: 1,
       opacity: 0.3,
       duration: 600,
-      easing: 'easeOutQuad',
+      ease: 'outQuad',
     })
   }
 

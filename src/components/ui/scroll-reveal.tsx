@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import anime from 'animejs'
+import { animate, stagger } from 'animejs'
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -60,13 +60,12 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       }
     }
 
-    anime({
-      targets: ref.current,
+    animate(ref.current, {
       ...getTransform(),
       opacity: [0, 1],
       duration,
       delay,
-      easing: 'easeOutExpo',
+      ease: 'outExpo',
     })
   }, [isVisible, delay, duration, direction])
 
@@ -143,13 +142,12 @@ export const StaggerReveal: React.FC<StaggerRevealProps> = ({
       }
     }
 
-    anime({
-      targets: items,
+    animate(items, {
       ...getTransform(),
       opacity: [0, 1],
       duration,
-      delay: anime.stagger(staggerDelay),
-      easing: 'easeOutExpo',
+      delay: stagger(staggerDelay),
+      ease: 'outExpo',
     })
   }, [isVisible, staggerDelay, duration, direction])
 

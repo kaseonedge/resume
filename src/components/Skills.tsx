@@ -4,10 +4,8 @@ import {
   Brain, 
   Code2, 
   Server, 
-  Shield, 
   Sparkles,
   Bot,
-  Cpu,
   Terminal,
   Zap,
   Eye

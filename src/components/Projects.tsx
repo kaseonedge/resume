@@ -1,5 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Icons from '../utils/icons';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
+import { Badge } from './ui/badge';
+import { AgentVisualizer } from './ui/agent-visualizer';
+import { ExternalLink, Github, Cpu, Shield, Server, Workflow } from 'lucide-react';
 
 interface ProjectItem {
   title: string;
@@ -13,64 +18,96 @@ interface ProjectsProps {
   projects: ProjectItem[];
 }
 
+const getProjectIcon = (title: string) => {
+  if (title.includes('CTO') || title.includes('Orchestrator')) return <Workflow className="w-5 h-5" />;
+  if (title.includes('Agent')) return <Cpu className="w-5 h-5" />;
+  if (title.includes('Healer')) return <Shield className="w-5 h-5" />;
+  if (title.includes('Metal') || title.includes('Provisioning')) return <Server className="w-5 h-5" />;
+  return Icons.kubernetes('sm');
+};
+
+const getTechVariant = (tech: string): "default" | "rust" | "ai" | "infra" | "secondary" => {
+  const lowerTech = tech.toLowerCase();
+  if (['rust', 'tokio', 'axum', 'serde'].some(t => lowerTech.includes(t))) return 'rust';
+  if (['mcp', 'ai', 'agent', 'claude', 'linear'].some(t => lowerTech.includes(t))) return 'ai';
+  if (['kubernetes', 'helm', 'argo', 'talos', 'cilium', 'cloudflare'].some(t => lowerTech.includes(t))) return 'infra';
+  return 'secondary';
+};
+
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   if (!projects || projects.length === 0) {
     return null;
   }
 
+  const isCTOProject = (title: string) => title.includes('CTO') || title.includes('Cognitive');
+
   return (
     <section className="project-card">
-      <div className="mb-4 flex items-center">
-        <h2 className="text-xl font-semibold mr-2">Projects</h2>
-        <div className="text-gray-400">{Icons.kubernetes('sm')}</div>
+      <div className="mb-6 flex items-center gap-3">
+        <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+          <Workflow className="w-5 h-5 text-emerald-400" />
+        </div>
+        <h2 className="text-xl font-semibold">Open Source Projects</h2>
       </div>
 
-      <div className="space-y-6">
+      <div className="grid gap-4">
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-800 bg-opacity-50 p-4 rounded-lg border border-gray-700 hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-1">
-            <div className="flex flex-col md:flex-row items-start gap-4">
-              {project.image && (
-                <div className="w-full md:w-24 md:h-24 flex-shrink-0 bg-black bg-opacity-30 rounded-lg overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-
-              <div className="flex-1">
-                <div className="flex items-center mb-2">
-                  <h3 className="text-lg font-medium text-gray-300">
-                    {project.title}
-                  </h3>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-2 text-gray-400 hover:text-gray-300 transition-colors special-link"
-                    >
-                      {Icons.external('xs')}
-                      <span className="sr-only">View project</span>
-                    </a>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <Card className={isCTOProject(project.title) ? 'border-emerald-500/30 bg-gradient-to-br from-zinc-900/80 to-emerald-950/20' : ''}>
+              <CardHeader className="pb-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 rounded-lg ${isCTOProject(project.title) ? 'bg-emerald-500/20 text-emerald-400' : 'bg-zinc-800 text-zinc-400'}`}>
+                      {getProjectIcon(project.title)}
+                    </div>
+                    <div>
+                      <CardTitle className={isCTOProject(project.title) ? 'text-emerald-400' : 'text-zinc-200'}>
+                        {project.title}
+                      </CardTitle>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-emerald-400 transition-colors mt-1"
+                        >
+                          <Github className="w-3 h-3" />
+                          <span>View on GitHub</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* Agent Visualizer for CTO project */}
+                  {isCTOProject(project.title) && (
+                    <div className="hidden md:block">
+                      <AgentVisualizer />
+                    </div>
                   )}
                 </div>
+              </CardHeader>
+              
+              <CardContent>
+                <CardDescription className="mb-4 text-sm leading-relaxed">
+                  {project.description}
+                </CardDescription>
 
-                <p className="text-gray-300 text-sm mb-3">{project.description}</p>
-
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.technologies.map((tech, i) => (
-                    <span key={i} className="tech-tag text-xs px-2 py-1 inline-flex items-center">
-                      {tech.toLowerCase().includes('kubernetes') && Icons.kubernetes('xxs')}
-                      {tech.toLowerCase().includes('blockchain') && Icons.blockchain('xxs')}
+                    <Badge key={i} variant={getTechVariant(tech)}>
                       {tech}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>

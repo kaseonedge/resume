@@ -34,14 +34,34 @@ function App() {
     name: "Jonathon Fritz",
     title: "Technologist & Leader",
     profileImage: "",
-    summary: "Seasoned pro in building and scaling blockchain infrastructure, from bare-metal Kubernetes to web3 ecosystems. I fuse hands-on platform and software engineering with proven leadership—driving impactful solutions as an individual contributor or team lead.",
-    showProjects: false,
+    summary: "Founder building autonomous AI engineering platforms on bare-metal Kubernetes. Deep expertise in infrastructure automation, from blockchain nodes to multi-agent orchestration systems. I fuse hands-on Rust/Go systems programming with proven technical leadership.",
+    showProjects: true,
     experiences: [
+      {
+        company: "5D Labs",
+        position: "Founder",
+        startDate: "May 2025",
+        endDate: "Present",
+        description: "Building the Cognitive Task Orchestrator (CTO) — an open-source AI engineering platform that deploys autonomous agent teams on self-hosted infrastructure.",
+        titleColor: "text-job-founder",
+        achievements: [
+          "Architected and built CTO platform from scratch: 136,000+ lines of Rust across 12 crates, implementing Kubernetes controllers, MCP servers, and self-healing infrastructure",
+          "Designed multi-agent orchestration system with 13 specialized AI agents (Rex, Blaze, Morgan, etc.) coordinating through Argo Workflows for end-to-end software delivery",
+          "Built Model Context Protocol (MCP) server supporting Claude, Cursor, Codex, Factory, Gemini, and OpenCode CLIs with dynamic tool registration and 60+ pre-configured tools",
+          "Implemented self-healing Healer service with 9 alert types (comment order, silent failures, stuck CodeRuns, pod failures) and automated remediation via AI agents",
+          "Created bare-metal provisioning system (cto-metal) for Talos Linux clusters across 7+ providers: Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean",
+          "Integrated 15+ Kubernetes operators replacing managed services: CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse, achieving 60-80% cost savings",
+          "Built Linear Agent integration with two-way sync, real-time activity streaming, and agent plan visualization for transparent AI development workflows",
+          "Designed zero-trust networking with Cloudflare Tunnels and Kilo VPN (WireGuard) for secure access without exposed ports",
+          "Implemented comprehensive observability stack: Prometheus, Grafana, Loki with Fluent-bit collection, OpenTelemetry instrumentation, and MCP tools for log/metric queries",
+          "Released platform as open-source under AGPL-3.0, establishing 5D Labs as a contributor to the AI infrastructure ecosystem"
+        ]
+      },
       {
         company: "Blocknative",
         position: "Site Reliability Engineer",
         startDate: "May 2023",
-        endDate: "Present",
+        endDate: "May 2025",
         description: "On-chain gas estimation infrastructure for Web3.",
         titleColor: "text-job-sre",
         achievements: [
@@ -226,62 +246,63 @@ function App() {
     ],
     skills: [
       {
-        category: "Blockchain & Web3",
+        category: "AI & Agent Platforms",
         skills: [
-          "Ethereum", "Arbitrum", "Optimism", "ZkStack", "Solana","Layer 2/3", "Oracles", "Geth", "Reth", "EVM","Foundry","HardHat", "Blockscout", "Smart Contracts", "Mempool Analysis", "RPC Infrastructure", "Transaction Monitoring"
+          "Model Context Protocol (MCP)", "Claude", "GPT", "Gemini", "Multi-Agent Orchestration", "Argo Workflows", "AI CLI Integration", "Autonomous Agents", "Self-Healing Systems", "Linear Agent API"
+        ]
+      },
+      {
+        category: "Systems Programming",
+        skills: [
+          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions (CRDs)", "Async Runtime", "Performance Optimization"
         ]
       },
       {
         category: "Infrastructure & DevOps",
         skills: [
-          "Kubernetes", "RKE2", "ArgoCD", "GitOps", "Cilium", "Docker", "Terraform", "AWS", "GCP", "Bare Metal", "High Availability", "Infrastructure as Code", "Site Reliability Engineering", "Disaster Recovery"
+          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal", "Cloudflare Tunnels", "WireGuard", "Infrastructure as Code", "Argo Workflows"
         ]
       },
       {
         category: "Observability & Security",
         skills: [
-          "DataDog", "OpenTelemetry", "APM", "Prometheus", "Grafana", "PagerDuty", "Alert Management", "HashiCorp Vault", "Secrets Management", "Security Posture", "Incident Response"
+          "Prometheus", "Grafana", "Loki", "OpenTelemetry", "Fluent-bit", "OpenBao (Vault)", "External Secrets Operator", "Zero-Trust Networking", "Incident Response"
         ]
       },
       {
-        category: "Databases & Storage",
+        category: "Blockchain & Web3",
         skills: [
-          "PostgreSQL", "Aurora", "RDS", "MDBX", "MongoDB", "High-Performance Storage", "Replication", "Backup Strategies", "Data Migration"
+          "Ethereum", "Arbitrum", "Optimism", "Reth", "Geth", "EVM", "Layer 2/3", "RPC Infrastructure", "Blockscout", "Gas Estimation", "Transaction Monitoring"
         ]
       },
       {
-        category: "Development & Architecture",
+        category: "Leadership & Open Source",
         skills: [
-          "Go", "Python", "TypeScript", "Rust","React", "Node.js", "GraphQL", "REST APIs", "Microservices", "System Design", "Performance Optimization"
-        ]
-      },
-      {
-        category: "Leadership & Operations",
-        skills: [
-          "Technical Leadership", "Team Mentorship", "Infrastructure Strategy", "Cost Optimization", "Vendor Management", "Documentation", "Process Improvement", "On-Call Management"
+          "Technical Leadership", "Open Source Maintainer", "Platform Architecture", "Cost Optimization", "Developer Experience", "Documentation", "Community Building"
         ]
       }
     ],
     projects: [
       {
-        title: "Blockchain Health Monitoring System",
-        description: "Designed and developed an application that monitors blockchain node health and automatically configures HAProxy for failover, ensuring high availability of RPC endpoints",
-        technologies: ["Python", "HAProxy", "Prometheus", "Shell Scripting", "Geth", "Erigon", "Polygon", "BSC"]
+        title: "Cognitive Task Orchestrator (CTO)",
+        description: "Open-source AI engineering platform deploying 13 autonomous agents on self-hosted Kubernetes. Features MCP server, self-healing infrastructure, and bare-metal provisioning across 7+ providers.",
+        technologies: ["Rust", "Tokio", "Axum", "Kubernetes", "Argo Workflows", "MCP", "ArgoCD", "Helm"],
+        link: "https://github.com/5dlabs/cto"
       },
       {
-        title: "Blockchain Transaction Monitoring",
-        description: "Designed and implemented a high-availability multi-region infrastructure for monitoring Ethereum transactions with sub-second latency",
-        technologies: ["Kubernetes", "Terraform", "Go", "WebSockets", "Prometheus", "Grafana"]
+        title: "Multi-Agent Orchestration System",
+        description: "Event-driven workflow system coordinating specialized AI agents (Rex, Blaze, Morgan, etc.) through implementation, QA, security, and deployment phases.",
+        technologies: ["Rust", "Kubernetes CRDs", "Argo Workflows", "Linear API", "GitHub Apps"]
       },
       {
-        title: "Decentralized Node Infrastructure",
-        description: "Led development of infrastructure automation for decentralized blockchain node deployment across multiple cloud providers",
-        technologies: ["Docker", "Ansible", "AWS", "GCP", "CI/CD", "Monitoring"]
+        title: "Healer Self-Healing Service",
+        description: "Autonomous remediation service with 9 alert types detecting stuck workflows, pod failures, and silent errors, automatically spawning AI agents to diagnose and fix issues.",
+        technologies: ["Rust", "Prometheus", "Loki", "Kubernetes", "OpenTelemetry"]
       },
       {
-        title: "Mempool Analysis Tools",
-        description: "Built real-time analytics and visualization tools for blockchain mempool data to optimize transaction strategies",
-        technologies: ["React", "TypeScript", "Node.js", "GraphQL", "Time-series Databases"]
+        title: "Bare-Metal Provisioning (cto-metal)",
+        description: "CLI tool for bootstrapping Talos Linux Kubernetes clusters on bare-metal providers with Cilium CNI, OpenBao secrets, and GitOps configuration.",
+        technologies: ["Rust", "Talos Linux", "Cilium", "OpenBao", "Cloudflare Tunnels"]
       }
     ],
     contact: {

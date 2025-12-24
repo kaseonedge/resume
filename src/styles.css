@@ -10,6 +10,7 @@
   --color-accent-secondary: #2d3748;
   --color-text-primary: #ffffff;
   --color-text-secondary: #b4b4b4;
+  --color-job-founder: #ffffff;
   --color-job-sre: #ffffff;
   --color-job-head: #ffffff;
   --color-job-lead: #ffffff;
@@ -45,6 +46,12 @@ body {
 
 .animate-blink {
   animation: blink 1s step-end infinite;
+}
+
+.text-job-founder {
+  color: var(--color-job-founder);
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .text-job-sre {

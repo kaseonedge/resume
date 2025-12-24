@@ -1,4 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Badge } from './ui/badge';
+import { 
+  Brain, 
+  Code2, 
+  Server, 
+  Shield, 
+  Link2, 
+  Users,
+  Cpu,
+  Terminal
+} from 'lucide-react';
 
 interface Skill {
   category: string;
@@ -9,6 +21,56 @@ interface SkillsProps {
   skills: Skill[];
 }
 
+const getCategoryIcon = (category: string) => {
+  const lower = category.toLowerCase();
+  if (lower.includes('ai') || lower.includes('agent')) return <Brain className="w-4 h-4" />;
+  if (lower.includes('systems') || lower.includes('programming')) return <Terminal className="w-4 h-4" />;
+  if (lower.includes('infrastructure') || lower.includes('devops')) return <Server className="w-4 h-4" />;
+  if (lower.includes('observability') || lower.includes('security')) return <Shield className="w-4 h-4" />;
+  if (lower.includes('blockchain') || lower.includes('web3')) return <Link2 className="w-4 h-4" />;
+  if (lower.includes('leadership') || lower.includes('open source')) return <Users className="w-4 h-4" />;
+  return <Code2 className="w-4 h-4" />;
+};
+
+const getCategoryColor = (category: string): string => {
+  const lower = category.toLowerCase();
+  if (lower.includes('ai') || lower.includes('agent')) return 'from-purple-500/20 to-purple-900/10 border-purple-500/30';
+  if (lower.includes('systems') || lower.includes('programming')) return 'from-orange-500/20 to-orange-900/10 border-orange-500/30';
+  if (lower.includes('infrastructure') || lower.includes('devops')) return 'from-blue-500/20 to-blue-900/10 border-blue-500/30';
+  if (lower.includes('observability') || lower.includes('security')) return 'from-emerald-500/20 to-emerald-900/10 border-emerald-500/30';
+  if (lower.includes('blockchain') || lower.includes('web3')) return 'from-cyan-500/20 to-cyan-900/10 border-cyan-500/30';
+  if (lower.includes('leadership') || lower.includes('open source')) return 'from-amber-500/20 to-amber-900/10 border-amber-500/30';
+  return 'from-zinc-500/20 to-zinc-900/10 border-zinc-500/30';
+};
+
+const getCategoryIconColor = (category: string): string => {
+  const lower = category.toLowerCase();
+  if (lower.includes('ai') || lower.includes('agent')) return 'text-purple-400 bg-purple-500/20';
+  if (lower.includes('systems') || lower.includes('programming')) return 'text-orange-400 bg-orange-500/20';
+  if (lower.includes('infrastructure') || lower.includes('devops')) return 'text-blue-400 bg-blue-500/20';
+  if (lower.includes('observability') || lower.includes('security')) return 'text-emerald-400 bg-emerald-500/20';
+  if (lower.includes('blockchain') || lower.includes('web3')) return 'text-cyan-400 bg-cyan-500/20';
+  if (lower.includes('leadership') || lower.includes('open source')) return 'text-amber-400 bg-amber-500/20';
+  return 'text-zinc-400 bg-zinc-500/20';
+};
+
+const getSkillVariant = (skill: string, category: string): "default" | "rust" | "ai" | "infra" | "secondary" => {
+  const lowerSkill = skill.toLowerCase();
+  const lowerCategory = category.toLowerCase();
+  
+  // Category-based variants
+  if (lowerCategory.includes('ai') || lowerCategory.includes('agent')) return 'ai';
+  if (lowerCategory.includes('systems')) return 'rust';
+  if (lowerCategory.includes('infrastructure')) return 'infra';
+  
+  // Skill-based overrides
+  if (['rust', 'tokio', 'axum'].some(t => lowerSkill.includes(t))) return 'rust';
+  if (['mcp', 'claude', 'gpt', 'gemini'].some(t => lowerSkill.includes(t))) return 'ai';
+  if (['kubernetes', 'talos', 'argocd'].some(t => lowerSkill.includes(t))) return 'infra';
+  
+  return 'secondary';
+};
+
 const Skills: React.FC<SkillsProps> = ({ skills }) => {
   return (
     <section style={{
@@ -18,25 +80,48 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
       width: '100%',
       transition: 'all 0.3s ease'
     }}>
-      <h2 className="text-2xl font-semibold text-primary mb-5">Skills</h2>
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg bg-zinc-800 border border-zinc-700">
+          <Cpu className="w-5 h-5 text-zinc-400" />
+        </div>
+        <h2 className="text-2xl font-semibold text-primary">Skills</h2>
+      </div>
 
       {skills.length === 0 ? (
         <p className="italic text-secondary">No skills data available.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-7 max-w-[1300px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[1300px]">
           {skills.map((skill, index) => (
-            <div key={index} className="bg-[#1e1e1e] p-6 md:p-7 rounded-md border border-[#2a2a2a]">
-              <h3 className="text-lg font-medium text-gray-300 mb-5 pb-2 border-b border-[#333]">
-                {skill.category}
-              </h3>
-              <div className="flex flex-wrap gap-3">
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
+              className={`bg-gradient-to-br ${getCategoryColor(skill.category)} p-5 rounded-xl border backdrop-blur-sm`}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <div className={`p-1.5 rounded-md ${getCategoryIconColor(skill.category)}`}>
+                  {getCategoryIcon(skill.category)}
+                </div>
+                <h3 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider">
+                  {skill.category}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
                 {skill.skills.map((item, i) => (
-                  <span key={i} className="px-4 py-2 bg-[#252525] text-gray-300 rounded-full text-sm border border-[#333]">
-                    {item}
-                  </span>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05 + i * 0.02 }}
+                  >
+                    <Badge variant={getSkillVariant(item, skill.category)}>
+                      {item}
+                    </Badge>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}

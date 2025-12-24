@@ -167,42 +167,54 @@ const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Skill badges */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', margin: '0 0 28px 0' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', margin: '0 0 28px 0' }}>
           <span
-            className="px-4 py-2 rounded-lg text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 hover:brightness-110 animate-fadeIn"
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
-              backgroundColor: 'rgba(45, 55, 72, 0.8)',
-              borderColor: '#3a4a5a',
+              backgroundColor: 'rgba(139, 92, 246, 0.2)',
+              borderColor: 'rgba(139, 92, 246, 0.4)',
               animationDelay: '0.1s',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
             }}
           >
-            <span className="mr-2">🌐</span>
-            <span>Blockchain</span>
+            <span className="mr-2">🤖</span>
+            <span style={{ color: '#c4b5fd' }}>AI Platforms</span>
           </span>
           <span
-            className="px-4 py-2 rounded-lg text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 hover:brightness-110 animate-fadeIn"
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
-              backgroundColor: 'rgba(45, 55, 72, 0.8)',
-              borderColor: '#3a4a5a',
+              backgroundColor: 'rgba(249, 115, 22, 0.2)',
+              borderColor: 'rgba(249, 115, 22, 0.4)',
+              animationDelay: '0.15s',
+              boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)'
+            }}
+          >
+            <span className="mr-2">🦀</span>
+            <span style={{ color: '#fdba74' }}>Rust</span>
+          </span>
+          <span
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
+            style={{
+              backgroundColor: 'rgba(59, 130, 246, 0.2)',
+              borderColor: 'rgba(59, 130, 246, 0.4)',
               animationDelay: '0.2s',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+              boxShadow: '0 0 20px rgba(59, 130, 246, 0.15)'
             }}
           >
-            <span className="mr-2">🖥️</span>
-            <span>Infrastructure</span>
+            <span className="mr-2">☸️</span>
+            <span style={{ color: '#93c5fd' }}>Kubernetes</span>
           </span>
           <span
-            className="px-4 py-2 rounded-lg text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 hover:brightness-110 animate-fadeIn"
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
-              backgroundColor: 'rgba(45, 55, 72, 0.8)',
-              borderColor: '#3a4a5a',
-              animationDelay: '0.3s',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'
+              backgroundColor: 'rgba(16, 185, 129, 0.2)',
+              borderColor: 'rgba(16, 185, 129, 0.4)',
+              animationDelay: '0.25s',
+              boxShadow: '0 0 20px rgba(16, 185, 129, 0.15)'
             }}
           >
-            <span className="mr-2">👥</span>
-            <span>Leadership</span>
+            <span className="mr-2">🔗</span>
+            <span style={{ color: '#6ee7b7' }}>Blockchain</span>
           </span>
         </div>
 

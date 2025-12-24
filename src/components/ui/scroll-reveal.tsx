@@ -43,30 +43,32 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   useEffect(() => {
     if (!isVisible || !ref.current) return
 
-    const getTransform = () => {
-      switch (direction) {
-        case 'up':
-          return { translateY: [50, 0] }
-        case 'down':
-          return { translateY: [-50, 0] }
-        case 'left':
-          return { translateX: [50, 0] }
-        case 'right':
-          return { translateX: [-50, 0] }
-        case 'scale':
-          return { scale: [0.8, 1] }
-        default:
-          return { translateY: [50, 0] }
-      }
-    }
-
-    animate(ref.current, {
-      ...getTransform(),
+    const baseParams = {
       opacity: [0, 1],
       duration,
       delay,
-      ease: 'outExpo',
-    })
+      ease: 'outExpo' as const,
+    }
+
+    switch (direction) {
+      case 'up':
+        animate(ref.current, { ...baseParams, translateY: [50, 0] })
+        break
+      case 'down':
+        animate(ref.current, { ...baseParams, translateY: [-50, 0] })
+        break
+      case 'left':
+        animate(ref.current, { ...baseParams, translateX: [50, 0] })
+        break
+      case 'right':
+        animate(ref.current, { ...baseParams, translateX: [-50, 0] })
+        break
+      case 'scale':
+        animate(ref.current, { ...baseParams, scale: [0.8, 1] })
+        break
+      default:
+        animate(ref.current, { ...baseParams, translateY: [50, 0] })
+    }
   }, [isVisible, delay, duration, direction])
 
   return (
@@ -125,30 +127,32 @@ export const StaggerReveal: React.FC<StaggerRevealProps> = ({
 
     const items = containerRef.current.querySelectorAll('.stagger-item')
 
-    const getTransform = () => {
-      switch (direction) {
-        case 'up':
-          return { translateY: [30, 0] }
-        case 'down':
-          return { translateY: [-30, 0] }
-        case 'left':
-          return { translateX: [30, 0] }
-        case 'right':
-          return { translateX: [-30, 0] }
-        case 'scale':
-          return { scale: [0.9, 1] }
-        default:
-          return { translateY: [30, 0] }
-      }
-    }
-
-    animate(items, {
-      ...getTransform(),
+    const baseParams = {
       opacity: [0, 1],
       duration,
       delay: stagger(staggerDelay),
-      ease: 'outExpo',
-    })
+      ease: 'outExpo' as const,
+    }
+
+    switch (direction) {
+      case 'up':
+        animate(items, { ...baseParams, translateY: [30, 0] })
+        break
+      case 'down':
+        animate(items, { ...baseParams, translateY: [-30, 0] })
+        break
+      case 'left':
+        animate(items, { ...baseParams, translateX: [30, 0] })
+        break
+      case 'right':
+        animate(items, { ...baseParams, translateX: [-30, 0] })
+        break
+      case 'scale':
+        animate(items, { ...baseParams, scale: [0.9, 1] })
+        break
+      default:
+        animate(items, { ...baseParams, translateY: [30, 0] })
+    }
   }, [isVisible, staggerDelay, duration, direction])
 
   return (
@@ -163,4 +167,3 @@ export const StaggerReveal: React.FC<StaggerRevealProps> = ({
 }
 
 export default ScrollReveal
-

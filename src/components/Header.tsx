@@ -178,21 +178,9 @@ const Header: React.FC<HeaderProps> = ({
           <span
             className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
             style={{
-              backgroundColor: 'rgba(139, 92, 246, 0.2)',
-              borderColor: 'rgba(139, 92, 246, 0.4)',
-              animationDelay: '0.15s',
-              boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
-            }}
-          >
-            <span className="mr-2">🔌</span>
-            <span style={{ color: '#c4b5fd' }}>MCP</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
               backgroundColor: 'rgba(249, 115, 22, 0.2)',
               borderColor: 'rgba(249, 115, 22, 0.4)',
-              animationDelay: '0.2s',
+              animationDelay: '0.15s',
               boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)'
             }}
           >
@@ -204,12 +192,24 @@ const Header: React.FC<HeaderProps> = ({
             style={{
               backgroundColor: 'rgba(59, 130, 246, 0.2)',
               borderColor: 'rgba(59, 130, 246, 0.4)',
-              animationDelay: '0.25s',
+              animationDelay: '0.2s',
               boxShadow: '0 0 20px rgba(59, 130, 246, 0.15)'
             }}
           >
             <span className="mr-2">☸️</span>
             <span style={{ color: '#93c5fd' }}>Kubernetes</span>
+          </span>
+          <span
+            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
+            style={{
+              backgroundColor: 'rgba(139, 92, 246, 0.2)',
+              borderColor: 'rgba(139, 92, 246, 0.4)',
+              animationDelay: '0.25s',
+              boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
+            }}
+          >
+            <span className="mr-2">⛓️</span>
+            <span style={{ color: '#c4b5fd' }}>Blockchain</span>
           </span>
         </div>
 

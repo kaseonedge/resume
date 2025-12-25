@@ -310,7 +310,7 @@ function App() {
       phone: "",
       location: "Victoria, British Columbia, Canada",
       linkedin: "https://www.linkedin.com/in/jonathonfritz",
-      github: "https://github.com/jonathonjulian",
+      github: "https://github.com/kaseonedge",
       website: ""
     }
   });
@@ -348,7 +348,7 @@ function App() {
                     <Experience experiences={resumeData.experiences} />
                   </div>
                   <div className="github-section">
-                    <GitHubContributions username={resumeData.contact.github.split('/').pop() || "jonathonjulian"} />
+                    <GitHubContributions username={resumeData.contact.github.split('/').pop() || "kaseonedge"} />
                   </div>
                   <div className="education-section">
                     <Education educations={resumeData.educations} />

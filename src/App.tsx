@@ -34,7 +34,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Platform Engineer",
     profileImage: "",
-    summary: "Building autonomous software factories on bare metal. I architect OpenClaw-powered multi-agent AI systems that ship production code — 13 specialized agents orchestrated across Claude, GPT, Gemini, DeepSeek, and self-hosted models, running on self-healing infrastructure at 60-80% less than cloud.",
+    summary: "Building autonomous software factories on bare metal. I architect OpenClaw-powered multi-agent AI systems that ship production code — 13 specialized agents orchestrated across commercial and self-hosted LLMs, running on self-healing infrastructure at 60-80% less than cloud.",
     showProjects: true,
     experiences: [
       {
@@ -42,13 +42,13 @@ function App() {
         position: "Founder & AI Platform Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator powered by OpenClaw. 13 AI agents ship production code end-to-end on self-hosted infrastructure at 60-80% less than cloud, supporting Claude, GPT, Gemini, DeepSeek, Qwen, and self-hosted open-weight models.",
+        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator powered by OpenClaw. 13 AI agents ship production code end-to-end on self-hosted infrastructure at 60-80% less than cloud. Model-agnostic: supports commercial APIs and self-hosted open-weight models.",
         titleColor: "text-job-founder",
         achievements: [
           "Architected CTO as a software factory: 13 specialized AI agents autonomously write, test, review, and ship production code through OpenClaw-orchestrated workflows — from PRD to deployed feature with zero human intervention",
           "Built bare-metal aggregator provisioning Talos Linux clusters across 7+ providers (Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean), delivering 60-80% cost savings vs AWS/GCP/Azure",
-          "Integrated OpenClaw agent orchestration platform supporting multiple AI CLIs (Claude Code, Cursor, Codex, Factory, Gemini, OpenCode) with dynamic skill loading, NATS messaging, and Discord bridge for inter-agent communication",
-          "Built MCP server with 60+ tools and dynamic registration, supporting Claude, GPT-4, Gemini, DeepSeek, Qwen, GLM-4, MiniMax, and other self-hosted Chinese and open-weight models via vLLM/Ollama",
+          "Integrated OpenClaw agent orchestration platform — model-agnostic, CLI-agnostic — with dynamic skill loading, NATS messaging, and Discord bridge for inter-agent communication",
+          "Built MCP server with 60+ tools and dynamic registration, supporting any LLM provider (commercial APIs, self-hosted open-weight models via vLLM/Ollama) with seamless hot-swapping",
           "Implemented self-healing Healer service with 9 alert types and automated remediation — agents autonomously diagnose root causes and fix failures without human intervention",
           "Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform's value proposition",
           "Built Solana and blockchain trading agent infrastructure for autonomous on-chain trading across Solana, Base, and Near ecosystems",
@@ -254,7 +254,7 @@ function App() {
       {
         category: "LLM & Model Integration",
         skills: [
-          "Model Context Protocol (MCP)", "Claude API", "GPT-4 API", "Gemini API", "DeepSeek", "Qwen", "GLM-4", "MiniMax", "Self-Hosted Open-Weight Models", "vLLM", "Ollama", "AI CLI Tools (Cursor, Codex, Factory, OpenCode)", "Tool Registration", "Streaming Responses"
+          "Model Context Protocol (MCP)", "Commercial LLM APIs", "Self-Hosted Open-Weight Models", "vLLM", "Ollama", "Model-Agnostic Orchestration", "AI Coding CLIs", "Tool Registration", "Streaming Responses", "Context Window Optimization"
         ]
       },
       {
@@ -291,8 +291,8 @@ function App() {
     projects: [
       {
         title: "CTO — Software Factory & Bare-Metal Aggregator",
-        description: "Autonomous software factory where 13 AI agents ship production code end-to-end on self-hosted infrastructure. OpenClaw-powered orchestration across Claude, GPT, Gemini, DeepSeek, Qwen, and self-hosted models. 60-80% cost savings vs cloud through bare-metal aggregation across 7+ providers.",
-        technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "Claude/GPT/DeepSeek"],
+        description: "Autonomous software factory where 13 AI agents ship production code end-to-end on self-hosted infrastructure. OpenClaw-powered, model-agnostic orchestration across any LLM. 60-80% cost savings vs cloud through bare-metal aggregation across 7+ providers.",
+        technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "LLM-Agnostic"],
         link: "https://github.com/5dlabs/cto"
       },
       {
@@ -306,9 +306,9 @@ function App() {
         technologies: ["Solana", "Base", "Near", "DeFi", "Trading Agents", "Rust", "TypeScript"]
       },
       {
-        title: "MCP Server — Multi-Model Platform",
-        description: "Model Context Protocol server with 60+ tools supporting Claude, GPT-4, Gemini, DeepSeek, Qwen, GLM-4, MiniMax, and self-hosted open-weight models via vLLM/Ollama. Dynamic tool registration and real-time context streaming.",
-        technologies: ["MCP", "Rust", "Axum", "Claude/GPT/DeepSeek/Qwen", "vLLM", "Ollama", "SSE"]
+        title: "MCP Server — Model-Agnostic Platform",
+        description: "Model Context Protocol server with 60+ tools supporting any LLM provider — commercial APIs and self-hosted open-weight models via vLLM/Ollama. Dynamic tool registration, real-time context streaming, and seamless model hot-swapping.",
+        technologies: ["MCP", "Rust", "Axum", "LLM-Agnostic", "vLLM", "Ollama", "SSE"]
       }
     ],
     contact: {

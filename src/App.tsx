@@ -34,7 +34,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Platform Engineer",
     profileImage: "",
-    summary: "Building the future of autonomous software development. I architect multi-agent AI systems that ship production code—from orchestrating 13 specialized agents through complex workflows to implementing self-healing infrastructure that fixes its own failures.",
+    summary: "Building autonomous software factories on bare metal. I architect OpenClaw-powered multi-agent AI systems that ship production code — 13 specialized agents orchestrated across Claude, GPT, Gemini, DeepSeek, and self-hosted models, running on self-healing infrastructure at 60-80% less than cloud.",
     showProjects: true,
     experiences: [
       {
@@ -42,18 +42,18 @@ function App() {
         position: "Founder & AI Platform Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building the Cognitive Task Orchestrator (CTO) — an open-source platform where AI agents autonomously write, test, and ship production code. Think GitHub Copilot meets fully autonomous software teams.",
+        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator powered by OpenClaw. 13 AI agents ship production code end-to-end on self-hosted infrastructure at 60-80% less than cloud, supporting Claude, GPT, Gemini, DeepSeek, Qwen, and self-hosted open-weight models.",
         titleColor: "text-job-founder",
         achievements: [
-          "Architected and built CTO platform from scratch using Rust across 12 crates, implementing Kubernetes controllers, MCP servers, and self-healing infrastructure",
-          "Designed multi-agent orchestration system with 13 specialized AI agents (Rex, Blaze, Morgan, etc.) coordinating through Argo Workflows for end-to-end software delivery",
-          "Built Model Context Protocol (MCP) server supporting Claude, Cursor, Codex, Factory, Gemini, and OpenCode CLIs with dynamic tool registration and 60+ pre-configured tools",
-          "Implemented self-healing Healer service with 9 alert types (comment order, silent failures, stuck CodeRuns, pod failures) and automated remediation via AI agents",
-          "Created bare-metal provisioning system (cto-metal) for Talos Linux clusters across 7+ providers: Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean",
-          "Integrated 15+ Kubernetes operators replacing managed services: CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse, achieving 60-80% cost savings",
-          "Built Linear Agent integration with two-way sync, real-time activity streaming, and agent plan visualization for transparent AI development workflows",
-          "Designed zero-trust networking with Cloudflare Tunnels and Kilo VPN (WireGuard) for secure access without exposed ports",
-          "Implemented comprehensive observability stack: Prometheus, Grafana, Loki with Fluent-bit collection, OpenTelemetry instrumentation, and MCP tools for log/metric queries",
+          "Architected CTO as a software factory: 13 specialized AI agents autonomously write, test, review, and ship production code through OpenClaw-orchestrated workflows — from PRD to deployed feature with zero human intervention",
+          "Built bare-metal aggregator provisioning Talos Linux clusters across 7+ providers (Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean), delivering 60-80% cost savings vs AWS/GCP/Azure",
+          "Integrated OpenClaw agent orchestration platform supporting multiple AI CLIs (Claude Code, Cursor, Codex, Factory, Gemini, OpenCode) with dynamic skill loading, NATS messaging, and Discord bridge for inter-agent communication",
+          "Built MCP server with 60+ tools and dynamic registration, supporting Claude, GPT-4, Gemini, DeepSeek, Qwen, GLM-4, MiniMax, and other self-hosted Chinese and open-weight models via vLLM/Ollama",
+          "Implemented self-healing Healer service with 9 alert types and automated remediation — agents autonomously diagnose root causes and fix failures without human intervention",
+          "Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform's value proposition",
+          "Built Solana and blockchain trading agent infrastructure for autonomous on-chain trading across Solana, Base, and Near ecosystems",
+          "Designed zero-trust networking with Cloudflare Tunnels and WireGuard, plus OpenBao (Vault fork) secret management for secure multi-tenant agent operations",
+          "Implemented comprehensive observability: Prometheus, Grafana, Loki, OpenTelemetry, with MCP tools enabling agents to query their own logs and metrics",
           "Released platform as open-source under AGPL-3.0, establishing 5D Labs as a contributor to the AI infrastructure ecosystem"
         ]
       },
@@ -248,19 +248,19 @@ function App() {
       {
         category: "AI Engineering",
         skills: [
-          "Multi-Agent Systems", "Agent Orchestration", "Autonomous Coding Agents", "Self-Healing AI", "AI Workflow Design", "Prompt Engineering", "Tool Use & Function Calling", "Context Management"
+          "Multi-Agent Systems", "OpenClaw Orchestration", "Agent Orchestration", "Autonomous Coding Agents", "Self-Healing AI", "AI Workflow Design", "Prompt Engineering", "Tool Use & Function Calling", "Context Management"
         ]
       },
       {
-        category: "LLM Integration",
+        category: "LLM & Model Integration",
         skills: [
-          "Model Context Protocol (MCP)", "Claude API", "GPT-4 API", "Gemini API", "AI CLI Tools (Cursor, Codex, Factory)", "Tool Registration", "Streaming Responses", "Context Windows"
+          "Model Context Protocol (MCP)", "Claude API", "GPT-4 API", "Gemini API", "DeepSeek", "Qwen", "GLM-4", "MiniMax", "Self-Hosted Open-Weight Models", "vLLM", "Ollama", "AI CLI Tools (Cursor, Codex, Factory, OpenCode)", "Tool Registration", "Streaming Responses"
         ]
       },
       {
         category: "AI Infrastructure",
         skills: [
-          "Argo Workflows", "Event-Driven AI Pipelines", "Agent State Management", "Kubernetes CRDs for AI", "Real-time Activity Streaming", "Linear Integration", "GitHub Apps for AI"
+          "OpenClaw Platform", "Argo Workflows", "NATS Messaging", "Event-Driven AI Pipelines", "Agent State Management", "Kubernetes CRDs for AI", "Real-time Activity Streaming", "Linear Integration", "GitHub Apps for AI"
         ]
       },
       {
@@ -270,9 +270,15 @@ function App() {
         ]
       },
       {
+        category: "Blockchain & Trading",
+        skills: [
+          "Solana", "Ethereum", "Base (OP Stack)", "Near", "DeFi Protocols", "On-Chain Trading Agents", "RPC Infrastructure", "Node Operations", "Polygon", "BSC"
+        ]
+      },
+      {
         category: "Platform Engineering",
         skills: [
-          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal Provisioning", "Cloudflare Tunnels", "WireGuard VPN", "Zero-Trust Networking"
+          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal Provisioning", "Cloudflare Tunnels", "WireGuard VPN", "Zero-Trust Networking", "OpenBao/Vault"
         ]
       },
       {
@@ -284,25 +290,25 @@ function App() {
     ],
     projects: [
       {
-        title: "Cognitive Task Orchestrator (CTO)",
-        description: "AI engineering platform where autonomous agents write, test, and ship production code. 13 specialized agents collaborate through complex workflows—from initial design to deployed features—without human intervention.",
-        technologies: ["Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Argo Workflows", "Claude/GPT"],
+        title: "CTO — Software Factory & Bare-Metal Aggregator",
+        description: "Autonomous software factory where 13 AI agents ship production code end-to-end on self-hosted infrastructure. OpenClaw-powered orchestration across Claude, GPT, Gemini, DeepSeek, Qwen, and self-hosted models. 60-80% cost savings vs cloud through bare-metal aggregation across 7+ providers.",
+        technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "Claude/GPT/DeepSeek"],
         link: "https://github.com/5dlabs/cto"
       },
       {
-        title: "AI Agent Orchestration Engine",
-        description: "Event-driven system coordinating Rex (Orchestrator), Blaze (Implementer), Morgan (Architect), Sentinel (Security), Pixel (Frontend), and Echo (QA) through end-to-end software delivery pipelines.",
-        technologies: ["Agent Coordination", "Rust", "Kubernetes CRDs", "Linear API", "Real-time Streaming"]
+        title: "OpenClaw Agent Orchestration",
+        description: "Open-source agent orchestration platform coordinating 13 specialized agents through NATS messaging, Discord bridge, and Argo Workflows. Supports multiple AI CLIs with dynamic skill loading and unrestricted inter-agent communication.",
+        technologies: ["OpenClaw", "NATS", "Rust", "Kubernetes CRDs", "Linear API", "MCP"]
       },
       {
-        title: "Self-Healing AI Service",
-        description: "Autonomous system that monitors for 9 failure types (stuck workflows, pod crashes, silent errors) and automatically spawns AI agents to diagnose root causes and implement fixes.",
-        technologies: ["AI Auto-Remediation", "Rust", "Prometheus", "Loki", "OpenTelemetry"]
+        title: "Agentic Trading Platform",
+        description: "Autonomous on-chain trading agents operating across Solana, Base, and Near. AI-powered decision-making for DeFi market navigation with real-time blockchain data integration.",
+        technologies: ["Solana", "Base", "Near", "DeFi", "Trading Agents", "Rust", "TypeScript"]
       },
       {
-        title: "MCP Server Platform",
-        description: "Model Context Protocol server supporting Claude, Cursor, Codex, Factory, Gemini CLI with dynamic tool registration, 60+ tools, and real-time context streaming for AI-powered development.",
-        technologies: ["MCP", "Rust", "Axum", "Claude API", "Tool Registration", "SSE"]
+        title: "MCP Server — Multi-Model Platform",
+        description: "Model Context Protocol server with 60+ tools supporting Claude, GPT-4, Gemini, DeepSeek, Qwen, GLM-4, MiniMax, and self-hosted open-weight models via vLLM/Ollama. Dynamic tool registration and real-time context streaming.",
+        technologies: ["MCP", "Rust", "Axum", "Claude/GPT/DeepSeek/Qwen", "vLLM", "Ollama", "SSE"]
       }
     ],
     contact: {

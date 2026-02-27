@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Icons from '../utils/icons';
+import { LiquidGlass } from '@creativoma/liquid-glass';
 
 interface HeaderProps {
   name: string;
@@ -32,7 +33,13 @@ const Header: React.FC<HeaderProps> = ({
   }, [profileImage]);
 
   return (
-    <header className="p-5 pb-6 md:p-6 md:pb-8 pt-8 rounded-lg bg-gradient-to-br from-[#1c1c1c] via-[#1e1e1e] to-[#242424] border border-[#2a2a2a] relative animate-fadeIn">
+    <header className="p-5 pb-6 md:p-6 md:pb-8 pt-8 rounded-lg relative animate-fadeIn overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, rgba(28,28,28,0.95) 0%, rgba(22,22,22,0.97) 100%)',
+        border: '1px solid rgba(255,255,255,0.06)',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+      }}
+    >
       {/* Background pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
         <div 
@@ -161,56 +168,27 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        {/* Skill badges */}
+        {/* Skill badges — liquid glass effect */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', margin: '0 0 28px 0' }}>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
-              borderColor: 'rgba(16, 185, 129, 0.4)',
-              animationDelay: '0.1s',
-              boxShadow: '0 0 20px rgba(16, 185, 129, 0.2)'
-            }}
-          >
-            <span className="mr-2">🧠</span>
-            <span style={{ color: '#6ee7b7' }}>Multi-Agent AI</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(249, 115, 22, 0.2)',
-              borderColor: 'rgba(249, 115, 22, 0.4)',
-              animationDelay: '0.15s',
-              boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)'
-            }}
-          >
-            <span className="mr-2">🦀</span>
-            <span style={{ color: '#fdba74' }}>Rust</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(59, 130, 246, 0.2)',
-              borderColor: 'rgba(59, 130, 246, 0.4)',
-              animationDelay: '0.2s',
-              boxShadow: '0 0 20px rgba(59, 130, 246, 0.15)'
-            }}
-          >
-            <span className="mr-2">☸️</span>
-            <span style={{ color: '#93c5fd' }}>Kubernetes</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(139, 92, 246, 0.2)',
-              borderColor: 'rgba(139, 92, 246, 0.4)',
-              animationDelay: '0.25s',
-              boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
-            }}
-          >
-            <span className="mr-2">⛓️</span>
-            <span style={{ color: '#c4b5fd' }}>Blockchain</span>
-          </span>
+          {[
+            { emoji: '🧠', label: 'Multi-Agent AI', color: '#6ee7b7', tint: 'rgba(16,185,129,0.25)' },
+            { emoji: '🦀', label: 'Rust', color: '#fdba74', tint: 'rgba(249,115,22,0.25)' },
+            { emoji: '☸️', label: 'Kubernetes', color: '#93c5fd', tint: 'rgba(59,130,246,0.25)' },
+            { emoji: '⛓️', label: 'Blockchain', color: '#c4b5fd', tint: 'rgba(139,92,246,0.25)' },
+          ].map((badge) => (
+            <LiquidGlass
+              key={badge.label}
+              as="span"
+              backdropBlur={3}
+              tintColor={badge.tint}
+              displacementScale={80}
+              className="px-4 py-2 rounded-full text-sm text-white flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn cursor-default"
+              style={{ border: `1px solid ${badge.color}33` }}
+            >
+              <span className="mr-2">{badge.emoji}</span>
+              <span style={{ color: badge.color }}>{badge.label}</span>
+            </LiquidGlass>
+          ))}
         </div>
 
         {/* Summary */}

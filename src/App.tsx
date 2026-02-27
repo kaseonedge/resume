@@ -20,20 +20,20 @@ function App() {
     setIsGeneratingPDF(true);
 
     try {
-      // Create an off-screen container
+      // Container sized to one letter page so capture has no extra space (avoids blank first page)
       const container = document.createElement('div');
-      container.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:-1;';
+      container.style.cssText = 'position:absolute;left:0;top:0;width:816px;height:1056px;overflow:hidden;visibility:hidden;pointer-events:none;z-index:-1;';
       document.body.appendChild(container);
       printContainerRef.current = container;
 
-      // Render the print component
       const root = createRoot(container);
       root.render(<PrintResume />);
 
-      // Give React time to render
       await new Promise(resolve => setTimeout(resolve, 400));
 
       const html2pdf = (await import('html2pdf.js')).default;
+      const source = container.querySelector('#resume-pdf-page') as HTMLElement;
+      if (!source) throw new Error('PDF content not found');
 
       const opt = {
         margin: [0, 0, 0, 0] as [number, number, number, number],
@@ -45,16 +45,17 @@ function App() {
           letterRendering: true,
           scrollX: 0,
           scrollY: 0,
+          windowWidth: 816,
+          windowHeight: 1056,
         },
         jsPDF: {
           unit: 'in',
           format: 'letter',
           orientation: 'portrait' as const,
         },
-        pagebreak: { avoid: '*' },
       };
 
-      await html2pdf().set(opt).from(container.firstElementChild as HTMLElement).save();
+      await html2pdf().set(opt).from(source).save();
 
       // Cleanup
       root.unmount();

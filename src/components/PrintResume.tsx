@@ -163,7 +163,7 @@ const s = {
 
 export default function PrintResume() {
   return (
-    <div style={s.page}>
+    <div id="resume-pdf-page" style={s.page}>
       {/* Header */}
       <div style={s.header}>
         <h1 style={s.name}>Jonathon Fritz</h1>

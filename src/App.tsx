@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -6,10 +6,66 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import GitHubContributions from './components/GitHubContributions';
 import TerminalIntro from './components/TerminalIntro';
+import PrintResume from './components/PrintResume';
+import { createRoot } from 'react-dom/client';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const printContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const downloadPDF = async () => {
+    if (isGeneratingPDF) return;
+    setIsGeneratingPDF(true);
+
+    try {
+      // Create an off-screen container
+      const container = document.createElement('div');
+      container.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:-1;';
+      document.body.appendChild(container);
+      printContainerRef.current = container;
+
+      // Render the print component
+      const root = createRoot(container);
+      root.render(<PrintResume />);
+
+      // Give React time to render
+      await new Promise(resolve => setTimeout(resolve, 400));
+
+      const html2pdf = (await import('html2pdf.js')).default;
+
+      const opt = {
+        margin: [0, 0, 0, 0] as [number, number, number, number],
+        filename: 'Jonathon-Fritz-Resume.pdf',
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          letterRendering: true,
+          scrollX: 0,
+          scrollY: 0,
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'letter',
+          orientation: 'portrait' as const,
+        },
+        pagebreak: { avoid: '*' },
+      };
+
+      await html2pdf().set(opt).from(container.firstElementChild as HTMLElement).save();
+
+      // Cleanup
+      root.unmount();
+      document.body.removeChild(container);
+      printContainerRef.current = null;
+    } catch (err) {
+      console.error('PDF generation failed:', err);
+    } finally {
+      setIsGeneratingPDF(false);
+    }
+  };
 
   useEffect(() => {
     const skipIntro = new URLSearchParams(window.location.search).get('skipIntro');
@@ -34,7 +90,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Platform Engineer",
     profileImage: "",
-    summary: "Building autonomous software factories on bare metal. I architect OpenClaw-powered multi-agent AI systems that ship production code — 13 specialized agents orchestrated across commercial and self-hosted LLMs, running on self-healing infrastructure at 60-80% less than cloud.",
+    summary: "Building autonomous software factories on bare metal. I've held every role on the infrastructure ladder — network engineer → DevOps → SRE → team lead → Head of Infra → CTO → founder — and I still write code daily. 10,600+ GitHub contributions in the last year. I architect OpenClaw-powered multi-agent AI systems where 13 specialized agents ship production code on self-healing infrastructure at 60-80% less than cloud.",
     showProjects: true,
     experiences: [
       {
@@ -42,13 +98,13 @@ function App() {
         position: "Founder & AI Platform Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator powered by OpenClaw. 13 AI agents ship production code end-to-end on self-hosted infrastructure at 60-80% less than cloud. Model-agnostic: supports commercial APIs and self-hosted open-weight models.",
+        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator. The core value proposition: 13 specialized AI agents ship production code end-to-end through OpenClaw-orchestrated workflows, running on self-owned infrastructure at 60-80% less than cloud. Model-agnostic: works with any commercial or self-hosted LLM.",
         titleColor: "text-job-founder",
         achievements: [
-          "Architected CTO as a software factory: 13 specialized AI agents autonomously write, test, review, and ship production code through OpenClaw-orchestrated workflows — from PRD to deployed feature with zero human intervention",
+          "Architected CTO as a software factory: 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo and others) autonomously write, test, review, and ship production code through OpenClaw-orchestrated workflows — from PRD to deployed feature with zero human intervention",
           "Built bare-metal aggregator provisioning Talos Linux clusters across 7+ providers (Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean), delivering 60-80% cost savings vs AWS/GCP/Azure",
           "Integrated OpenClaw agent orchestration platform — model-agnostic, CLI-agnostic — with dynamic skill loading, NATS messaging, and Discord bridge for inter-agent communication",
-          "Built MCP server with 60+ tools and dynamic registration, supporting any LLM provider (commercial APIs, self-hosted open-weight models via vLLM/Ollama) with seamless hot-swapping",
+          "Built MCP server with 60+ tools and dynamic registration, supporting any LLM provider — commercial APIs and self-hosted open-weight models — with seamless hot-swapping between providers",
           "Implemented self-healing Healer service with 9 alert types and automated remediation — agents autonomously diagnose root causes and fix failures without human intervention",
           "Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform's value proposition",
           "Built Solana and blockchain trading agent infrastructure for autonomous on-chain trading across Solana, Base, and Near ecosystems",
@@ -91,12 +147,11 @@ function App() {
         description: "Decentralized Web3 Infrastructure providing blockchain RPC access at scale",
         titleColor: "text-job-head",
         achievements: [
-          "Led successful migration from EC2/Docker Compose to GitOps with Kubernetes and ArgoCD across 16 global regions, significantly reducing operational costs",
-          "Managed infrastructure serving over 1 billion daily requests",
-          "Orchestrated operations of 50+ blockchain clients including validators, seeds, and archival nodes for Ethereum, Polygon, BSC",
-          "Led migration from DataDog to VictoriaMetrics/Loki/Grafana, drastically reducing observability costs",
+          "Led and reorganized a team of 13 infrastructure engineers into specialized functional teams spanning 16 global regions — established clear ownership, streamlined communication, and enabled the team to operate independently",
+          "Led migration from EC2/Docker Compose to GitOps with Kubernetes and ArgoCD across all 16 global regions, significantly reducing operational costs and deployment complexity",
+          "Managed infrastructure serving over 1 billion daily requests across 50+ blockchain clients including validators, seeds, and archival nodes",
+          "Led migration from DataDog to VictoriaMetrics/Loki/Grafana, drastically reducing observability costs while improving coverage",
           "Implemented comprehensive automation for node operations including key management, staking, and auto-upgrades",
-          "Led and reorganized a team of 13 infrastructure engineers into specialized functional teams",
           "Conducted regular 1:1s with team members, providing mentorship and career development guidance",
           "Spearheaded technical interviews and hiring decisions for infrastructure engineering roles",
           "Collaborated with executive leadership on infrastructure cost optimization strategies",
@@ -141,7 +196,7 @@ function App() {
         description: "Cryptocurrency rewards platform",
         titleColor: "text-job-cto",
         achievements: [
-          "Promoted from Software Engineer to CTO within three months, leading all technical aspects of the platform",
+          "Promoted from Software Engineer to CTO within three months — fastest path from IC to executive in the company's history — leading all technical aspects of the platform",
           "Designed and implemented backend features including ACH and API payment processing systems",
           "Led technical team management including mentoring, hiring, and code reviews",
           "Managed cloud infrastructure operations with continuous deployment using GitLab CI",
@@ -254,7 +309,7 @@ function App() {
       {
         category: "LLM & Model Integration",
         skills: [
-          "Model Context Protocol (MCP)", "Commercial LLM APIs", "Self-Hosted Open-Weight Models", "vLLM", "Ollama", "Model-Agnostic Orchestration", "AI Coding CLIs", "Tool Registration", "Streaming Responses", "Context Window Optimization"
+          "Model Context Protocol (MCP)", "Commercial LLM APIs", "Self-Hosted Open-Weight Models", "Model-Agnostic Orchestration", "Inference Infrastructure", "Tool Registration", "Streaming Responses", "Context Window Optimization", "Prompt Engineering"
         ]
       },
       {
@@ -291,8 +346,8 @@ function App() {
     projects: [
       {
         title: "CTO — Software Factory & Bare-Metal Aggregator",
-        description: "Autonomous software factory where 13 AI agents ship production code end-to-end on self-hosted infrastructure. OpenClaw-powered, model-agnostic orchestration across any LLM. 60-80% cost savings vs cloud through bare-metal aggregation across 7+ providers.",
-        technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "LLM-Agnostic"],
+        description: "Autonomous software factory and bare-metal aggregator: 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo + others) ship production code end-to-end through OpenClaw workflows. Model-agnostic — works with any commercial or self-hosted LLM. Value proposition: replace early engineering hires at 60-80% less than cloud.",
+        technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "Model-Agnostic"],
         link: "https://github.com/5dlabs/cto"
       },
       {
@@ -307,8 +362,8 @@ function App() {
       },
       {
         title: "MCP Server — Model-Agnostic Platform",
-        description: "Model Context Protocol server with 60+ tools supporting any LLM provider — commercial APIs and self-hosted open-weight models via vLLM/Ollama. Dynamic tool registration, real-time context streaming, and seamless model hot-swapping.",
-        technologies: ["MCP", "Rust", "Axum", "LLM-Agnostic", "vLLM", "Ollama", "SSE"]
+        description: "Model Context Protocol server with 60+ tools supporting any LLM provider — commercial APIs or self-hosted open-weight models. Dynamic tool registration, real-time context streaming, and seamless hot-swapping between providers as the model landscape evolves.",
+        technologies: ["MCP", "Rust", "Axum", "Model-Agnostic", "SSE", "NATS"]
       }
     ],
     contact: {
@@ -369,10 +424,39 @@ function App() {
 
               <div className="footer-section">
                 <footer className="px-4 py-3 border-t border-gray-800 bg-[#161616]">
-                  <div className="flex flex-wrap justify-between items-center">
+                  <div className="flex flex-wrap justify-between items-center gap-3">
                     <div className="text-gray-500 text-sm">
                       © {new Date().getFullYear()} {resumeData.name}
                     </div>
+                    <button
+                      onClick={downloadPDF}
+                      disabled={isGeneratingPDF}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                      style={{
+                        background: isGeneratingPDF ? '#2a4a3a' : '#10b981',
+                        color: '#ffffff',
+                        border: 'none',
+                        cursor: isGeneratingPDF ? 'wait' : 'pointer',
+                        opacity: isGeneratingPDF ? 0.7 : 1,
+                      }}
+                    >
+                      {isGeneratingPDF ? (
+                        <>
+                          <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                          </svg>
+                          Generating PDF…
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                          Download PDF
+                        </>
+                      )}
+                    </button>
                   </div>
                 </footer>
               </div>

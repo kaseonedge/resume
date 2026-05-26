@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { resumeData, type EducationItem, type ExperienceItem, type ProjectItem, type SkillGroup } from '../resumeData';
 import githubActivity from '../generated/githubActivity.json';
-import { CountUp, ScrollReveal, useTilt } from './ResumeEffects';
+import { ScrollReveal, useTilt } from './ResumeEffects';
 
 const SKILL_TONES = {
   emerald: { bg: 'rgba(16,185,129,0.10)', border: 'rgba(110,231,183,0.35)', text: '#6ee7b7', chip: 'rgba(110,231,183,0.16)' },
@@ -190,7 +190,7 @@ export function EnhancedGitHubHeatmap() {
       <div className="github-card">
         <div className="github-card-head">
           <a className="github-username" href={githubActivity.profileUrl} target="_blank" rel="noopener">@{githubActivity.username}</a>
-          <div className="github-total"><CountUp value={total} enabled /> contributions in the last year</div>
+          <div className="github-total">{total.toLocaleString()} contributions in the last year</div>
         </div>
         <div className="github-graph">
           <svg width={width} height={(cellSize + gap) * 7 + 20} style={{ display: 'block' }} aria-label="GitHub contribution calendar from GitHub GraphQL">

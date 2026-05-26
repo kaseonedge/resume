@@ -1,6 +1,6 @@
 {
   "source": "github-graphql",
-  "generatedAt": "2026-05-26T18:21:42.266Z",
+  "generatedAt": "2026-05-26T18:28:26.240Z",
   "username": "kaseonedge",
   "profileUrl": "https://github.com/kaseonedge",
   "avatarUrl": "https://avatars.githubusercontent.com/u/15183881?u=c7b27c094824996091d60c784de0197a727febd0&v=4",
@@ -2059,22 +2059,22 @@
       "nameWithOwner": "kaseonedge/resume",
       "url": "https://github.com/kaseonedge/resume",
       "description": "https://resume.jonathonfritz.com/",
-      "pushedAt": "2026-05-26T18:11:16Z",
+      "pushedAt": "2026-05-26T18:22:08Z",
       "stars": 0,
       "forks": 0,
       "language": {
         "name": "TypeScript",
         "color": "#3178c6"
       },
-      "defaultBranchCommitCount": 71,
+      "defaultBranchCommitCount": 72,
       "latestCommit": {
-        "committedDate": "2026-05-26T18:10:37Z",
-        "oid": "f5be0300fa0910f285235165bdf99b35f8420fe7",
-        "shortOid": "f5be030",
-        "messageHeadline": "feat: add ACP harness resume positioning",
-        "url": "https://github.com/kaseonedge/resume/commit/f5be0300fa0910f285235165bdf99b35f8420fe7",
-        "additions": 18,
-        "deletions": 14
+        "committedDate": "2026-05-26T18:21:59Z",
+        "oid": "6415723a32394db8211df00fb5c2423baabb3132",
+        "shortOid": "6415723",
+        "messageHeadline": "fix: source GitHub activity from GraphQL",
+        "url": "https://github.com/kaseonedge/resume/commit/6415723a32394db8211df00fb5c2423baabb3132",
+        "additions": 2267,
+        "deletions": 344
       }
     }
   ]

@@ -167,9 +167,9 @@ export default function PrintResume() {
       {/* Header */}
       <div style={s.header}>
         <h1 style={s.name}>Jonathon Fritz</h1>
-        <p style={s.title}>AI Infrastructure & Platform Engineering Leader · Remote / California relocation open</p>
+        <p style={s.title}>AI Infrastructure & Platform Engineering Leader</p>
         <div style={s.contactRow}>
-          <span style={s.contactItem}>Victoria, BC · Remote / California relocation open</span>
+          <span style={s.contactItem}>Victoria, BC</span>
           <span style={s.contactItem}>j@jonathonfritz.com</span>
           <span style={s.contactItem}>github.com/kaseonedge</span>
           <span style={s.contactItem}>linkedin.com/in/jonathonfritz</span>
@@ -187,7 +187,7 @@ export default function PrintResume() {
             AI infrastructure and platform engineering leader with 20+ years building production systems.
             Hands-on across Kubernetes/GitOps, Talos, bare metal, observability, secrets,
             MCP tooling, and OpenClaw/Hermes agent infrastructure. Led SRE, Head of Infra,
-            CTO, and founder scopes; targeting remote or California-based AI infrastructure roles.
+            CTO, and founder scopes.
           </p>
 
           {/* Core Skills */}
@@ -236,10 +236,6 @@ export default function PrintResume() {
             <div style={s.eduSub}>Advanced Software Engineering Immersive · 2016</div>
           </div>
           <div style={s.eduBlock}>
-            <div style={s.eduTitle}>VMware (VCP5-DCV)</div>
-            <div style={s.eduSub}>Certified Professional, Data Center Virtualization · 2015</div>
-          </div>
-          <div style={s.eduBlock}>
             <div style={s.eduTitle}>CDI College</div>
             <div style={s.eduSub}>Network Infrastructure Engineering · 2002–2003</div>
           </div>
@@ -260,7 +256,7 @@ export default function PrintResume() {
               <span style={s.jobTitle}>Founder & AI Infrastructure Architect</span>
               <span style={s.jobDate}>May 2025 – Present</span>
             </div>
-            <div style={s.jobCompany}>5D Labs · Victoria, BC · Remote / California relocation open</div>
+            <div style={s.jobCompany}>5D Labs · Victoria, BC</div>
             <div style={s.bullet}>• Built CTO / CTO Desktop: AI infrastructure for agentic software delivery, local GitOps, model/tool routing, and self-healing Kubernetes operations</div>
             <div style={s.bullet}>• Automated Talos/Kubernetes/GitOps platform patterns across bare metal and cloud, targeting 60-80% lower cost than default managed-cloud deployments</div>
             <div style={s.bullet}>• Built OpenClaw/Hermes/MCP tooling for infrastructure inspection, repo automation, model/provider routing, and agent runtime operations</div>
@@ -314,11 +310,11 @@ export default function PrintResume() {
           {/* TELUS */}
           <div style={s.jobBlock}>
             <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Technology Specialist (VMware Team Lead)</span>
+              <span style={s.jobTitle}>Technology Specialist</span>
               <span style={s.jobDate}>Nov 2006 – Apr 2017</span>
             </div>
             <div style={s.jobCompany}>TELUS · Victoria, BC</div>
-            <div style={s.bullet}>• VMware team lead managing 20+ hosts and 300+ VMs; automated server provisioning (65% time reduction); DR implementation for Finning International</div>
+            <div style={s.bullet}>• Managed enterprise server operations across 20+ hosts and 300+ VMs; automated server provisioning (65% time reduction); DR implementation for Finning International</div>
           </div>
 
           {/* Key metrics bar */}

@@ -91,7 +91,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Infrastructure & Platform Engineering Leader",
     profileImage: "",
-    summary: "AI infrastructure and platform engineering leader with 20+ years building production systems from enterprise VMware to global Kubernetes platforms. I combine hands-on architecture with leadership experience — SRE, Head of Infrastructure, CTO, and founder — and now build OpenClaw-powered agent platforms, model/tool routing, self-healing operations, and bare-metal Kubernetes for AI-native teams. Targeting remote or California-based infrastructure leadership roles; blockchain is in scope when the work is infrastructure engineering or infra management.",
+    summary: "AI infrastructure and platform engineering leader with 20+ years building production systems, global Kubernetes platforms, and high-throughput distributed infrastructure. I combine hands-on architecture with leadership experience — SRE, Head of Infrastructure, CTO, and founder — and now build OpenClaw-powered agent platforms, model/tool routing, self-healing operations, and bare-metal Kubernetes for AI-native teams.",
     showProjects: true,
     experiences: [
       {
@@ -254,7 +254,7 @@ function App() {
         description: "Enterprise IT infrastructure support",
         titleColor: "text-job-specialist",
         achievements: [
-          "Served as VMware team lead managing 20+ hosts and 300+ VMs across multiple sites",
+          "Led enterprise server operations across multiple sites, managing 20+ hosts and 300+ VMs",
           "Implemented and maintained server configuration standards and templates",
           "Automated operations workflow, reducing server provisioning time by 65%",
           "Led disaster recovery implementation for Finning International, exceeding objectives",
@@ -274,14 +274,6 @@ function App() {
           "Completed 800+ hours of accelerated full-stack curriculum",
           "Developed multiple web applications using React, Node.js, and related technologies"
         ]
-      },
-      {
-        institution: "VMware",
-        degree: "",
-        field: "VMware Certified Professional 5 – Data Center Virtualization (VCP5-DCV)",
-        startDate: "2015",
-        endDate: "2015",
-        description: "Professional certification in virtualization technologies"
       },
       {
         institution: "CDI College",
@@ -370,7 +362,7 @@ function App() {
     contact: {
       email: "j@jonathonfritz.com",
       phone: "",
-      location: "Victoria, BC · Remote / California relocation open",
+      location: "Victoria, BC",
       linkedin: "https://www.linkedin.com/in/jonathonfritz",
       github: "https://github.com/kaseonedge",
       website: ""

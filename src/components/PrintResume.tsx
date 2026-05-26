@@ -185,9 +185,9 @@ export default function PrintResume() {
           <div style={s.sectionTitleFirst}>Summary</div>
           <p style={s.summary}>
             AI infrastructure and platform engineering leader with 20+ years building production systems.
-            Hands-on across Kubernetes/GitOps, Talos, bare metal, observability, secrets,
-            MCP tooling, and OpenClaw/Hermes agent infrastructure. Led SRE, Head of Infra,
-            CTO, and founder scopes.
+            Hands-on across Kubernetes/GitOps, Talos, bare metal, multi-cloud/provider abstraction,
+            low-latency gRPC/trading-data systems, Morgan voice/avatar UX, MCP tooling, and
+            OpenClaw/Hermes agent infrastructure. Led SRE, Head of Infra, CTO, and founder scopes.
           </p>
 
           {/* Core Skills */}
@@ -195,28 +195,28 @@ export default function PrintResume() {
 
           <div style={s.skillCategoryFirst}>AI & Agent Systems</div>
           <div style={s.skillTags}>
-            {["OpenClaw", "Multi-Agent AI", "MCP (60+ tools)", "Model-Agnostic Orch.", "Self-Healing Infra", "NATS Messaging"].map(t => (
+            {["OpenClaw", "Multi-Agent AI", "MCP (60+ tools)", "Model-Agnostic Orch.", "Voice/Avatar UX", "Self-Healing Infra"].map(t => (
               <span key={t} style={s.skillTag}>{t}</span>
             ))}
           </div>
 
           <div style={s.skillCategory}>Platform Engineering</div>
           <div style={s.skillTags}>
-            {["Kubernetes", "Talos Linux", "ArgoCD", "Cilium", "Helm", "GitOps", "Bare Metal", "Zero-Trust"].map(t => (
+            {["Kubernetes", "Talos Linux", "ArgoCD", "Cilium/eBPF", "Helm", "GitOps", "Bare Metal", "Multi-Cloud"].map(t => (
               <span key={t} style={s.skillTag}>{t}</span>
             ))}
           </div>
 
           <div style={s.skillCategory}>Systems Programming</div>
           <div style={s.skillTags}>
-            {["Rust (Tokio/Axum)", "Go", "TypeScript", "K8s CRDs", "Async Runtimes"].map(t => (
+            {["Rust", "Tokio/Tonic", "gRPC", "Go", "TypeScript", "K8s CRDs", "Async Runtimes"].map(t => (
               <span key={t} style={s.skillTag}>{t}</span>
             ))}
           </div>
 
           <div style={s.skillCategory}>Distributed Systems</div>
           <div style={s.skillTags}>
-            {["RPC Infra", "Node Ops", "Ethereum", "Solana", "High-Throughput APIs", "Cost Controls"].map(t => (
+            {["RPC Infra", "Solana", "QuestDB", "Low-Latency", "Trading Infra", "Cost Controls"].map(t => (
               <span key={t} style={s.skillTag}>{t}</span>
             ))}
           </div>
@@ -257,10 +257,10 @@ export default function PrintResume() {
               <span style={s.jobDate}>May 2025 – Present</span>
             </div>
             <div style={s.jobCompany}>5D Labs · Victoria, BC</div>
-            <div style={s.bullet}>• Built CTO / CTO Desktop: AI infrastructure for agentic software delivery, local GitOps, model/tool routing, and self-healing Kubernetes operations</div>
-            <div style={s.bullet}>• Automated Talos/Kubernetes/GitOps platform patterns across bare metal and cloud, targeting 60-80% lower cost than default managed-cloud deployments</div>
-            <div style={s.bullet}>• Built OpenClaw/Hermes/MCP tooling for infrastructure inspection, repo automation, model/provider routing, and agent runtime operations</div>
-            <div style={s.bullet}>• Replaced managed services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, ClickHouse) and observability-first operations</div>
+            <div style={s.bullet}>• Built CTO / CTO Desktop: AI infrastructure for agentic software delivery, Morgan voice/avatar UX, local GitOps, model/tool routing, and self-healing Kubernetes operations</div>
+            <div style={s.bullet}>• Automated Talos/Kubernetes/GitOps patterns across bare metal, AWS/EKS, and cloud-provider abstraction; targeting 60-80% lower cost than default managed-cloud deployments</div>
+            <div style={s.bullet}>• Built OpenClaw/Hermes/MCP tooling plus low-latency Rust/gRPC trading-data work: Yellowstone gRPC, QuestDB/PostgreSQL, streaming APIs, MEV-aware dashboards</div>
+            <div style={s.bullet}>• Used ZeroEdge beta/provider validation and Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, ClickHouse) to keep infrastructure portable across providers</div>
           </div>
 
           {/* Blocknative */}

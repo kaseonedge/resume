@@ -91,7 +91,7 @@ function App() {
     name: "Jonathon Fritz",
     title: "AI Infrastructure & Platform Engineering Leader",
     profileImage: "",
-    summary: "AI infrastructure and platform engineering leader with 20+ years building production systems, global Kubernetes platforms, and high-throughput distributed infrastructure. I combine hands-on architecture with leadership experience — SRE, Head of Infrastructure, CTO, and founder — and now build OpenClaw-powered agent platforms, model/tool routing, self-healing operations, and bare-metal Kubernetes for AI-native teams.",
+    summary: "AI infrastructure and platform engineering leader with 20+ years building production systems, global Kubernetes platforms, low-latency gRPC/trading-data systems, and multi-provider cloud/bare-metal infrastructure. I combine hands-on architecture with leadership experience — SRE, Head of Infrastructure, CTO, and founder — and now build OpenClaw-powered agent platforms, Morgan voice/avatar UX, model/tool routing, self-healing operations, and Talos/Kubernetes platforms for AI-native teams.",
     showProjects: true,
     experiences: [
       {
@@ -99,13 +99,16 @@ function App() {
         position: "Founder & AI Infrastructure Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building CTO Desktop and the Cognitive Task Orchestrator: an AI infrastructure platform for agentic software delivery, local GitOps, model/provider routing, and self-healing Kubernetes operations on bare metal or cloud.",
+        description: "Building CTO Desktop and the Cognitive Task Orchestrator: an AI infrastructure platform for agentic software delivery, Morgan voice/avatar UX, low-latency gRPC/trading-data experiments, local GitOps, model/provider routing, and self-healing Kubernetes operations across bare metal and cloud providers.",
         titleColor: "text-job-founder",
         achievements: [
           "Architected CTO / CTO Desktop as an AI infrastructure platform: specialized agents use OpenClaw workflows, GitHub/GitOps integration, MCP tools, and local runtime automation to turn product intent into reviewed, deployed software",
-          "Built bare-metal and cloud cluster automation around Talos Linux, Kubernetes, Helm, Argo CD, Cilium, and provider abstraction, targeting 60-80% lower infrastructure cost than default managed-cloud patterns",
+          "Built bare-metal and cloud cluster automation around Talos Linux, Kubernetes, Helm, Argo CD, Cilium, AWS/EKS, and provider abstraction, targeting 60-80% lower infrastructure cost than default managed-cloud patterns",
           "Integrated OpenClaw / Hermes agent orchestration with dynamic skill loading, NATS-style eventing patterns, tool routing, and CLI/provider abstraction so agents can run across commercial and self-hosted models",
           "Built and maintained MCP/tooling layers for infrastructure management, repository automation, Kubernetes inspection, workflow execution, and model/provider hot-swapping",
+          "Built Morgan voice/avatar UX infrastructure spanning FastAPI WebSocket voice bridge, ElevenLabs STT/TTS, browser MediaRecorder/WebAudio analyzers, reactive canvas avatar state, and Scenario P-Video/Pruna setup media workflows",
+          "Developed low-latency Rust/gRPC trading-data and Solana infrastructure work: Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware trading dashboards, and sub-100ms/p95/p99 performance targets",
+          "Used ZeroEdge beta and provider-abstraction work to validate deployment paths across bare-metal and cloud providers without tying the platform to a single vendor",
           "Implemented self-healing operations patterns: agents inspect logs, metrics, Git state, Kubernetes resources, and runbooks to diagnose failures and propose or apply remediations",
           "Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform's value proposition",
           "Maintained blockchain infrastructure work as distributed-systems evidence while shifting public positioning toward AI infrastructure, platform engineering, and infrastructure management",
@@ -302,31 +305,31 @@ function App() {
       {
         category: "LLM & Model Integration",
         skills: [
-          "Model Context Protocol (MCP)", "Commercial LLM APIs", "Self-Hosted Open-Weight Models", "Model-Agnostic Orchestration", "Inference Infrastructure", "Tool Registration", "Streaming Responses", "Context Window Optimization", "Prompt Engineering"
+          "Model Context Protocol (MCP)", "Commercial LLM APIs", "Self-Hosted Open-Weight Models", "Model-Agnostic Orchestration", "Inference Infrastructure", "Tool Registration", "Streaming Responses", "Voice/Avatar UX", "Prompt Engineering"
         ]
       },
       {
         category: "AI Infrastructure",
         skills: [
-          "OpenClaw Platform", "Argo Workflows", "NATS Messaging", "Event-Driven AI Pipelines", "Agent State Management", "Kubernetes CRDs for AI", "Real-time Activity Streaming", "Linear Integration", "GitHub Apps for AI"
+          "OpenClaw Platform", "Argo Workflows", "NATS Messaging", "Event-Driven AI Pipelines", "Agent State Management", "Kubernetes CRDs for AI", "Real-time Activity Streaming", "Morgan Voice Bridge", "GitHub Apps for AI"
         ]
       },
       {
         category: "Systems Programming",
         skills: [
-          "Rust", "Tokio", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Custom Resource Definitions", "Async Runtime"
+          "Rust", "Tokio", "Tonic/gRPC", "Axum", "Serde", "Go", "TypeScript", "Kubernetes Controllers", "Async Runtime"
         ]
       },
       {
         category: "Distributed Systems & Blockchain Infra",
         skills: [
-          "RPC Infrastructure", "Validator/Node Operations", "Ethereum", "Solana", "Polygon", "BSC", "Base", "Near", "Distributed Systems", "High-Throughput APIs"
+          "RPC Infrastructure", "gRPC Streaming", "Validator/Node Operations", "Solana", "QuestDB", "Low-Latency Systems", "Trading Infrastructure", "MEV Protection", "High-Throughput APIs"
         ]
       },
       {
         category: "Platform Engineering",
         skills: [
-          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium", "Helm", "Bare Metal Provisioning", "Cloudflare Tunnels", "WireGuard VPN", "Zero-Trust Networking", "OpenBao/Vault"
+          "Kubernetes", "Talos Linux", "ArgoCD", "GitOps", "Cilium/eBPF", "Helm", "Bare Metal Provisioning", "AWS/EKS", "Multi-Cloud", "Provider Abstraction", "OpenBao/Vault"
         ]
       },
       {
@@ -339,7 +342,7 @@ function App() {
     projects: [
       {
         title: "CTO — Software Factory & Bare-Metal Aggregator",
-        description: "Autonomous software factory and bare-metal aggregator: 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo + others) ship production code end-to-end through OpenClaw workflows. Model-agnostic — works with any commercial or self-hosted LLM. Value proposition: replace early engineering hires at 60-80% less than cloud.",
+        description: "Autonomous software factory and bare-metal aggregator: 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo + others) ship production code end-to-end through OpenClaw workflows, with Morgan voice/avatar UX and model/provider routing across commercial and self-hosted LLMs. Value proposition: replace early engineering hires at 60-80% less than cloud.",
         technologies: ["OpenClaw", "Multi-Agent AI", "Rust", "MCP", "Kubernetes", "Bare Metal", "Model-Agnostic"],
         link: "https://github.com/5dlabs/cto"
       },
@@ -350,8 +353,8 @@ function App() {
       },
       {
         title: "Distributed Systems / Blockchain Infrastructure",
-        description: "Infrastructure and distributed-systems work across Solana, Base, Near, Ethereum, and RPC/node operations. Kept as scale, reliability, and systems evidence for blockchain infrastructure or infrastructure-management roles rather than token/product IC positioning.",
-        technologies: ["Solana", "Ethereum", "Base", "Near", "RPC", "Node Operations", "Rust", "TypeScript"]
+        description: "Low-latency and HFT-adjacent trading infrastructure across Solana DEX data ingestion, Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware execution workflows, and bare-metal validator/RPC operations. ZeroEdge beta and provider-abstraction work kept framed as current beta/provider-validation experience.",
+        technologies: ["Rust", "gRPC", "Yellowstone", "QuestDB", "Solana", "MEV", "Low-Latency", "Bare Metal"]
       },
       {
         title: "MCP Server — Model-Agnostic Platform",

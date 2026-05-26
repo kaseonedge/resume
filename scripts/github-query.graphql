@@ -1,0 +1,56 @@
+query GitHubActivity($login: String!, $first: Int!) {
+  user(login: $login) {
+    login
+    url
+    avatarUrl
+    contributionsCollection {
+      contributionCalendar {
+        totalContributions
+        weeks {
+          contributionDays {
+            date
+            contributionCount
+            contributionLevel
+          }
+        }
+      }
+    }
+    repositories(
+      first: $first
+      ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]
+      orderBy: { field: PUSHED_AT, direction: DESC }
+      privacy: PUBLIC
+    ) {
+      nodes {
+        nameWithOwner
+        url
+        description
+        pushedAt
+        stargazerCount
+        forkCount
+        isPrivate
+        primaryLanguage {
+          name
+          color
+        }
+        defaultBranchRef {
+          target {
+            ... on Commit {
+              history(first: 1) {
+                totalCount
+                nodes {
+                  committedDate
+                  oid
+                  messageHeadline
+                  url
+                  additions
+                  deletions
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

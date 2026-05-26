@@ -169,6 +169,13 @@ a { color: inherit; text-decoration: none; }
 @keyframes cellPop { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
 .github-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 10px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); }
 .github-legend-cell { width: 11px; height: 11px; border-radius: 2px; }
+.github-meta { margin-top: 10px; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-3); }
+.github-repos { display: grid; gap: 8px; margin-top: 14px; }
+.github-repo { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-strong); transition: border-color 180ms ease, background 180ms ease, transform 180ms ease; }
+.github-repo:hover { border-color: var(--accent-soft); background: rgba(16,185,129,0.06); transform: translateY(-1px); }
+.github-repo-name { font-family: var(--font-heading); color: var(--text-0); font-size: 13px; font-weight: 600; }
+.github-repo-commit { font-family: var(--font-mono); color: var(--accent-soft); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.github-repo-meta { font-family: var(--font-mono); color: var(--text-3); font-size: 10.5px; }
 .github-orgs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .github-org { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 6px; border-radius: 999px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-strong); font-family: var(--font-mono); font-size: 11px; color: var(--text-1); transition: border-color 180ms ease, background 180ms ease; }
 .github-org:hover { border-color: var(--accent-soft); background: rgba(16,185,129,0.06); }

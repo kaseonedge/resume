@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { resumeData, type EducationItem, type ExperienceItem, type ProjectItem, type SkillGroup } from '../resumeData';
+import githubActivity from '../generated/githubActivity.json';
 import { CountUp, ScrollReveal, useTilt } from './ResumeEffects';
 
 const SKILL_TONES = {
@@ -170,49 +171,31 @@ export function EnhancedEducation({ educations = resumeData.educations }: { educ
   );
 }
 
-function deterministicContributionData() {
-  const days = [];
-  const today = new Date();
-  for (let i = 364; i >= 0; i--) {
-    const d = new Date(today);
-    d.setDate(d.getDate() - i);
-    const seed = (d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate()) % 97;
-    const dow = d.getDay();
-    const isWeekday = dow > 0 && dow < 6;
-    const active = isWeekday ? seed % 5 !== 0 : seed % 7 === 0;
-    const intensity = active ? (seed % 4) + 1 : 0;
-    const count = intensity === 0 ? 0 : intensity * 3 + (seed % 3);
-    days.push({ d: d.toISOString().split('T')[0], level: intensity, count });
-  }
-  return days;
+function formatDate(date: string) {
+  return new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(date));
 }
 
 export function EnhancedGitHubHeatmap() {
-  const data = useMemo(() => deterministicContributionData(), []);
-  const weeks = useMemo(() => {
-    const out = [];
-    for (let i = 0; i < data.length; i += 7) out.push(data.slice(i, i + 7));
-    return out;
-  }, [data]);
-  const total = useMemo(() => data.reduce((sum, item) => sum + item.count, 0), [data]);
+  const weeks = githubActivity.weeks;
+  const total = githubActivity.totalContributions;
   const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
   const cellSize = 11;
   const gap = 2;
   const width = weeks.length * (cellSize + gap) + 32;
-  const username = resumeData.contact.github.split('/').pop() || 'kaseonedge';
+  const repos = useMemo(() => githubActivity.repositories.slice(0, 3), []);
 
   return (
     <section className="section" id="github" data-screen-label="GitHub">
-      <SectionHeader eyebrow="Activity" title="GitHub Contributions" icon="github" />
+      <SectionHeader eyebrow="GitHub GraphQL" title="Verified GitHub Activity" icon="github" />
       <div className="github-card">
         <div className="github-card-head">
-          <a className="github-username" href={`https://github.com/${username}`} target="_blank" rel="noopener">@{username}</a>
+          <a className="github-username" href={githubActivity.profileUrl} target="_blank" rel="noopener">@{githubActivity.username}</a>
           <div className="github-total"><CountUp value={total} enabled /> contributions in the last year</div>
         </div>
         <div className="github-graph">
-          <svg width={width} height={(cellSize + gap) * 7 + 20} style={{ display: 'block' }} aria-hidden>
+          <svg width={width} height={(cellSize + gap) * 7 + 20} style={{ display: 'block' }} aria-label="GitHub contribution calendar from GitHub GraphQL">
             {weeks.map((week, wi) =>
-              week.map((day, di) => {
+              week.contributionDays.map((day, di) => {
                 const reveal = (wi / weeks.length) * 600 + di * 20;
                 return (
                   <rect
@@ -225,7 +208,7 @@ export function EnhancedGitHubHeatmap() {
                     fill={colors[day.level]}
                     style={{ transformBox: 'fill-box', transformOrigin: 'center', animation: `cellPop 480ms cubic-bezier(.2,.7,.2,1) ${reveal}ms both` }}
                   >
-                    <title>{day.count} on {day.d}</title>
+                    <title>{day.count} contribution{day.count === 1 ? '' : 's'} on {day.date}</title>
                   </rect>
                 );
               })
@@ -236,6 +219,20 @@ export function EnhancedGitHubHeatmap() {
           <span>Less</span>
           {colors.map((color) => <span key={color} className="github-legend-cell" style={{ background: color }} />)}
           <span>More</span>
+        </div>
+        <div className="github-meta">
+          Pulled from GitHub GraphQL at {formatDate(githubActivity.generatedAt)} · generated from live GitHub data
+        </div>
+        <div className="github-repos">
+          {repos.map((repo) => (
+            <a key={repo.nameWithOwner} className="github-repo" href={repo.url} target="_blank" rel="noopener">
+              <span className="github-repo-name">{repo.nameWithOwner}</span>
+              {repo.latestCommit && <span className="github-repo-commit">{repo.latestCommit.shortOid} · {repo.latestCommit.messageHeadline}</span>}
+              <span className="github-repo-meta">
+                {repo.language?.name || 'Code'} · {repo.defaultBranchCommitCount.toLocaleString()} commits · pushed {formatDate(repo.pushedAt)}
+              </span>
+            </a>
+          ))}
         </div>
         <div className="github-orgs">
           {[

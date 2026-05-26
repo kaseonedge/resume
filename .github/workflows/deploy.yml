@@ -13,6 +13,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 # Allow only one concurrent deployment
 concurrency:
@@ -55,6 +56,9 @@ jobs:
         run: pnpm install
 
       - name: Build project
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_ACTIVITY_USERNAME: kaseonedge
         run: pnpm run build
 
       - name: Upload Pages artifact

@@ -250,10 +250,11 @@ export default function PrintResume() {
               <span style={s.jobDate}>{fiveDLabs.startDate} – {fiveDLabs.endDate}</span>
             </div>
             <div style={s.jobCompany}>{fiveDLabs.company} · Victoria, BC</div>
-            <Bullet>Building CTO Desktop and the Cognitive Task Orchestrator: Hermes-centric desktop-to-Kubernetes AI infrastructure for agentic delivery, Morgan voice/avatar UX, local GitOps, model/provider routing, and self-healing operations.</Bullet>
+            <Bullet>Building CTO Desktop and the Cognitive Task Orchestrator: Hermes-centric desktop-to-Kubernetes AI infrastructure for agentic delivery, Morgan voice/avatar UX, ACP harness routing through ACPX, Lobster intake workflows, local GitOps, model/provider routing, and self-healing operations.</Bullet>
             <Bullet>Defined the repo-backed CTO agent bench: {agentNames}; kept non-implemented placeholder personas out of the public story.</Bullet>
-            <Bullet>Built Hermes Agent / Hermes Gateway / MCP tooling as the operator-facing control plane: dynamic skills, tool registry, Browserbase/search/crawler providers, memory, CLI/provider abstraction, and OpenClaw workflow execution across commercial/self-hosted models.</Bullet>
+            <Bullet>Built Hermes Agent / Hermes Gateway / MCP tooling as the operator-facing control plane: dynamic skills, tool registry, Browserbase/search/crawler providers, memory, CLI/provider abstraction, ACPX-backed ACP CLI dispatch, and OpenClaw workflow execution across commercial/self-hosted models.</Bullet>
             <Bullet>Built Morgan setup media/runtime: FastAPI WebSockets, ElevenLabs STT/TTS, MediaRecorder/WebAudio, Scenario P-Video/Pruna workflows, and reactive avatar state.</Bullet>
+            <Bullet>Designed the ACP harness path: Morgan selects Hermes/OpenClaw, ACP CLIs such as Copilot provide execution surfaces, model routing sets primary/fallback pools, ACPX dispatches allowed CLI agents, and Lobster owns intake/deliberation graph stages.</Bullet>
             <Bullet>Developed low-latency Rust/gRPC and HFT-adjacent trading-data infrastructure: Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware dashboards, and Solana node/RPC operations.</Bullet>
             <Bullet>Validated ZeroEdge beta and Provider Abstraction paths across bare metal, AWS/EKS, and cloud providers; targets 60-80% lower cost using Kubernetes operators such as CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, and ClickHouse.</Bullet>
           </div>
@@ -288,6 +289,7 @@ export default function PrintResume() {
               ['1B+', 'daily requests managed'],
               ['16', 'actual CTO agents'],
               ['60-80%', 'targeted cost reduction'],
+              ['ACPX + Lobster', 'ACP harness'],
               ['ZeroEdge beta', 'provider validation'],
             ].map(([value, label]) => (
               <span key={value} style={s.metric}>

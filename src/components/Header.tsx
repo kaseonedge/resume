@@ -17,6 +17,21 @@ interface HeaderProps {
   };
 }
 
+const focusBadges = [
+  { icon: '🧠', label: 'AI infrastructure', color: '#6ee7b7', bg: 'rgba(16, 185, 129, 0.18)' },
+  { icon: '☸️', label: 'Kubernetes / GitOps', color: '#93c5fd', bg: 'rgba(59, 130, 246, 0.18)' },
+  { icon: '🦀', label: 'Rust + TypeScript', color: '#fdba74', bg: 'rgba(249, 115, 22, 0.16)' },
+  { icon: '📡', label: 'MCP + agent ops', color: '#c4b5fd', bg: 'rgba(139, 92, 246, 0.16)' },
+  { icon: '🛡️', label: 'Infra leadership', color: '#fde68a', bg: 'rgba(245, 158, 11, 0.16)' },
+];
+
+const metrics = [
+  ['20+', 'years infrastructure'],
+  ['1B+', 'daily requests led'],
+  ['13', 'agent platform roles'],
+  ['60–80%', 'cost target'],
+];
+
 const Header: React.FC<HeaderProps> = ({
   name,
   title,
@@ -32,9 +47,12 @@ const Header: React.FC<HeaderProps> = ({
   }, [profileImage]);
 
   return (
-    <header className="p-5 pb-6 md:p-6 md:pb-8 pt-8 rounded-lg bg-gradient-to-br from-[#1c1c1c] via-[#1e1e1e] to-[#242424] border border-[#2a2a2a] relative animate-fadeIn">
-      {/* Background pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+    <header className="hero-shell p-5 pb-6 md:p-8 md:pb-9 pt-8 rounded-lg bg-gradient-to-br from-[#101513] via-[#171a1f] to-[#20242b] border border-emerald-500/20 relative animate-fadeIn">
+      {/* Animated background pattern */}
+      <div className="hero-grid absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+        <div className="hero-radar" />
+        <div className="hero-orb hero-orb-a" />
+        <div className="hero-orb hero-orb-b" />
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -45,14 +63,14 @@ const Header: React.FC<HeaderProps> = ({
         <div 
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at center, transparent 0%, #1c1c1c 70%)',
+            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(16, 21, 19, 0.86) 70%)',
           }}
         />
       </div>
 
       <div
         style={{
-          maxWidth: '800px',
+          maxWidth: '980px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 10,
@@ -71,9 +89,9 @@ const Header: React.FC<HeaderProps> = ({
               height: '160px',
               borderRadius: '50%',
               overflow: 'hidden',
-              background: 'linear-gradient(45deg, rgba(74, 85, 104, 0.8), rgba(45, 55, 72, 0.8))',
+              background: 'linear-gradient(45deg, rgba(16, 185, 129, 0.8), rgba(45, 55, 72, 0.8))',
               padding: '3px',
-              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(160, 174, 192, 0.3), 0 0 15px rgba(74, 85, 104, 0.3)',
+              boxShadow: '0 6px 28px rgba(16, 185, 129, 0.20), 0 0 0 1px rgba(160, 174, 192, 0.3)',
               backgroundColor: '#1a1a1a',
               margin: '0 auto 10px auto',
               position: 'relative'
@@ -128,115 +146,55 @@ const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* Name and Title */}
-        <div className="animate-fadeIn" style={{ textAlign: 'center', margin: '0 0 24px 0' }}>
-          <h1
-            style={{
-              fontSize: '3.2rem',
-              fontWeight: '800',
-              color: '#ffffff',
-              lineHeight: '1.2',
-              margin: '0 0 20px 0',
-              letterSpacing: '0.5px',
-              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
-              fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
-            }}
-          >
+        <div className="animate-fadeIn" style={{ textAlign: 'center', margin: '0 0 16px 0' }}>
+          <div className="hero-kicker">AI infrastructure · platform leadership · self-healing systems</div>
+          <h1 className="hero-title">
             {name}
           </h1>
           {showTitle && title && (
-            <h2
-              style={{
-                fontSize: '1.8rem',
-                color: '#c0c0c0',
-                lineHeight: '1.3',
-                fontWeight: '500',
-                margin: 0,
-                letterSpacing: '0.3px',
-                textShadow: '0.5px 0.5px 1px rgba(0, 0, 0, 0.3)',
-                fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
-              }}
-            >
+            <h2 className="hero-subtitle">
               {title}
             </h2>
           )}
         </div>
 
         {/* Skill badges */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', margin: '0 0 28px 0' }}>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(16, 185, 129, 0.2)',
-              borderColor: 'rgba(16, 185, 129, 0.4)',
-              animationDelay: '0.1s',
-              boxShadow: '0 0 20px rgba(16, 185, 129, 0.2)'
-            }}
-          >
-            <span className="mr-2">🧠</span>
-            <span style={{ color: '#6ee7b7' }}>Multi-Agent AI</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(249, 115, 22, 0.2)',
-              borderColor: 'rgba(249, 115, 22, 0.4)',
-              animationDelay: '0.15s',
-              boxShadow: '0 0 20px rgba(249, 115, 22, 0.15)'
-            }}
-          >
-            <span className="mr-2">🦀</span>
-            <span style={{ color: '#fdba74' }}>Rust</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(59, 130, 246, 0.2)',
-              borderColor: 'rgba(59, 130, 246, 0.4)',
-              animationDelay: '0.2s',
-              boxShadow: '0 0 20px rgba(59, 130, 246, 0.15)'
-            }}
-          >
-            <span className="mr-2">☸️</span>
-            <span style={{ color: '#93c5fd' }}>Kubernetes</span>
-          </span>
-          <span
-            className="px-4 py-2 rounded-full text-sm text-white border flex items-center transition-all duration-300 hover:scale-105 animate-fadeIn"
-            style={{
-              backgroundColor: 'rgba(139, 92, 246, 0.2)',
-              borderColor: 'rgba(139, 92, 246, 0.4)',
-              animationDelay: '0.25s',
-              boxShadow: '0 0 20px rgba(139, 92, 246, 0.15)'
-            }}
-          >
-            <span className="mr-2">⛓️</span>
-            <span style={{ color: '#c4b5fd' }}>Blockchain</span>
-          </span>
+        <div className="hero-badges">
+          {focusBadges.map((badge, index) => (
+            <span
+              key={badge.label}
+              className="hero-badge animate-fadeIn"
+              style={{
+                backgroundColor: badge.bg,
+                borderColor: `${badge.color}55`,
+                animationDelay: `${0.1 + index * 0.06}s`,
+                boxShadow: `0 0 20px ${badge.color}22`
+              }}
+            >
+              <span className="mr-2">{badge.icon}</span>
+              <span style={{ color: badge.color }}>{badge.label}</span>
+            </span>
+          ))}
+        </div>
+
+        <div className="hero-metrics animate-fadeIn" style={{ animationDelay: '0.35s' }}>
+          {metrics.map(([value, label]) => (
+            <div className="hero-metric" key={value}>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
         </div>
 
         {/* Summary */}
-        <div className="text-gray-300 text-base max-w-4xl mx-auto text-center mb-6 animate-fadeIn"
-          style={{
-            animationDelay: '0.4s',
-            fontSize: '1.05rem',
-            lineHeight: '1.6',
-            fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif"
-          }}
+        <div className="hero-summary text-gray-300 text-base max-w-5xl mx-auto text-center mb-4 animate-fadeIn"
+          style={{ animationDelay: '0.42s' }}
         >
           {summary}
         </div>
 
         {/* Divider */}
-        <div
-          className="animate-fadeIn"
-          style={{
-            width: '100%',
-            maxWidth: '700px',
-            height: '1px',
-            background: 'linear-gradient(to right, transparent, #444, transparent)',
-            margin: '0 0 5px 0',
-            animationDelay: '0.4s'
-          }}
-        />
+        <div className="hero-divider animate-fadeIn" style={{ animationDelay: '0.44s' }} />
 
         {/* Contact and Social */}
         {contact && (
@@ -246,21 +204,8 @@ const Header: React.FC<HeaderProps> = ({
                 href={contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110"
-                style={{
-                  color: '#a0a0a0',
-                  padding: '10px',
-                  borderRadius: '50%',
-                  background: 'rgba(45, 55, 72, 0.6)',
-                  border: '1px solid #3a4a5a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  fontSize: '1.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                }}
+                className="social-orb transition-all duration-300 hover:scale-110"
+                aria-label="GitHub profile"
               >
                 {Icons.github()}
               </a>
@@ -270,21 +215,8 @@ const Header: React.FC<HeaderProps> = ({
                 href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110"
-                style={{
-                  color: '#a0a0a0',
-                  padding: '10px',
-                  borderRadius: '50%',
-                  background: 'rgba(45, 55, 72, 0.6)',
-                  border: '1px solid #3a4a5a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  fontSize: '1.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                }}
+                className="social-orb transition-all duration-300 hover:scale-110"
+                aria-label="LinkedIn profile"
               >
                 {Icons.linkedin()}
               </a>
@@ -292,21 +224,8 @@ const Header: React.FC<HeaderProps> = ({
             {contact.email && (
               <a
                 href={`mailto:${contact.email}`}
-                className="transition-all duration-300 hover:scale-110"
-                style={{
-                  color: '#a0a0a0',
-                  padding: '10px',
-                  borderRadius: '50%',
-                  background: 'rgba(45, 55, 72, 0.6)',
-                  border: '1px solid #3a4a5a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  fontSize: '1.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                }}
+                className="social-orb transition-all duration-300 hover:scale-110"
+                aria-label="Email Jonathon"
               >
                 {Icons.envelope()}
               </a>
@@ -314,21 +233,8 @@ const Header: React.FC<HeaderProps> = ({
             {contact.phone && (
               <a
                 href={`tel:${contact.phone}`}
-                className="transition-all duration-300 hover:scale-110"
-                style={{
-                  color: '#a0a0a0',
-                  padding: '10px',
-                  borderRadius: '50%',
-                  background: 'rgba(45, 55, 72, 0.6)',
-                  border: '1px solid #3a4a5a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  fontSize: '1.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                }}
+                className="social-orb transition-all duration-300 hover:scale-110"
+                aria-label="Phone Jonathon"
               >
                 {Icons.phone()}
               </a>
@@ -338,21 +244,8 @@ const Header: React.FC<HeaderProps> = ({
                 href={contact.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110"
-                style={{
-                  color: '#a0a0a0',
-                  padding: '10px',
-                  borderRadius: '50%',
-                  background: 'rgba(45, 55, 72, 0.6)',
-                  border: '1px solid #3a4a5a',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '44px',
-                  height: '44px',
-                  fontSize: '1.5rem',
-                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-                }}
+                className="social-orb transition-all duration-300 hover:scale-110"
+                aria-label="Website"
               >
                 {Icons.globe()}
               </a>

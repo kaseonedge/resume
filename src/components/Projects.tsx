@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
 import { AgentVisualizer } from './ui/agent-visualizer';
-import { ExternalLink, Github, Cpu, Shield, Server, Workflow } from 'lucide-react';
+import { ExternalLink, Github, Cpu, Server, Workflow, Network } from 'lucide-react';
 
 interface ProjectItem {
   title: string;
@@ -18,8 +18,8 @@ interface ProjectsProps {
 
 const getProjectIcon = (title: string) => {
   if (title.includes('CTO') || title.includes('Orchestrator')) return <Workflow className="w-5 h-5" />;
+  if (title.includes('Distributed') || title.includes('Blockchain')) return <Network className="w-5 h-5" />;
   if (title.includes('Agent')) return <Cpu className="w-5 h-5" />;
-  if (title.includes('Healer')) return <Shield className="w-5 h-5" />;
   if (title.includes('Metal') || title.includes('Provisioning')) return <Server className="w-5 h-5" />;
   return <Server className="w-5 h-5" />;
 };

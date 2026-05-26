@@ -89,26 +89,26 @@ function App() {
 
   const [resumeData] = useState({
     name: "Jonathon Fritz",
-    title: "AI Platform Engineer",
+    title: "AI Infrastructure & Platform Engineering Leader",
     profileImage: "",
-    summary: "Building autonomous software factories on bare metal. I've held every role on the infrastructure ladder — network engineer → DevOps → SRE → team lead → Head of Infra → CTO → founder — and I still write code daily. 10,600+ GitHub contributions in the last year. I architect OpenClaw-powered multi-agent AI systems where 13 specialized agents ship production code on self-healing infrastructure at 60-80% less than cloud.",
+    summary: "AI infrastructure and platform engineering leader with 20+ years building production systems from enterprise VMware to global Kubernetes platforms. I combine hands-on architecture with leadership experience — SRE, Head of Infrastructure, CTO, and founder — and now build OpenClaw-powered agent platforms, model/tool routing, self-healing operations, and bare-metal Kubernetes for AI-native teams. Targeting remote or California-based infrastructure leadership roles; blockchain is in scope when the work is infrastructure engineering or infra management.",
     showProjects: true,
     experiences: [
       {
         company: "5D Labs",
-        position: "Founder & AI Platform Architect",
+        position: "Founder & AI Infrastructure Architect",
         startDate: "May 2025",
         endDate: "Present",
-        description: "Building the Cognitive Task Orchestrator (CTO) — an autonomous software factory and bare-metal aggregator. The core value proposition: 13 specialized AI agents ship production code end-to-end through OpenClaw-orchestrated workflows, running on self-owned infrastructure at 60-80% less than cloud. Model-agnostic: works with any commercial or self-hosted LLM.",
+        description: "Building CTO Desktop and the Cognitive Task Orchestrator: an AI infrastructure platform for agentic software delivery, local GitOps, model/provider routing, and self-healing Kubernetes operations on bare metal or cloud.",
         titleColor: "text-job-founder",
         achievements: [
-          "Architected CTO as a software factory: 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo and others) autonomously write, test, review, and ship production code through OpenClaw-orchestrated workflows — from PRD to deployed feature with zero human intervention",
-          "Built bare-metal aggregator provisioning Talos Linux clusters across 7+ providers (Latitude, Hetzner, OVH, Vultr, Scaleway, Cherry, DigitalOcean), delivering 60-80% cost savings vs AWS/GCP/Azure",
-          "Integrated OpenClaw agent orchestration platform — model-agnostic, CLI-agnostic — with dynamic skill loading, NATS messaging, and Discord bridge for inter-agent communication",
-          "Built MCP server with 60+ tools and dynamic registration, supporting any LLM provider — commercial APIs and self-hosted open-weight models — with seamless hot-swapping between providers",
-          "Implemented self-healing Healer service with 9 alert types and automated remediation — agents autonomously diagnose root causes and fix failures without human intervention",
+          "Architected CTO / CTO Desktop as an AI infrastructure platform: specialized agents use OpenClaw workflows, GitHub/GitOps integration, MCP tools, and local runtime automation to turn product intent into reviewed, deployed software",
+          "Built bare-metal and cloud cluster automation around Talos Linux, Kubernetes, Helm, Argo CD, Cilium, and provider abstraction, targeting 60-80% lower infrastructure cost than default managed-cloud patterns",
+          "Integrated OpenClaw / Hermes agent orchestration with dynamic skill loading, NATS-style eventing patterns, tool routing, and CLI/provider abstraction so agents can run across commercial and self-hosted models",
+          "Built and maintained MCP/tooling layers for infrastructure management, repository automation, Kubernetes inspection, workflow execution, and model/provider hot-swapping",
+          "Implemented self-healing operations patterns: agents inspect logs, metrics, Git state, Kubernetes resources, and runbooks to diagnose failures and propose or apply remediations",
           "Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform's value proposition",
-          "Built Solana and blockchain trading agent infrastructure for autonomous on-chain trading across Solana, Base, and Near ecosystems",
+          "Maintained blockchain infrastructure work as distributed-systems evidence while shifting public positioning toward AI infrastructure, platform engineering, and infrastructure management",
           "Designed zero-trust networking with Cloudflare Tunnels and WireGuard, plus OpenBao (Vault fork) secret management for secure multi-tenant agent operations",
           "Implemented comprehensive observability: Prometheus, Grafana, Loki, OpenTelemetry, with MCP tools enabling agents to query their own logs and metrics",
           "Released platform as open-source under AGPL-3.0, establishing 5D Labs as a contributor to the AI infrastructure ecosystem"
@@ -326,9 +326,9 @@ function App() {
         ]
       },
       {
-        category: "Blockchain & Trading",
+        category: "Distributed Systems & Blockchain Infra",
         skills: [
-          "Solana", "Ethereum", "Base (OP Stack)", "Near", "DeFi Protocols", "On-Chain Trading Agents", "RPC Infrastructure", "Node Operations", "Polygon", "BSC"
+          "RPC Infrastructure", "Validator/Node Operations", "Ethereum", "Solana", "Polygon", "BSC", "Base", "Near", "Distributed Systems", "High-Throughput APIs"
         ]
       },
       {
@@ -357,9 +357,9 @@ function App() {
         technologies: ["OpenClaw", "NATS", "Rust", "Kubernetes CRDs", "Linear API", "MCP"]
       },
       {
-        title: "Agentic Trading Platform",
-        description: "Autonomous on-chain trading agents operating across Solana, Base, and Near. AI-powered decision-making for DeFi market navigation with real-time blockchain data integration.",
-        technologies: ["Solana", "Base", "Near", "DeFi", "Trading Agents", "Rust", "TypeScript"]
+        title: "Distributed Systems / Blockchain Infrastructure",
+        description: "Infrastructure and distributed-systems work across Solana, Base, Near, Ethereum, and RPC/node operations. Kept as scale, reliability, and systems evidence for blockchain infrastructure or infrastructure-management roles rather than token/product IC positioning.",
+        technologies: ["Solana", "Ethereum", "Base", "Near", "RPC", "Node Operations", "Rust", "TypeScript"]
       },
       {
         title: "MCP Server — Model-Agnostic Platform",
@@ -370,7 +370,7 @@ function App() {
     contact: {
       email: "j@jonathonfritz.com",
       phone: "",
-      location: "Victoria, British Columbia, Canada",
+      location: "Victoria, BC · Remote / California relocation open",
       linkedin: "https://www.linkedin.com/in/jonathonfritz",
       github: "https://github.com/kaseonedge",
       website: ""
@@ -393,7 +393,7 @@ function App() {
                   title={resumeData.title}
                   profileImage={resumeData.profileImage}
                   summary={resumeData.summary}
-                  showTitle={false}
+                  showTitle={true}
                   contact={resumeData.contact}
                 />
               </div>

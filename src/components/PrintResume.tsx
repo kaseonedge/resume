@@ -167,9 +167,9 @@ export default function PrintResume() {
       {/* Header */}
       <div style={s.header}>
         <h1 style={s.name}>Jonathon Fritz</h1>
-        <p style={s.title}>AI Platform Engineer · Infrastructure Architect · Technical Co-Founder</p>
+        <p style={s.title}>AI Infrastructure & Platform Engineering Leader · Remote / California relocation open</p>
         <div style={s.contactRow}>
-          <span style={s.contactItem}>Victoria, BC (Remote)</span>
+          <span style={s.contactItem}>Victoria, BC · Remote / California relocation open</span>
           <span style={s.contactItem}>j@jonathonfritz.com</span>
           <span style={s.contactItem}>github.com/kaseonedge</span>
           <span style={s.contactItem}>linkedin.com/in/jonathonfritz</span>
@@ -184,11 +184,10 @@ export default function PrintResume() {
           {/* Summary */}
           <div style={s.sectionTitleFirst}>Summary</div>
           <p style={s.summary}>
-            20+ years building production infrastructure. Every role on the ladder:
-            network engineer → DevOps → SRE → team lead → Head of Infra → CTO → founder.
-            10,600+ GitHub contributions last year. I build AI agent platforms and
-            bare-metal infrastructure daily — 13 specialized agents ship production code
-            at 60-80% less than cloud.
+            AI infrastructure and platform engineering leader with 20+ years building production systems.
+            Hands-on across Kubernetes/GitOps, Talos, bare metal, observability, secrets,
+            MCP tooling, and OpenClaw/Hermes agent infrastructure. Led SRE, Head of Infra,
+            CTO, and founder scopes; targeting remote or California-based AI infrastructure roles.
           </p>
 
           {/* Core Skills */}
@@ -215,9 +214,9 @@ export default function PrintResume() {
             ))}
           </div>
 
-          <div style={s.skillCategory}>Blockchain</div>
+          <div style={s.skillCategory}>Distributed Systems</div>
           <div style={s.skillTags}>
-            {["Solana", "Base", "Near", "Ethereum", "DeFi", "On-Chain Agents", "RPC at Scale"].map(t => (
+            {["RPC Infra", "Node Ops", "Ethereum", "Solana", "High-Throughput APIs", "Cost Controls"].map(t => (
               <span key={t} style={s.skillTag}>{t}</span>
             ))}
           </div>
@@ -258,14 +257,14 @@ export default function PrintResume() {
           {/* 5D Labs */}
           <div style={s.jobBlock}>
             <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Founder & AI Platform Architect</span>
+              <span style={s.jobTitle}>Founder & AI Infrastructure Architect</span>
               <span style={s.jobDate}>May 2025 – Present</span>
             </div>
-            <div style={s.jobCompany}>5D Labs · Victoria, BC (Remote)</div>
-            <div style={s.bullet}>• Built CTO: an autonomous software factory where 13 specialized AI agents (Rex, Blaze, Morgan, Sentinel, Pixel, Echo + others) ship production code end-to-end — PRD to deployment with zero human intervention</div>
-            <div style={s.bullet}>• Bare-metal aggregator across 7+ providers delivers 60-80% cost savings vs AWS/GCP/Azure; self-heals with 9 automated remediation types</div>
-            <div style={s.bullet}>• OpenClaw MCP server with 60+ tools; model-agnostic — hot-swaps between any commercial or self-hosted LLM as the landscape evolves</div>
-            <div style={s.bullet}>• Replaced 15+ managed cloud services with K8s operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, ClickHouse)</div>
+            <div style={s.jobCompany}>5D Labs · Victoria, BC · Remote / California relocation open</div>
+            <div style={s.bullet}>• Built CTO / CTO Desktop: AI infrastructure for agentic software delivery, local GitOps, model/tool routing, and self-healing Kubernetes operations</div>
+            <div style={s.bullet}>• Automated Talos/Kubernetes/GitOps platform patterns across bare metal and cloud, targeting 60-80% lower cost than default managed-cloud deployments</div>
+            <div style={s.bullet}>• Built OpenClaw/Hermes/MCP tooling for infrastructure inspection, repo automation, model/provider routing, and agent runtime operations</div>
+            <div style={s.bullet}>• Replaced managed services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, ClickHouse) and observability-first operations</div>
           </div>
 
           {/* Blocknative */}
@@ -289,7 +288,7 @@ export default function PrintResume() {
             <div style={s.jobCompany}>Pocket Network · Remote</div>
             <div style={s.bullet}>• Led and reorganized 13 infrastructure engineers into specialized functional teams across 16 global regions</div>
             <div style={s.bullet}>• Migrated EC2/Docker Compose → GitOps Kubernetes/ArgoCD across all 16 regions; infrastructure serving 1B+ daily requests</div>
-            <div style={s.bullet}>• Replaced DataDog with VictoriaMetrics/Loki/Grafana; managed 50+ blockchain validators across Ethereum, Polygon, BSC</div>
+            <div style={s.bullet}>• Replaced DataDog with VictoriaMetrics/Loki/Grafana; managed global RPC/node infrastructure across Ethereum, Polygon, and BSC ecosystems</div>
           </div>
 
           {/* Pocket Network Lead */}
@@ -309,7 +308,7 @@ export default function PrintResume() {
               <span style={s.jobDate}>May 2019 – Jul 2021</span>
             </div>
             <div style={s.jobCompany}>Coinmiles · Remote</div>
-            <div style={s.bullet}>• SE → CTO in 3 months; led all technical aspects: architecture, team, ACH/API payment processing, GraphQL upgrades, CI/CD</div>
+            <div style={s.bullet}>• SE → CTO in 3 months; led architecture, team management, ACH/API payment systems, GraphQL upgrades, CI/CD, and cloud operations</div>
           </div>
 
           {/* TELUS */}
@@ -337,7 +336,7 @@ export default function PrintResume() {
               ["10,600+", "GitHub contributions"],
               ["1B+", "daily requests managed"],
               ["60-80%", "cloud cost savings"],
-              ["13 agents", "shipping production code"],
+              ["AI infra", "agents + GitOps"],
             ].map(([val, label]) => (
               <span key={val} style={{ fontSize: "8px", color: "#444" }}>
                 <strong style={{ color: "#111" }}>{val}</strong> {label}

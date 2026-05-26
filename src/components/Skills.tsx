@@ -7,8 +7,7 @@ import {
   Sparkles,
   Bot,
   Terminal,
-  Zap,
-  Eye
+  Zap
 } from 'lucide-react';
 
 interface Skill {
@@ -27,7 +26,7 @@ const getCategoryIcon = (category: string) => {
   if (lower.includes('ai infrastructure')) return <Bot className="w-4 h-4" />;
   if (lower.includes('systems') || lower.includes('programming')) return <Terminal className="w-4 h-4" />;
   if (lower.includes('platform')) return <Server className="w-4 h-4" />;
-  if (lower.includes('observability')) return <Eye className="w-4 h-4" />;
+  if (lower.includes('distributed') || lower.includes('blockchain')) return <Server className="w-4 h-4" />;
   return <Code2 className="w-4 h-4" />;
 };
 
@@ -39,6 +38,7 @@ const getCategoryColor = (category: string): string => {
   if (lower.includes('ai infrastructure')) return 'from-cyan-500/25 to-cyan-900/15 border-cyan-400/40';
   if (lower.includes('systems') || lower.includes('programming')) return 'from-orange-500/20 to-orange-900/10 border-orange-500/30';
   if (lower.includes('platform')) return 'from-blue-500/20 to-blue-900/10 border-blue-500/30';
+  if (lower.includes('distributed') || lower.includes('blockchain')) return 'from-slate-500/20 to-slate-900/10 border-slate-400/30';
   if (lower.includes('observability')) return 'from-amber-500/20 to-amber-900/10 border-amber-500/30';
   return 'from-zinc-500/20 to-zinc-900/10 border-zinc-500/30';
 };
@@ -50,6 +50,7 @@ const getCategoryIconColor = (category: string): string => {
   if (lower.includes('ai infrastructure')) return 'text-cyan-400 bg-cyan-500/25';
   if (lower.includes('systems') || lower.includes('programming')) return 'text-orange-400 bg-orange-500/20';
   if (lower.includes('platform')) return 'text-blue-400 bg-blue-500/20';
+  if (lower.includes('distributed') || lower.includes('blockchain')) return 'text-slate-300 bg-slate-500/20';
   if (lower.includes('observability')) return 'text-amber-400 bg-amber-500/20';
   return 'text-zinc-400 bg-zinc-500/20';
 };
@@ -62,6 +63,7 @@ const getSkillVariant = (skill: string, category: string): "default" | "rust" | 
   if (lowerCategory.includes('ai') || lowerCategory.includes('llm')) return 'ai';
   if (lowerCategory.includes('systems')) return 'rust';
   if (lowerCategory.includes('platform') || lowerCategory.includes('infrastructure')) return 'infra';
+  if (lowerCategory.includes('distributed') || lowerCategory.includes('blockchain')) return 'infra';
   
   // Skill-based overrides
   if (['rust', 'tokio', 'axum'].some(t => lowerSkill.includes(t))) return 'rust';

@@ -9,12 +9,12 @@ interface Agent {
 }
 
 const agents: Agent[] = [
-  { id: 'rex', name: 'Rex', role: 'Orchestrator', color: '#10b981', icon: '🦖' },
-  { id: 'blaze', name: 'Blaze', role: 'Implementer', color: '#f97316', icon: '🔥' },
-  { id: 'morgan', name: 'Morgan', role: 'Architect', color: '#8b5cf6', icon: '📐' },
-  { id: 'sentinel', name: 'Sentinel', role: 'Security', color: '#ef4444', icon: '🛡️' },
-  { id: 'pixel', name: 'Pixel', role: 'Frontend', color: '#06b6d4', icon: '🎨' },
-  { id: 'echo', name: 'Echo', role: 'QA', color: '#eab308', icon: '🔍' },
+  { id: 'rex', name: 'Rex', role: 'Rust backend', color: '#10b981', icon: '🦖' },
+  { id: 'blaze', name: 'Blaze', role: 'Frontend', color: '#f97316', icon: '🔥' },
+  { id: 'morgan', name: 'Morgan', role: 'PRD intake', color: '#8b5cf6', icon: '📐' },
+  { id: 'cipher', name: 'Cipher', role: 'Security', color: '#ef4444', icon: '🛡️' },
+  { id: 'tess', name: 'Tess', role: 'Testing', color: '#06b6d4', icon: '🧪' },
+  { id: 'angie', name: 'Angie', role: 'Agent systems', color: '#eab308', icon: '🤖' },
 ]
 
 export const AgentVisualizer: React.FC = () => {

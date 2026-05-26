@@ -1,341 +1,297 @@
 /**
- * PrintResume — Condensed one-page PDF layout.
+ * PrintResume — PDF-focused resume layout.
  *
- * Rendered into a hidden off-screen div and captured by html2pdf.js.
- * Designed to fit on a single US Letter page at standard margins.
- * Uses inline styles throughout to ensure html2pdf captures them correctly
- * (Tailwind classes are not reliably captured by the PDF renderer).
+ * Rendered into a hidden off-screen div and captured by html2pdf.js. It imports
+ * the shared resumeData module so the download path stays aligned with the
+ * animated site copy instead of drifting into a stale parallel resume.
  */
+import type { ReactNode } from 'react';
+import { actualCtoAgents, resumeData } from '../resumeData';
 
 const s = {
   page: {
     fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif",
-    fontSize: "9.5px",
-    lineHeight: "1.35",
-    color: "#1a1a1a",
-    background: "#ffffff",
-    width: "816px",       // 8.5in @ 96dpi
-    minHeight: "1056px",  // 11in @ 96dpi
-    padding: "28px 32px 24px 32px",
-    boxSizing: "border-box" as const,
+    fontSize: '8.2px',
+    lineHeight: '1.28',
+    color: '#161616',
+    background: '#ffffff',
+    width: '816px',
+    minHeight: '1056px',
+    padding: '24px 30px 22px 30px',
+    boxSizing: 'border-box' as const,
   },
   header: {
-    borderBottom: "2px solid #111",
-    paddingBottom: "10px",
-    marginBottom: "10px",
+    borderBottom: '2px solid #0d1f18',
+    paddingBottom: '8px',
+    marginBottom: '8px',
   },
   name: {
-    fontSize: "22px",
-    fontWeight: "700",
-    letterSpacing: "-0.3px",
-    color: "#111",
-    margin: "0 0 2px 0",
+    fontSize: '21px',
+    fontWeight: '800',
+    letterSpacing: '-0.5px',
+    color: '#07130f',
+    margin: '0 0 1px 0',
   },
   title: {
-    fontSize: "11px",
-    fontWeight: "500",
-    color: "#444",
-    margin: "0 0 6px 0",
-    letterSpacing: "0.3px",
+    fontSize: '10.5px',
+    fontWeight: '700',
+    color: '#176b4d',
+    margin: '0 0 5px 0',
+    letterSpacing: '0.25px',
   },
   contactRow: {
-    display: "flex" as const,
-    flexWrap: "wrap" as const,
-    gap: "0 14px",
-    fontSize: "8.5px",
-    color: "#555",
-  },
-  contactItem: {
-    color: "#333",
+    display: 'flex' as const,
+    flexWrap: 'wrap' as const,
+    gap: '0 12px',
+    fontSize: '7.8px',
+    color: '#3d3d3d',
   },
   columns: {
-    display: "flex" as const,
-    gap: "18px",
-    alignItems: "flex-start" as const,
+    display: 'flex' as const,
+    gap: '16px',
+    alignItems: 'flex-start' as const,
   },
   leftCol: {
-    width: "175px",
-    flexShrink: "0" as const,
+    width: '198px',
+    flexShrink: '0' as const,
   },
   rightCol: {
-    flex: "1",
-    minWidth: "0",
+    flex: '1',
+    minWidth: '0',
   },
   sectionTitle: {
-    fontSize: "8px",
-    fontWeight: "700",
-    letterSpacing: "0.8px",
-    textTransform: "uppercase" as const,
-    color: "#111",
-    borderBottom: "1px solid #ddd",
-    paddingBottom: "2px",
-    marginBottom: "6px",
-    marginTop: "10px",
+    fontSize: '7.4px',
+    fontWeight: '800',
+    letterSpacing: '0.85px',
+    textTransform: 'uppercase' as const,
+    color: '#0f241c',
+    borderBottom: '1px solid #cfd8d4',
+    paddingBottom: '2px',
+    marginBottom: '5px',
+    marginTop: '8px',
   },
   sectionTitleFirst: {
-    fontSize: "8px",
-    fontWeight: "700",
-    letterSpacing: "0.8px",
-    textTransform: "uppercase" as const,
-    color: "#111",
-    borderBottom: "1px solid #ddd",
-    paddingBottom: "2px",
-    marginBottom: "6px",
-    marginTop: "0",
+    fontSize: '7.4px',
+    fontWeight: '800',
+    letterSpacing: '0.85px',
+    textTransform: 'uppercase' as const,
+    color: '#0f241c',
+    borderBottom: '1px solid #cfd8d4',
+    paddingBottom: '2px',
+    marginBottom: '5px',
+    marginTop: '0',
   },
   summary: {
-    fontSize: "8.5px",
-    color: "#333",
-    lineHeight: "1.45",
-    marginBottom: "0",
+    fontSize: '8px',
+    color: '#2f2f2f',
+    lineHeight: '1.34',
+    margin: '0',
   },
   jobBlock: {
-    marginBottom: "8px",
+    marginBottom: '7px',
   },
   jobHeader: {
-    display: "flex" as const,
-    justifyContent: "space-between" as const,
-    alignItems: "baseline" as const,
-    marginBottom: "1px",
+    display: 'flex' as const,
+    justifyContent: 'space-between' as const,
+    alignItems: 'baseline' as const,
+    gap: '8px',
+    marginBottom: '1px',
   },
   jobTitle: {
-    fontSize: "9.5px",
-    fontWeight: "700",
-    color: "#111",
+    fontSize: '8.9px',
+    fontWeight: '800',
+    color: '#0e0e0e',
   },
   jobDate: {
-    fontSize: "8px",
-    color: "#777",
-    whiteSpace: "nowrap" as const,
+    fontSize: '7.4px',
+    color: '#676767',
+    whiteSpace: 'nowrap' as const,
   },
   jobCompany: {
-    fontSize: "8.5px",
-    color: "#444",
-    marginBottom: "3px",
+    fontSize: '7.9px',
+    color: '#3d3d3d',
+    marginBottom: '2px',
   },
   bullet: {
-    fontSize: "8.5px",
-    color: "#333",
-    paddingLeft: "10px",
-    position: "relative" as const,
-    lineHeight: "1.4",
-    marginBottom: "1.5px",
+    fontSize: '7.7px',
+    color: '#2c2c2c',
+    paddingLeft: '8px',
+    lineHeight: '1.25',
+    marginBottom: '1.8px',
+  },
+  mini: {
+    fontSize: '7.25px',
+    color: '#424242',
+    lineHeight: '1.25',
+    marginBottom: '2px',
   },
   skillCategory: {
-    fontSize: "8px",
-    fontWeight: "700",
-    color: "#333",
-    marginBottom: "2px",
-    marginTop: "6px",
+    fontSize: '7.5px',
+    fontWeight: '800',
+    color: '#242424',
+    marginBottom: '2px',
+    marginTop: '5px',
   },
   skillCategoryFirst: {
-    fontSize: "8px",
-    fontWeight: "700",
-    color: "#333",
-    marginBottom: "2px",
-    marginTop: "0",
+    fontSize: '7.5px',
+    fontWeight: '800',
+    color: '#242424',
+    marginBottom: '2px',
+    marginTop: '0',
   },
   skillTags: {
-    display: "flex" as const,
-    flexWrap: "wrap" as const,
-    gap: "2px",
+    display: 'flex' as const,
+    flexWrap: 'wrap' as const,
+    gap: '2px',
   },
   skillTag: {
-    fontSize: "7.5px",
-    background: "#f0f0f0",
-    color: "#333",
-    borderRadius: "2px",
-    padding: "1px 4px",
+    fontSize: '6.9px',
+    background: '#eef5f1',
+    color: '#1e4234',
+    borderRadius: '2px',
+    padding: '1px 3.5px',
   },
-  eduBlock: {
-    marginBottom: "5px",
+  metricBar: {
+    marginTop: '7px',
+    padding: '6px 8px',
+    background: '#f2f7f4',
+    border: '1px solid #dce8e2',
+    borderRadius: '4px',
+    display: 'flex' as const,
+    flexWrap: 'wrap' as const,
+    gap: '0 12px',
   },
-  eduTitle: {
-    fontSize: "8.5px",
-    fontWeight: "600",
-    color: "#111",
-  },
-  eduSub: {
-    fontSize: "8px",
-    color: "#555",
+  metric: {
+    fontSize: '7.25px',
+    color: '#3b3b3b',
   },
 };
 
+const selectedSkillGroups = [
+  resumeData.skills[0],
+  resumeData.skills[1],
+  resumeData.skills[2],
+  resumeData.skills[3],
+  resumeData.skills[4],
+  resumeData.skills[5],
+  resumeData.skills[6],
+];
+
+const topExperiences = resumeData.experiences.filter((experience) =>
+  ['5D Labs', 'Blocknative', 'Pocket Network Inc.', 'Coinmiles', 'TELUS'].includes(experience.company),
+);
+
+const agentNames = actualCtoAgents.map((agent) => agent.name).join(', ');
+
+function Bullet({ children }: { children: ReactNode }) {
+  return <div style={s.bullet}>• {children}</div>;
+}
+
 export default function PrintResume() {
+  const fiveDLabs = resumeData.experiences[0];
+  const projects = resumeData.projects.slice(0, 4);
+
   return (
     <div id="resume-pdf-page" style={s.page}>
-      {/* Header */}
       <div style={s.header}>
-        <h1 style={s.name}>Jonathon Fritz</h1>
-        <p style={s.title}>AI Infrastructure & Platform Engineering Leader</p>
+        <h1 style={s.name}>{resumeData.name}</h1>
+        <p style={s.title}>{resumeData.title}</p>
         <div style={s.contactRow}>
-          <span style={s.contactItem}>Victoria, BC</span>
-          <span style={s.contactItem}>j@jonathonfritz.com</span>
-          <span style={s.contactItem}>github.com/kaseonedge</span>
-          <span style={s.contactItem}>linkedin.com/in/jonathonfritz</span>
-          <span style={s.contactItem}>resume.jonathonfritz.com</span>
+          <span>{resumeData.contact.location}</span>
+          <span>{resumeData.contact.email}</span>
+          <span>github.com/kaseonedge</span>
+          <span>linkedin.com/in/jonathonfritz</span>
+          <span>resume.jonathonfritz.com</span>
         </div>
       </div>
 
       <div style={s.columns}>
-        {/* LEFT COLUMN */}
         <div style={s.leftCol}>
-
-          {/* Summary */}
           <div style={s.sectionTitleFirst}>Summary</div>
-          <p style={s.summary}>
-            AI infrastructure and platform engineering leader with 20+ years building production systems.
-            Hands-on across Kubernetes/GitOps, Talos, bare metal, multi-cloud/provider abstraction,
-            low-latency gRPC/trading-data systems, Morgan voice/avatar UX, MCP tooling, and
-            OpenClaw/Hermes agent infrastructure. Led SRE, Head of Infra, CTO, and founder scopes.
+          <p style={s.summary}>{resumeData.summary}</p>
+
+          <div style={s.sectionTitle}>CTO Agent Bench</div>
+          <p style={s.mini}>
+            Actual repo-backed agents: {agentNames}. Placeholder personas are intentionally excluded until implemented.
           </p>
 
-          {/* Core Skills */}
           <div style={s.sectionTitle}>Core Skills</div>
+          {selectedSkillGroups.map((group, index) => (
+            <div key={group.category}>
+              <div style={index === 0 ? s.skillCategoryFirst : s.skillCategory}>{group.category}</div>
+              <div style={s.skillTags}>
+                {group.skills.slice(0, group.category === 'Platform Engineering' ? 11 : 9).map((skill) => (
+                  <span key={`${group.category}-${skill}`} style={s.skillTag}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          ))}
 
-          <div style={s.skillCategoryFirst}>AI & Agent Systems</div>
-          <div style={s.skillTags}>
-            {["OpenClaw", "Multi-Agent AI", "MCP (60+ tools)", "Model-Agnostic Orch.", "Voice/Avatar UX", "Self-Healing Infra"].map(t => (
-              <span key={t} style={s.skillTag}>{t}</span>
-            ))}
-          </div>
+          <div style={s.sectionTitle}>Media / Avatar Stack</div>
+          <p style={s.mini}>
+            Morgan voice/avatar UX: FastAPI WebSocket voice bridge, ElevenLabs STT/TTS, browser MediaRecorder/WebAudio analyzers, reactive canvas avatar state, Scenario P-Video, and Pruna workflows.
+          </p>
 
-          <div style={s.skillCategory}>Platform Engineering</div>
-          <div style={s.skillTags}>
-            {["Kubernetes", "Talos Linux", "ArgoCD", "Cilium/eBPF", "Helm", "GitOps", "Bare Metal", "Multi-Cloud"].map(t => (
-              <span key={t} style={s.skillTag}>{t}</span>
-            ))}
-          </div>
-
-          <div style={s.skillCategory}>Systems Programming</div>
-          <div style={s.skillTags}>
-            {["Rust", "Tokio/Tonic", "gRPC", "Go", "TypeScript", "K8s CRDs", "Async Runtimes"].map(t => (
-              <span key={t} style={s.skillTag}>{t}</span>
-            ))}
-          </div>
-
-          <div style={s.skillCategory}>Distributed Systems</div>
-          <div style={s.skillTags}>
-            {["RPC Infra", "Solana", "QuestDB", "Low-Latency", "Trading Infra", "Cost Controls"].map(t => (
-              <span key={t} style={s.skillTag}>{t}</span>
-            ))}
-          </div>
-
-          <div style={s.skillCategory}>Observability</div>
-          <div style={s.skillTags}>
-            {["Prometheus", "Grafana", "Loki", "OpenTelemetry", "Incident Automation"].map(t => (
-              <span key={t} style={s.skillTag}>{t}</span>
-            ))}
-          </div>
-
-          {/* Education */}
           <div style={s.sectionTitle}>Education</div>
-
-          <div style={s.eduBlock}>
-            <div style={s.eduTitle}>Hack Reactor</div>
-            <div style={s.eduSub}>Advanced Software Engineering Immersive · 2016</div>
-          </div>
-          <div style={s.eduBlock}>
-            <div style={s.eduTitle}>CDI College</div>
-            <div style={s.eduSub}>Network Infrastructure Engineering · 2002–2003</div>
-          </div>
-          <div style={s.eduBlock}>
-            <div style={s.eduTitle}>Cisco Networking Academy (CCNA)</div>
-            <div style={s.eduSub}>Certified Network Associate · 2000–2001</div>
-          </div>
-
+          {resumeData.educations.map((education) => (
+            <div key={`${education.institution}-${education.startDate}`} style={{ marginBottom: '4px' }}>
+              <div style={{ fontSize: '7.8px', fontWeight: 700, color: '#111' }}>{education.institution}</div>
+              <div style={{ fontSize: '7.3px', color: '#555' }}>{education.field} · {education.startDate}{education.endDate !== education.startDate ? `–${education.endDate}` : ''}</div>
+            </div>
+          ))}
         </div>
 
-        {/* RIGHT COLUMN — Experience */}
         <div style={s.rightCol}>
           <div style={s.sectionTitleFirst}>Experience</div>
 
-          {/* 5D Labs */}
           <div style={s.jobBlock}>
             <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Founder & AI Infrastructure Architect</span>
-              <span style={s.jobDate}>May 2025 – Present</span>
+              <span style={s.jobTitle}>{fiveDLabs.position}</span>
+              <span style={s.jobDate}>{fiveDLabs.startDate} – {fiveDLabs.endDate}</span>
             </div>
-            <div style={s.jobCompany}>5D Labs · Victoria, BC</div>
-            <div style={s.bullet}>• Built CTO / CTO Desktop: AI infrastructure for agentic software delivery, Morgan voice/avatar UX, local GitOps, model/tool routing, and self-healing Kubernetes operations</div>
-            <div style={s.bullet}>• Automated Talos/Kubernetes/GitOps patterns across bare metal, AWS/EKS, and cloud-provider abstraction; targeting 60-80% lower cost than default managed-cloud deployments</div>
-            <div style={s.bullet}>• Built OpenClaw/Hermes/MCP tooling plus low-latency Rust/gRPC trading-data work: Yellowstone gRPC, QuestDB/PostgreSQL, streaming APIs, MEV-aware dashboards</div>
-            <div style={s.bullet}>• Used ZeroEdge beta/provider validation and Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, ClickHouse) to keep infrastructure portable across providers</div>
+            <div style={s.jobCompany}>{fiveDLabs.company} · Victoria, BC</div>
+            <Bullet>Building CTO Desktop and the Cognitive Task Orchestrator: desktop-to-Kubernetes AI infrastructure for agentic delivery, Morgan voice/avatar UX, local GitOps, model/provider routing, and self-healing operations.</Bullet>
+            <Bullet>Defined the repo-backed CTO agent bench: {agentNames}; kept non-implemented placeholder personas out of the public story.</Bullet>
+            <Bullet>Built OpenClaw / Hermes / MCP tooling with dynamic skills, tool routing, NATS-style eventing, CLI/provider abstraction, and commercial/self-hosted model support.</Bullet>
+            <Bullet>Built Morgan setup media/runtime: FastAPI WebSockets, ElevenLabs STT/TTS, MediaRecorder/WebAudio, Scenario P-Video/Pruna workflows, and reactive avatar state.</Bullet>
+            <Bullet>Developed low-latency Rust/gRPC and HFT-adjacent trading-data infrastructure: Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware dashboards, and Solana node/RPC operations.</Bullet>
+            <Bullet>Validated ZeroEdge beta and Provider Abstraction paths across bare metal, AWS/EKS, and cloud providers; targets 60-80% lower cost using Kubernetes operators such as CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, and ClickHouse.</Bullet>
           </div>
 
-          {/* Blocknative */}
-          <div style={s.jobBlock}>
-            <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Site Reliability Engineer</span>
-              <span style={s.jobDate}>May 2023 – May 2025</span>
-            </div>
-            <div style={s.jobCompany}>Blocknative · Remote</div>
-            <div style={s.bullet}>• Led cloud-to-Kubernetes transformation: 100% K8s adoption with ArgoCD GitOps on bare metal (Latitude / Cilium CNI); reduced infra spend by 40%</div>
-            <div style={s.bullet}>• Deployed Gas Network — distributed oracle providing real-time gas price data across 35+ blockchain networks</div>
-            <div style={s.bullet}>• Implemented Kubecost/nOPs for cost analysis; streamlined observability (OpenTelemetry, APM, distributed tracing)</div>
-          </div>
+          {topExperiences.slice(1).map((experience) => {
+            const bullets = experience.company === 'Pocket Network Inc.' && experience.position === 'Head of Infrastructure Engineering'
+              ? experience.achievements.slice(0, 3)
+              : experience.achievements.slice(0, experience.company === 'TELUS' ? 1 : 2);
+            return (
+              <div key={`${experience.company}-${experience.position}`} style={s.jobBlock}>
+                <div style={s.jobHeader}>
+                  <span style={s.jobTitle}>{experience.position}</span>
+                  <span style={s.jobDate}>{experience.startDate} – {experience.endDate}</span>
+                </div>
+                <div style={s.jobCompany}>{experience.company}</div>
+                {bullets.map((achievement) => <Bullet key={achievement}>{achievement}</Bullet>)}
+              </div>
+            );
+          })}
 
-          {/* Pocket Network Head */}
-          <div style={s.jobBlock}>
-            <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Head of Infrastructure Engineering</span>
-              <span style={s.jobDate}>Jul 2022 – Jan 2023</span>
+          <div style={s.sectionTitle}>Selected Systems</div>
+          {projects.map((project) => (
+            <div key={project.title} style={{ marginBottom: '4px' }}>
+              <div style={{ fontSize: '7.8px', fontWeight: 800, color: '#111' }}>{project.title}</div>
+              <div style={s.mini}>{project.description}</div>
             </div>
-            <div style={s.jobCompany}>Pocket Network · Remote</div>
-            <div style={s.bullet}>• Led and reorganized 13 infrastructure engineers into specialized functional teams across 16 global regions</div>
-            <div style={s.bullet}>• Migrated EC2/Docker Compose → GitOps Kubernetes/ArgoCD across all 16 regions; infrastructure serving 1B+ daily requests</div>
-            <div style={s.bullet}>• Replaced DataDog with VictoriaMetrics/Loki/Grafana; managed global RPC/node infrastructure across Ethereum, Polygon, and BSC ecosystems</div>
-          </div>
+          ))}
 
-          {/* Pocket Network Lead */}
-          <div style={s.jobBlock}>
-            <div style={s.jobHeader}>
-              <span style={s.jobTitle}>DevOps Team Lead → Sr. DevOps Engineer</span>
-              <span style={s.jobDate}>Jul 2021 – Jul 2022</span>
-            </div>
-            <div style={s.jobCompany}>Pocket Network · Remote</div>
-            <div style={s.bullet}>• Promoted from Sr. DevOps Engineer to Team Lead within 6 months; designed IaC, CI/CD pipelines, and blockchain node automation</div>
-          </div>
-
-          {/* Coinmiles CTO */}
-          <div style={s.jobBlock}>
-            <div style={s.jobHeader}>
-              <span style={s.jobTitle}>CTO (promoted from Software Engineer in 3 months)</span>
-              <span style={s.jobDate}>May 2019 – Jul 2021</span>
-            </div>
-            <div style={s.jobCompany}>Coinmiles · Remote</div>
-            <div style={s.bullet}>• SE → CTO in 3 months; led architecture, team management, ACH/API payment systems, GraphQL upgrades, CI/CD, and cloud operations</div>
-          </div>
-
-          {/* TELUS */}
-          <div style={s.jobBlock}>
-            <div style={s.jobHeader}>
-              <span style={s.jobTitle}>Technology Specialist</span>
-              <span style={s.jobDate}>Nov 2006 – Apr 2017</span>
-            </div>
-            <div style={s.jobCompany}>TELUS · Victoria, BC</div>
-            <div style={s.bullet}>• Managed enterprise server operations across 20+ hosts and 300+ VMs; automated server provisioning (65% time reduction); DR implementation for Finning International</div>
-          </div>
-
-          {/* Key metrics bar */}
-          <div style={{
-            marginTop: "10px",
-            padding: "7px 10px",
-            background: "#f5f5f5",
-            borderRadius: "4px",
-            display: "flex",
-            flexWrap: "wrap" as const,
-            gap: "0 20px",
-          }}>
+          <div style={s.metricBar}>
             {[
-              ["20+ yrs", "production infra"],
-              ["10,600+", "GitHub contributions"],
-              ["1B+", "daily requests managed"],
-              ["60-80%", "cloud cost savings"],
-              ["AI infra", "agents + GitOps"],
-            ].map(([val, label]) => (
-              <span key={val} style={{ fontSize: "8px", color: "#444" }}>
-                <strong style={{ color: "#111" }}>{val}</strong> {label}
+              ['20+ yrs', 'production infra'],
+              ['1B+', 'daily requests managed'],
+              ['16', 'actual CTO agents'],
+              ['60-80%', 'targeted cost reduction'],
+              ['ZeroEdge beta', 'provider validation'],
+            ].map(([value, label]) => (
+              <span key={value} style={s.metric}>
+                <strong style={{ color: '#10291f' }}>{value}</strong> {label}
               </span>
             ))}
           </div>

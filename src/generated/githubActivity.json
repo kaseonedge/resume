@@ -1,10 +1,10 @@
 {
   "source": "github-graphql",
-  "generatedAt": "2026-05-26T18:28:26.240Z",
+  "generatedAt": "2026-05-26T19:10:36.908Z",
   "username": "kaseonedge",
   "profileUrl": "https://github.com/kaseonedge",
   "avatarUrl": "https://avatars.githubusercontent.com/u/15183881?u=c7b27c094824996091d60c784de0197a727febd0&v=4",
-  "totalContributions": 11545,
+  "totalContributions": 11546,
   "weeks": [
     {
       "contributionDays": [
@@ -2048,7 +2048,7 @@
         },
         {
           "date": "2026-05-26",
-          "count": 2,
+          "count": 3,
           "level": 1
         }
       ]
@@ -2059,22 +2059,22 @@
       "nameWithOwner": "kaseonedge/resume",
       "url": "https://github.com/kaseonedge/resume",
       "description": "https://resume.jonathonfritz.com/",
-      "pushedAt": "2026-05-26T18:22:08Z",
+      "pushedAt": "2026-05-26T18:28:44Z",
       "stars": 0,
       "forks": 0,
       "language": {
         "name": "TypeScript",
         "color": "#3178c6"
       },
-      "defaultBranchCommitCount": 72,
+      "defaultBranchCommitCount": 73,
       "latestCommit": {
-        "committedDate": "2026-05-26T18:21:59Z",
-        "oid": "6415723a32394db8211df00fb5c2423baabb3132",
-        "shortOid": "6415723",
-        "messageHeadline": "fix: source GitHub activity from GraphQL",
-        "url": "https://github.com/kaseonedge/resume/commit/6415723a32394db8211df00fb5c2423baabb3132",
-        "additions": 2267,
-        "deletions": 344
+        "committedDate": "2026-05-26T18:28:43Z",
+        "oid": "1e39051cf19c7bce5a7541545009c40de364ea72",
+        "shortOid": "1e39051",
+        "messageHeadline": "fix: render verified GitHub total immediately",
+        "url": "https://github.com/kaseonedge/resume/commit/1e39051cf19c7bce5a7541545009c40de364ea72",
+        "additions": 12,
+        "deletions": 12
       }
     }
   ]

@@ -63,21 +63,22 @@ export const resumeData = {
   title: 'Infrastructure & Platform Engineering Leader',
   roles: [
     'Infrastructure & Platform Engineering Leader',
+    'AI + Blockchain Infrastructure',
     'AI Infrastructure Architect',
     'Solana / RPC Systems Operator',
     'SRE / Infra Leadership',
-    'Founder & CTO',
   ],
   location: 'Victoria, BC',
   status: 'Available for infrastructure/platform leadership roles',
   summary:
-    'Infrastructure and platform engineering leader with 20+ years building production systems across enterprise IT, Kubernetes/GitOps, global RPC infrastructure, Solana/Web3 systems, and AI-native platforms. I combine hands-on systems architecture with SRE, Head of Infrastructure, CTO, and founder-level leadership — bringing broad production judgment, not a single-project identity.',
+    'Infrastructure and platform engineering leader with 20+ years building production systems across enterprise IT, Kubernetes/GitOps, global RPC infrastructure, Solana/Web3 systems, and AI-native platforms. I sit at the AI + blockchain infrastructure intersection: agentic operations, protocol/RPC scale, validator/node reliability, and production systems judgment beyond any single project.',
   focusBadges: [
     { icon: '🧠', label: 'AI infrastructure', color: '#6ee7b7' },
     { icon: '☸️', label: 'Kubernetes / GitOps', color: '#93c5fd' },
     { icon: '🦀', label: 'Rust + Solana systems', color: '#fdba74' },
+    { icon: '⛓️', label: 'Blockchain infrastructure', color: '#fde68a' },
     { icon: '📡', label: 'Hermes + MCP ops', color: '#c4b5fd' },
-    { icon: '🛡️', label: 'Infra leadership', color: '#fde68a' },
+    { icon: '🛡️', label: 'Infra leadership', color: '#86efac' },
   ],
   metrics: [
     { value: 20, suffix: '+', label: 'years building infrastructure' },
@@ -97,7 +98,8 @@ export const resumeData = {
     'TypeScript', 'Go', 'Hermes Agent', 'Hermes Gateway', 'OpenClaw', 'MCP', 'ACP Harness', 'ACPX', 'Lobster', 'Argo Workflows',
     'QuestDB', 'PostgreSQL', 'Prometheus', 'Grafana', 'Loki', 'OpenTelemetry', 'Cloudflare Tunnels',
     'WireGuard', 'OpenBao', 'CloudNative-PG', 'Strimzi Kafka', 'SeaweedFS', 'Redis', 'OpenSearch',
-    'ClickHouse', 'Solana', 'Ethereum', 'Base', 'Near', 'RPC Infrastructure', 'Validator Operations', 'AWS/EKS', 'Bare Metal',
+    'ClickHouse', 'Solana', 'Ethereum', 'Base', 'Near', 'Polygon', 'BSC', 'RPC Infrastructure', 'Validator Operations',
+    'Archival Nodes', 'Gas/Oracle Infrastructure', 'Blockscout', 'Reth', 'Arbitrum Orbit', 'AWS/EKS', 'Bare Metal',
   ],
   experiences: [
     {
@@ -291,7 +293,8 @@ export const resumeData = {
     { category: 'AI Engineering', tone: 'emerald', skills: ['Hermes Agent', 'Hermes Gateway', 'Multi-Agent Systems', 'OpenClaw Orchestration', 'ACP Harness Routing', 'ACPX CLI Dispatch', 'Lobster Workflows', 'Autonomous Coding Agents', 'Self-Healing AI', 'AI Workflow Design', 'Tool Use & Function Calling', 'Context Management'] },
     { category: 'LLM & Model Integration', tone: 'violet', skills: ['Model Context Protocol (MCP)', 'Commercial LLM APIs', 'Self-Hosted Open-Weight Models', 'Model-Agnostic Orchestration', 'Inference Infrastructure', 'Tool Registration', 'Streaming Responses', 'Prompt Engineering'] },
     { category: 'Systems Programming', tone: 'orange', skills: ['Rust', 'Tokio', 'Tonic/gRPC', 'Axum', 'Serde', 'Go', 'TypeScript', 'Kubernetes Controllers', 'Async Runtime'] },
-    { category: 'Distributed Systems & Blockchain Infra', tone: 'slate', skills: ['Solana RPC', 'Validator/Node Operations', 'Ethereum', 'Base', 'Near', 'Polygon', 'BSC', 'RPC Infrastructure', 'gRPC Streaming', 'High-Throughput APIs', 'Low-Latency Systems'] },
+    { category: 'Blockchain Infrastructure', tone: 'slate', skills: ['Solana RPC', 'Validator/Node Operations', 'Ethereum', 'Base', 'Near', 'Polygon', 'BSC', 'RPC Gateways', 'Archival Nodes', 'Gas/Oracle Infrastructure', 'Blockscout', 'Reth', 'Arbitrum Orbit'] },
+    { category: 'Distributed Systems & Low-Latency', tone: 'cyan', skills: ['gRPC Streaming', 'High-Throughput APIs', 'Global Regions', 'Failover Systems', 'HAProxy', 'Time-Series Storage', 'Cost Controls', 'Incident Response', 'OpenTelemetry'] },
     { category: 'Platform Engineering', tone: 'blue', skills: ['Kubernetes', 'Talos Linux', 'ArgoCD', 'GitOps', 'Cilium/eBPF', 'Helm', 'Bare Metal Provisioning', 'AWS/EKS', 'Multi-Cloud', 'Provider Abstraction', 'OpenBao/Vault'] },
     { category: 'Observability', tone: 'amber', skills: ['Prometheus', 'Grafana', 'Loki', 'OpenTelemetry', 'Fluent-bit', 'AI-Powered Alerting', 'Self-Healing Triggers', 'Incident Auto-Remediation'] },
   ] as SkillGroup[],
@@ -311,9 +314,9 @@ export const resumeData = {
       technologies: ['Hermes', 'OpenClaw', 'ACPX', 'Lobster', 'MCP', 'Rust', 'Kubernetes'],
     },
     {
-      title: 'Distributed Systems / Blockchain Infrastructure',
+      title: 'Blockchain / Protocol Infrastructure',
       description:
-        'Production infrastructure across Solana, Ethereum, Base, Near, RPC gateways, validators, archival nodes, gas/oracle systems, and global node operations. This is the Solana/Rust systems signal: performance, reliability, operator mindset, and protocol-adjacent infrastructure — not a JavaScript app profile.',
+        'Production infrastructure across Solana, Ethereum, Base, Near, Polygon, BSC, RPC gateways, validators, archival nodes, gas/oracle systems, and global node operations. This is the AI + blockchain infrastructure intersection: protocol-adjacent reliability, operator automation, Rust/systems thinking, and scale — not a JavaScript app profile.',
       technologies: ['Solana', 'Rust', 'RPC', 'Validators', 'Ethereum', 'Base', 'Near', 'Node Operations'],
     },
     {

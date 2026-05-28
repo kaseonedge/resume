@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://resume.jonathonfritz.com/sitemap.xml
+
+# LLM-friendly artifacts
+# Markdown: https://resume.jonathonfritz.com/resume.md
+# JSON: https://resume.jonathonfritz.com/resume.json
+# LLM guide: https://resume.jonathonfritz.com/llms.txt

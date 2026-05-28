@@ -20,7 +20,7 @@ interface HeaderProps {
 const focusBadges = [
   { icon: '🧠', label: 'AI infrastructure', color: '#6ee7b7', bg: 'rgba(16, 185, 129, 0.18)' },
   { icon: '☸️', label: 'Kubernetes / GitOps', color: '#93c5fd', bg: 'rgba(59, 130, 246, 0.18)' },
-  { icon: '🦀', label: 'Rust + TypeScript', color: '#fdba74', bg: 'rgba(249, 115, 22, 0.16)' },
+  { icon: '🦀', label: 'Rust + Solana systems', color: '#fdba74', bg: 'rgba(249, 115, 22, 0.16)' },
   { icon: '📡', label: 'MCP + agent ops', color: '#c4b5fd', bg: 'rgba(139, 92, 246, 0.16)' },
   { icon: '🛡️', label: 'Infra leadership', color: '#fde68a', bg: 'rgba(245, 158, 11, 0.16)' },
 ];
@@ -28,7 +28,7 @@ const focusBadges = [
 const metrics = [
   ['20+', 'years infrastructure'],
   ['1B+', 'daily requests led'],
-  ['13', 'agent platform roles'],
+  ['13+', 'infrastructure roles'],
   ['60–80%', 'cost target'],
 ];
 

@@ -60,31 +60,29 @@ export const actualCtoAgents: AgentNode[] = [
 
 export const resumeData = {
   name: 'Jonathon Fritz',
-  title: 'AI Infrastructure & Platform Engineering Leader',
+  title: 'Infrastructure & Platform Engineering Leader',
   roles: [
+    'Infrastructure & Platform Engineering Leader',
     'AI Infrastructure Architect',
-    'Platform Engineering Leader',
+    'Solana / RPC Systems Operator',
     'SRE / Infra Leadership',
     'Founder & CTO',
-    'Agent Systems Builder',
   ],
   location: 'Victoria, BC',
-  status: 'Available for AI infrastructure roles',
+  status: 'Available for infrastructure/platform leadership roles',
   summary:
-    'AI infrastructure and platform engineering leader with 20+ years building production systems, global Kubernetes platforms, low-latency gRPC/trading-data systems, and multi-provider cloud/bare-metal infrastructure. Current work is deliberately Hermes-centric: local Hermes gateway, Hermes Agent skills/tools, MCP integrations, ACP harness routing, ACPX-backed CLI dispatch, Lobster intake workflows, memory/observability, and OpenClaw execution paths for AI-native teams.',
+    'Infrastructure and platform engineering leader with 20+ years building production systems across enterprise IT, Kubernetes/GitOps, global RPC infrastructure, Solana/Web3 systems, and AI-native platforms. I combine hands-on systems architecture with SRE, Head of Infrastructure, CTO, and founder-level leadership — bringing broad production judgment, not a single-project identity.',
   focusBadges: [
     { icon: '🧠', label: 'AI infrastructure', color: '#6ee7b7' },
     { icon: '☸️', label: 'Kubernetes / GitOps', color: '#93c5fd' },
-    { icon: '🦀', label: 'Rust + gRPC', color: '#fdba74' },
+    { icon: '🦀', label: 'Rust + Solana systems', color: '#fdba74' },
     { icon: '📡', label: 'Hermes + MCP ops', color: '#c4b5fd' },
-    { icon: '🦞', label: 'ACPX + Lobster', color: '#fb7185' },
-    { icon: '🎙️', label: 'Voice/avatar UX', color: '#67e8f9' },
     { icon: '🛡️', label: 'Infra leadership', color: '#fde68a' },
   ],
   metrics: [
     { value: 20, suffix: '+', label: 'years building infrastructure' },
     { value: 1, suffix: 'B+', label: 'daily requests led' },
-    { value: 16, suffix: '', label: 'actual CTO agents mapped' },
+    { value: 16, suffix: '', label: 'infrastructure/agent roles mapped' },
     { value: 70, suffix: '%', label: 'infra cost reduction target', prefix: '−' },
   ],
   contact: {
@@ -96,11 +94,10 @@ export const resumeData = {
   },
   techMarquee: [
     'Kubernetes', 'Talos Linux', 'ArgoCD', 'Cilium', 'Helm', 'Rust', 'Tokio', 'Tonic/gRPC',
-    'TypeScript', 'Go', 'Hermes Agent', 'Hermes Gateway', 'OpenClaw', 'MCP', 'ACP Harness', 'ACPX', 'Lobster', 'NATS-style eventing', 'Argo Workflows',
-    'ElevenLabs', 'MediaRecorder', 'WebAudio', 'Scenario P-Video', 'Pruna', 'Yellowstone gRPC',
+    'TypeScript', 'Go', 'Hermes Agent', 'Hermes Gateway', 'OpenClaw', 'MCP', 'ACP Harness', 'ACPX', 'Lobster', 'Argo Workflows',
     'QuestDB', 'PostgreSQL', 'Prometheus', 'Grafana', 'Loki', 'OpenTelemetry', 'Cloudflare Tunnels',
     'WireGuard', 'OpenBao', 'CloudNative-PG', 'Strimzi Kafka', 'SeaweedFS', 'Redis', 'OpenSearch',
-    'ClickHouse', 'Solana', 'Ethereum', 'AWS/EKS', 'Bare Metal', 'Provider Abstraction', 'ZeroEdge beta',
+    'ClickHouse', 'Solana', 'Ethereum', 'Base', 'Near', 'RPC Infrastructure', 'Validator Operations', 'AWS/EKS', 'Bare Metal',
   ],
   experiences: [
     {
@@ -111,21 +108,13 @@ export const resumeData = {
       tag: 'founder',
       titleColor: 'text-job-founder',
       description:
-        'Building CTO Desktop and the Cognitive Task Orchestrator: a Hermes-centric AI infrastructure platform for agentic software delivery, Morgan voice/avatar UX, ACP harness routing through ACPX, Lobster intake/deliberation workflows, low-latency gRPC/trading-data experiments, local GitOps, model/provider routing, and self-healing Kubernetes operations across bare metal and cloud providers.',
+        'Building CTO Desktop and Hermes/OpenClaw infrastructure as a focused applied-R&D vehicle for agentic software delivery, local GitOps, model/provider routing, and self-healing Kubernetes operations.',
       achievements: [
-        'Architected CTO / CTO Desktop as a Hermes-centric AI infrastructure platform: specialized agents use the local Hermes gateway, Hermes Agent skills/tools, OpenClaw workflows, GitHub/GitOps integration, MCP tools, ACP harness routing, and local runtime automation to turn product intent into reviewed, deployed software',
-        'Defined the actual CTO agent bench from repo-backed mappings: Blaze, Tap, Spark, Rex, Grizz, Block, Nova, Bolt, Atlas, Stitch, Cleo, Tess, Cipher, Morgan, Angie, and Vex — keeping placeholder personas out of the public story',
-        'Built bare-metal and cloud cluster automation around Talos Linux, Kubernetes, Helm, Argo CD, Cilium, AWS/EKS, and provider abstraction, targeting 60-80% lower infrastructure cost than default managed-cloud patterns',
-        'Integrated Hermes Agent as the operator-facing control plane: local gateway, skill loading, tool registry, browser/search/crawler providers, MCP adapters, memory, and CLI/provider abstraction, with OpenClaw supplying execution workflows underneath and ACPX providing ACP CLI dispatch',
-        'Built and maintained MCP/tooling layers for infrastructure management, repository automation, Kubernetes inspection, workflow execution, ACPX-backed CLI handoffs, and model/provider hot-swapping',
-        'Designed the ACP harness path: Morgan chooses Hermes/OpenClaw as the harness, ACP CLIs such as Copilot as execution surfaces, provider/model routing chooses a primary model plus enabled fallbacks, ACPX dispatches allowed CLI agents, and Lobster owns intake/deliberation graphs for research, synthesis, criteria, and readiness-audit stages',
-        'Built Morgan voice/avatar UX infrastructure spanning FastAPI WebSocket voice bridge, ElevenLabs STT/TTS, browser MediaRecorder/WebAudio analyzers, reactive canvas avatar state, and Scenario P-Video/Pruna setup media workflows',
-        'Developed low-latency Rust/gRPC trading-data and Solana infrastructure work: Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware trading dashboards, and sub-100ms/p95/p99 performance targets',
-        'Used ZeroEdge beta and provider-abstraction work to validate deployment paths across bare-metal and cloud providers without tying the platform to a single vendor',
-        'Implemented self-healing operations patterns: agents inspect logs, metrics, Git state, Kubernetes resources, and runbooks to diagnose failures and propose or apply remediations',
-        'Replaced 15+ managed cloud services with Kubernetes operators (CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, ClickHouse), achieving the 60-80% cost reduction that defines the platform value proposition',
-        'Designed zero-trust networking with Cloudflare Tunnels and WireGuard, plus OpenBao (Vault fork) secret management for secure multi-tenant agent operations',
-        'Implemented comprehensive observability: Prometheus, Grafana, Loki, OpenTelemetry, with MCP tools enabling agents to query their own logs and metrics',
+        'Built CTO / CTO Desktop to prove production patterns for AI-assisted infrastructure operations: local GitOps, workflow routing, agent tooling, and Kubernetes remediation loops',
+        'Architected the Hermes/OpenClaw control-plane boundary: Hermes as the operator-facing gateway for skills/tools, providers, memory, and MCP adapters; OpenClaw as the execution/workflow engine underneath',
+        'Automated Talos Linux, Kubernetes, Helm, Argo CD, Cilium, OpenBao/Vault, observability, and bare-metal/cloud provider abstraction patterns with a cost-conscious operator mindset',
+        'Maintained hands-on production debugging discipline across logs, metrics, Git state, Kubernetes resources, and runbooks — using agents as acceleration, not as a substitute for engineering judgment',
+        'Converted lessons from prior SRE, global RPC, CTO, and enterprise infrastructure roles into reusable platform patterns for small AI-native teams',
       ],
     },
     {
@@ -299,40 +288,39 @@ export const resumeData = {
     },
   ] as EducationItem[],
   skills: [
-    { category: 'AI Engineering', tone: 'emerald', skills: ['Hermes Agent', 'Hermes Gateway', 'Multi-Agent Systems', 'OpenClaw Orchestration', 'ACP Harness Routing', 'ACPX CLI Dispatch', 'Lobster Workflows', 'Autonomous Coding Agents', 'Self-Healing AI', 'AI Workflow Design', 'Prompt Engineering', 'Tool Use & Function Calling', 'Context Management'] },
-    { category: 'LLM & Model Integration', tone: 'violet', skills: ['Model Context Protocol (MCP)', 'Commercial LLM APIs', 'Self-Hosted Open-Weight Models', 'Model-Agnostic Orchestration', 'Inference Infrastructure', 'Tool Registration', 'Streaming Responses', 'Voice/Avatar UX', 'Prompt Engineering'] },
-    { category: 'AI Infrastructure', tone: 'cyan', skills: ['Hermes Metal', 'Hermes Agent Runtime', 'OpenClaw Platform', 'ACPX', 'Agent Client Protocol', 'Lobster Orchestration', 'Argo Workflows', 'NATS-style Eventing', 'Event-Driven AI Pipelines', 'Agent State Management', 'Kubernetes CRDs for AI', 'Real-time Activity Streaming', 'Morgan Voice Bridge', 'GitHub Apps for AI'] },
+    { category: 'AI Engineering', tone: 'emerald', skills: ['Hermes Agent', 'Hermes Gateway', 'Multi-Agent Systems', 'OpenClaw Orchestration', 'ACP Harness Routing', 'ACPX CLI Dispatch', 'Lobster Workflows', 'Autonomous Coding Agents', 'Self-Healing AI', 'AI Workflow Design', 'Tool Use & Function Calling', 'Context Management'] },
+    { category: 'LLM & Model Integration', tone: 'violet', skills: ['Model Context Protocol (MCP)', 'Commercial LLM APIs', 'Self-Hosted Open-Weight Models', 'Model-Agnostic Orchestration', 'Inference Infrastructure', 'Tool Registration', 'Streaming Responses', 'Prompt Engineering'] },
     { category: 'Systems Programming', tone: 'orange', skills: ['Rust', 'Tokio', 'Tonic/gRPC', 'Axum', 'Serde', 'Go', 'TypeScript', 'Kubernetes Controllers', 'Async Runtime'] },
-    { category: 'Distributed Systems & Blockchain Infra', tone: 'slate', skills: ['RPC Infrastructure', 'gRPC Streaming', 'Validator/Node Operations', 'Solana', 'Yellowstone gRPC', 'QuestDB', 'Low-Latency Systems', 'Trading Infrastructure', 'High-Throughput APIs'] },
+    { category: 'Distributed Systems & Blockchain Infra', tone: 'slate', skills: ['Solana RPC', 'Validator/Node Operations', 'Ethereum', 'Base', 'Near', 'Polygon', 'BSC', 'RPC Infrastructure', 'gRPC Streaming', 'High-Throughput APIs', 'Low-Latency Systems'] },
     { category: 'Platform Engineering', tone: 'blue', skills: ['Kubernetes', 'Talos Linux', 'ArgoCD', 'GitOps', 'Cilium/eBPF', 'Helm', 'Bare Metal Provisioning', 'AWS/EKS', 'Multi-Cloud', 'Provider Abstraction', 'OpenBao/Vault'] },
     { category: 'Observability', tone: 'amber', skills: ['Prometheus', 'Grafana', 'Loki', 'OpenTelemetry', 'Fluent-bit', 'AI-Powered Alerting', 'Self-Healing Triggers', 'Incident Auto-Remediation'] },
   ] as SkillGroup[],
   projects: [
     {
-      title: 'CTO — Software Factory & Bare-Metal Aggregator',
+      title: 'CTO / Hermes — Agentic Infrastructure Lab',
       tag: 'primary',
       description:
-        'Hermes-centric autonomous software factory and bare-metal aggregator where actual CTO agents — Blaze, Tap, Spark, Rex, Grizz, Block, Nova, Bolt, Atlas, Stitch, Cleo, Tess, Cipher, Morgan, Angie, and Vex — ship production code through the local Hermes gateway, OpenClaw workflows, an ACP harness with ACPX CLI dispatch, Lobster intake/deliberation workflows, Morgan voice/avatar UX, GitOps, and model/provider routing across commercial and self-hosted LLMs.',
-      technologies: ['Hermes Agent', 'Hermes Gateway', 'OpenClaw', 'ACPX', 'Lobster', 'Multi-Agent AI', 'Rust', 'MCP', 'Kubernetes', 'Bare Metal', 'Model-Agnostic'],
+        'Applied-R&D system for agentic software delivery: Hermes provides the operator-facing gateway for skills/tools, model/provider routing, MCP adapters, and memory; OpenClaw provides execution workflows underneath. Kept as evidence of architecture, platform automation, and production debugging discipline — not as the whole career story.',
+      technologies: ['Hermes', 'OpenClaw', 'MCP', 'Rust', 'Kubernetes', 'GitOps', 'Bare Metal'],
       link: 'https://github.com/5dlabs/cto',
     },
     {
-      title: 'Morgan Voice/Avatar Setup UX',
+      title: 'Hermes / OpenClaw Workflow Orchestration',
       description:
-        'Low-cognition CTO setup media and runtime voice/avatar infrastructure using FastAPI WebSockets, ElevenLabs STT/TTS, MediaRecorder/WebAudio analyzers, reactive canvas avatar state, and Scenario P-Video/Pruna media workflows.',
-      technologies: ['FastAPI', 'WebSocket', 'ElevenLabs', 'MediaRecorder', 'WebAudio', 'Scenario P-Video', 'Pruna'],
+        'Agent workflow infrastructure with dynamic skill loading, provider routing, CLI execution surfaces, and MCP tool adapters. Emphasizes model-agnostic operations and reliability boundaries rather than a single vendor or prototype demo.',
+      technologies: ['Hermes', 'OpenClaw', 'ACPX', 'Lobster', 'MCP', 'Rust', 'Kubernetes'],
     },
     {
       title: 'Distributed Systems / Blockchain Infrastructure',
       description:
-        'Low-latency and HFT-adjacent trading infrastructure across Solana DEX data ingestion, Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware execution workflows, and bare-metal validator/RPC operations. ZeroEdge beta and provider-abstraction work are framed as current beta/provider-validation experience.',
-      technologies: ['Rust', 'gRPC', 'Yellowstone', 'QuestDB', 'Solana', 'MEV', 'Low-Latency', 'Bare Metal'],
+        'Production infrastructure across Solana, Ethereum, Base, Near, RPC gateways, validators, archival nodes, gas/oracle systems, and global node operations. This is the Solana/Rust systems signal: performance, reliability, operator mindset, and protocol-adjacent infrastructure — not a JavaScript app profile.',
+      technologies: ['Solana', 'Rust', 'RPC', 'Validators', 'Ethereum', 'Base', 'Near', 'Node Operations'],
     },
     {
       title: 'Hermes / MCP Runtime — Model-Agnostic Platform',
       description:
-        'Hermes-centric runtime with MCP integrations, 60+ tools, local memory, browser/search/crawler providers, ACP harness routing, ACPX-backed CLI dispatch, and commercial or self-hosted LLM routing. Dynamic tool registration, real-time context streaming, and seamless hot-swapping between providers as the model landscape evolves.',
-      technologies: ['Hermes Agent', 'MCP', 'ACPX', 'ACP Harness', 'Rust', 'Axum', 'Model-Agnostic', 'SSE', 'NATS-style Eventing'],
+        'Hermes-centric runtime with MCP integrations, local memory, browser/search/crawler providers, ACP harness routing, ACPX-backed CLI dispatch, and commercial or self-hosted LLM routing. Dynamic tool registration, real-time context streaming, and seamless hot-swapping between providers as the model landscape evolves.',
+      technologies: ['Hermes Agent', 'MCP', 'ACPX', 'ACP Harness', 'Rust', 'Axum', 'Model-Agnostic', 'SSE'],
     },
   ] as ProjectItem[],
   agentNodes: actualCtoAgents,

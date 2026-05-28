@@ -6,7 +6,7 @@
  * animated site copy instead of drifting into a stale parallel resume.
  */
 import type { ReactNode } from 'react';
-import { actualCtoAgents, resumeData } from '../resumeData';
+import { resumeData } from '../resumeData';
 
 const s = {
   page: {
@@ -181,8 +181,6 @@ const topExperiences = resumeData.experiences.filter((experience) =>
   ['5D Labs', 'Blocknative', 'Pocket Network Inc.', 'Coinmiles', 'TELUS'].includes(experience.company),
 );
 
-const agentNames = actualCtoAgents.map((agent) => agent.name).join(', ');
-
 function Bullet({ children }: { children: ReactNode }) {
   return <div style={s.bullet}>• {children}</div>;
 }
@@ -210,9 +208,9 @@ export default function PrintResume() {
           <div style={s.sectionTitleFirst}>Summary</div>
           <p style={s.summary}>{resumeData.summary}</p>
 
-          <div style={s.sectionTitle}>CTO Agent Bench</div>
+          <div style={s.sectionTitle}>Infrastructure Lab Snapshot</div>
           <p style={s.mini}>
-            Actual repo-backed agents: {agentNames}. Placeholder personas are intentionally excluded until implemented.
+            CTO/Hermes remains visible as current applied R&D, but positioned as one proof point within a broader infrastructure career.
           </p>
 
           <div style={s.sectionTitle}>Core Skills</div>
@@ -227,11 +225,10 @@ export default function PrintResume() {
             </div>
           ))}
 
-          <div style={s.sectionTitle}>Media / Avatar Stack</div>
+          <div style={s.sectionTitle}>Solana / RPC Systems</div>
           <p style={s.mini}>
-            Morgan voice/avatar UX: FastAPI WebSocket voice bridge, ElevenLabs STT/TTS, browser MediaRecorder/WebAudio analyzers, reactive canvas avatar state, Scenario P-Video, and Pruna workflows.
+            Solana, validator/node operations, RPC gateways, global blockchain clients, high-throughput APIs, and Rust/gRPC systems work.
           </p>
-
           <div style={s.sectionTitle}>Education</div>
           {resumeData.educations.map((education) => (
             <div key={`${education.institution}-${education.startDate}`} style={{ marginBottom: '4px' }}>
@@ -250,13 +247,10 @@ export default function PrintResume() {
               <span style={s.jobDate}>{fiveDLabs.startDate} – {fiveDLabs.endDate}</span>
             </div>
             <div style={s.jobCompany}>{fiveDLabs.company} · Victoria, BC</div>
-            <Bullet>Building CTO Desktop and the Cognitive Task Orchestrator: Hermes-centric desktop-to-Kubernetes AI infrastructure for agentic delivery, Morgan voice/avatar UX, ACP harness routing through ACPX, Lobster intake workflows, local GitOps, model/provider routing, and self-healing operations.</Bullet>
-            <Bullet>Defined the repo-backed CTO agent bench: {agentNames}; kept non-implemented placeholder personas out of the public story.</Bullet>
-            <Bullet>Built Hermes Agent / Hermes Gateway / MCP tooling as the operator-facing control plane: dynamic skills, tool registry, Browserbase/search/crawler providers, memory, CLI/provider abstraction, ACPX-backed ACP CLI dispatch, and OpenClaw workflow execution across commercial/self-hosted models.</Bullet>
-            <Bullet>Built Morgan setup media/runtime: FastAPI WebSockets, ElevenLabs STT/TTS, MediaRecorder/WebAudio, Scenario P-Video/Pruna workflows, and reactive avatar state.</Bullet>
-            <Bullet>Designed the ACP harness path: Morgan selects Hermes/OpenClaw, ACP CLIs such as Copilot provide execution surfaces, model routing sets primary/fallback pools, ACPX dispatches allowed CLI agents, and Lobster owns intake/deliberation graph stages.</Bullet>
-            <Bullet>Developed low-latency Rust/gRPC and HFT-adjacent trading-data infrastructure: Yellowstone gRPC, QuestDB/PostgreSQL time-series storage, streaming price APIs, MEV-aware dashboards, and Solana node/RPC operations.</Bullet>
-            <Bullet>Validated ZeroEdge beta and Provider Abstraction paths across bare metal, AWS/EKS, and cloud providers; targets 60-80% lower cost using Kubernetes operators such as CloudNative-PG, Strimzi Kafka, SeaweedFS, Redis, OpenSearch, and ClickHouse.</Bullet>
+            <Bullet>{fiveDLabs.description}</Bullet>
+            {fiveDLabs.achievements.slice(0, 5).map((achievement) => (
+              <Bullet key={achievement}>{achievement}</Bullet>
+            ))}
           </div>
 
           {topExperiences.slice(1).map((experience) => {
@@ -287,10 +281,10 @@ export default function PrintResume() {
             {[
               ['20+ yrs', 'production infra'],
               ['1B+', 'daily requests managed'],
-              ['16', 'actual CTO agents'],
+              ['16', 'infra/agent roles'],
               ['60-80%', 'targeted cost reduction'],
-              ['ACPX + Lobster', 'ACP harness'],
-              ['ZeroEdge beta', 'provider validation'],
+              ['Solana/Rust', 'systems signal'],
+              ['Hermes/OpenClaw', 'current R&D'],
             ].map(([value, label]) => (
               <span key={value} style={s.metric}>
                 <strong style={{ color: '#10291f' }}>{value}</strong> {label}
